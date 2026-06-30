@@ -82,3 +82,24 @@ buttons.forEach(button => {
 
 // Small console message
 console.log("BB2 AirPods website loaded successfully.");
+
+// load cart
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+// add item
+function addToCart(item){
+    cart.push(item);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCart();
+}
+
+// update counter
+function updateCart(){
+    const count = document.getElementById("cartCount");
+    if(count){
+        count.textContent = cart.length;
+    }
+}
+
+// run on load
+updateCart();
