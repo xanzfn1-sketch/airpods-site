@@ -1,91 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BB2 AirPods Store</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BB2 AirPods</title>
+
+    <meta name="description" content="Premium AirPods available in BB2.">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="glow-bg"></div>
+<div class="background"></div>
 
-<div class="top-bar">
-    <span>Seller: Rayyan Adam</span>
-    <span>Website Made By: Adam</span>
-</div>
+<header>
+    <div class="logo">
+        <h2>BB2 AirPods</h2>
+    </div>
 
-<div class="container">
+    <div class="info">
+        <p>Seller: <strong>Rayyan Adam</strong></p>
+        <p>Website by <strong>Adam</strong></p>
+    </div>
+</header>
 
-    <div class="badge">ONLY AVAILABLE IN BB2</div>
+<section class="hero">
+
+    <span class="badge">ONLY AVAILABLE IN BB2</span>
 
     <h1>Premium AirPods</h1>
-    <p class="sub">Luxury feel • Fast delivery • Limited stock</p>
 
-    <!-- PRICES -->
-    <div class="grid">
+    <p>
+        High quality AirPods with fast local delivery.
+    </p>
 
-        <div class="card">
-            <h2>1 Pair</h2>
-            <p>£15</p>
-        </div>
+</section>
 
-        <div class="card">
-            <h2>2 Pairs</h2>
-            <p>£25 (was £30)</p>
-        </div>
+<section class="pricing">
 
-        <div class="card">
-            <h2>5 Pairs</h2>
-            <p>£60</p>
-        </div>
-
-        <div class="card highlight">
-            <h2>Bulk Deal</h2>
-            <p>£150</p>
-            <p>Get 5 FREE</p>
-        </div>
-
+    <div class="card">
+        <h2>1 Pair</h2>
+        <h1>£15</h1>
     </div>
 
-    <!-- BUTTONS -->
-    <button onclick="orderNow()">Order Now</button>
+    <div class="card featured">
+        <h2>2 Pairs</h2>
 
-    <button onclick="goReviews()" style="margin-left:10px;">
-        See Reviews
-    </button>
+        <p class="old-price">£30</p>
 
-    <!-- WHATSAPP -->
-    <div style="margin-top:20px;">
-        <a href="https://wa.me/447463399522" target="_blank" style="color:#00ff99;">
-            WhatsApp Contact →
-        </a>
+        <h1>£25</h1>
+
+        <span class="discount">5% OFF</span>
     </div>
 
-   <div id="reviews" class="reviews">
+    <div class="card">
+        <h2>5 Pairs</h2>
+        <h1>£60</h1>
+    </div>
 
-    <h2>Reviews</h2>
+    <div class="card">
+        <h2>Bulk Deal</h2>
 
-    <div id="reviewsContainer"></div>
+        <h1>£150</h1>
+
+        <p>Get 5 FREE</p>
+    </div>
+
+</section>
+
+<div class="buttons">
+
+    <a href="order.html">
+        <button class="btn">Order Now</button>
+    </a>
+
+    <a href="reviews.html">
+        <button class="btn secondary">See Reviews</button>
+    </a>
 
 </div>
 
-        <div class="card">⭐ Fast delivery — L••••</div>
-        <div class="card">⭐ Best prices — J••••</div>
-        <div class="card">⭐ Trusted seller — M••••</div>
+<section class="contact">
 
+    <h2>Contact</h2>
+
+    <p>📞 07463 399522</p>
+
+    <p>WhatsApp or Call</p>
+
+</section>
+
+<section class="vouches">
+
+    <h2>Customer Vouches</h2>
+
+    <div id="vouch" class="vouch">
+        ⭐⭐⭐⭐⭐ Fast delivery — L••••
     </div>
 
-    <!-- VOUCH SLIDER -->
-    <div style="margin-top:40px;">
-        <div id="vouch" class="card">
-            ⭐ Fast delivery — L••••
-        </div>
-    </div>
-
-</div>
+</section>
 
 <script src="script.js"></script>
+
 </body>
 </html>
