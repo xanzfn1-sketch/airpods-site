@@ -1,84 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reviews | BB2 Store</title>
-
-<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<div class="background"></div>
-
-<header>
-    <div class="logo">
-        <h2>BB2 Store</h2>
-    </div>
-</header>
-
-<section class="hero">
-    <h1>Customer Reviews</h1>
-    <p>Verified 5★ purchases</p>
-</section>
-
-<div id="reviewsContainer" class="reviews"></div>
-
-<a href="index.html">
-    <button class="btn">← Back</button>
-</a>
-
 <script>
-const names = ["L••••","J••••","M••••","A••••","D••••","S••••","K••••","T••••","R••••","H••••"];
+const container = document.getElementById("reviewsContainer");
 
+const names = ["L••••","J••••","M••••","A••••","D••••","S••••","K••••","T••••"];
 const comments = [
 "Fast delivery",
-"Best quality AirPods",
+"Great quality",
 "Trusted seller",
-"Very smooth deal",
 "Would buy again",
 "Perfect condition",
 "Quick replies",
-"Highly recommended",
-"Great price",
+"Best prices",
 "Legit seller"
 ];
 
-const container = document.getElementById("reviewsContainer");
+// create reviews but DO NOT show them yet
+let reviews = [];
 
-// generate 200 reviews
-for(let i = 0; i < 200; i++){
-
+for(let i = 0; i < 150; i++){
     const div = document.createElement("div");
-    div.className = "card review";
+    div.className = "card review hidden";
 
     const name = names[Math.floor(Math.random() * names.length)];
     const comment = comments[Math.floor(Math.random() * comments.length)];
 
-    div.innerHTML = `⭐⭐⭐⭐⭐ ${comment} — ${name}`;
+    div.textContent = `⭐⭐⭐⭐⭐ ${comment} — ${name}`;
 
     container.appendChild(div);
+    reviews.push(div);
 }
 
-// scroll animation fix
-const reviews = document.querySelectorAll(".review");
+// reveal one by one
+function showOneByOne(i = 0){
+    if(i >= reviews.length) return;
 
-function showReviews(){
-    const trigger = window.innerHeight * 0.85;
+    reviews[i].classList.remove("hidden");
+    reviews[i].classList.add("show");
 
-    reviews.forEach(r => {
-        const top = r.getBoundingClientRect().top;
-
-        if(top < trigger){
-            r.classList.add("show");
-        }
-    });
+    setTimeout(() => {
+        showOneByOne(i + 1);
+    }, 40); // speed (lower = faster)
 }
 
-window.addEventListener("scroll", showReviews);
-showReviews();
+// start after page loads
+window.onload = () => {
+    showOneByOne();
+};
 </script>
-
-</body>
-</html>
