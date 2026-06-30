@@ -1,7 +1,5 @@
 // Order button
-function order(){
-    alert("Contact Rayyan Adam on WhatsApp to order AirPods");
-}
+
 
 // Simple vouch slider (if you use it)
 const vouches = [
