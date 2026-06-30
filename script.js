@@ -87,19 +87,25 @@ console.log("BB2 AirPods website loaded successfully.");
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 // add item
+
+// load cart from storage
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+// update basket counter
+function updateCart(){
+    const count = document.getElementById("cartCount");
+
+    if(count){
+        count.textContent = cart.length;
+    }
+}
+
+// add item to cart
 function addToCart(item){
     cart.push(item);
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCart();
 }
 
-// update counter
-function updateCart(){
-    const count = document.getElementById("cartCount");
-    if(count){
-        count.textContent = cart.length;
-    }
-}
-
-// run on load
+// run on page load
 updateCart();
