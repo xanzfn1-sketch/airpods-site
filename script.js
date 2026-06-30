@@ -1,82 +1,84 @@
+// ==============================
+// BB2 AirPods Website Script
+// ==============================
 
-function orderNow(){
-    window.location.href = "order.html";
-}
-
-function goReviews(){
-    const reviews = document.getElementById("reviews");
-    if (reviews) {
-        reviews.scrollIntoView({ behavior: "smooth" });
-    }
-}
-
-// vouch slider
+// Rotating customer vouches
 const vouches = [
-    "⭐ Fast delivery — L••••",
-    "⭐ Best prices in BB2 — J••••",
-    "⭐ Trusted seller — M••••",
-    "⭐ Smooth deal — A••••",
-    "⭐ Reliable seller — D••••"
+    "⭐⭐⭐⭐⭐ Fast delivery - L••••",
+    "⭐⭐⭐⭐⭐ Great quality - J••••",
+    "⭐⭐⭐⭐⭐ Trusted seller - M••••",
+    "⭐⭐⭐⭐⭐ Would definitely buy again - A••••",
+    "⭐⭐⭐⭐⭐ Quick replies and smooth deal - D••••",
+    "⭐⭐⭐⭐⭐ Legit AirPods - S••••",
+    "⭐⭐⭐⭐⭐ Seller was really helpful - K••••",
+    "⭐⭐⭐⭐⭐ Arrived the same day - T••••",
+    "⭐⭐⭐⭐⭐ Best prices in BB2 - H••••",
+    "⭐⭐⭐⭐⭐ Highly recommend - C••••"
 ];
 
-let i = 0;
+const vouchBox = document.getElementById("vouch");
 
-setInterval(() => {
-    const box = document.getElementById("vouch");
-    if (!box) return;
+if (vouchBox) {
 
-    i = (i + 1) % vouches.length;
+    let current = 0;
 
-    box.style.opacity = 0;
+    setInterval(() => {
 
-    setTimeout(() => {
-        box.innerText = vouches[i];
-        box.style.opacity = 1;
-    }, 300);
+        vouchBox.style.opacity = "0";
 
-}, 2500);
+        setTimeout(() => {
 
-// generate hundreds of reviews automatically
-const names = ["L••••","J••••","M••••","A••••","D••••","S••••","K••••"];
+            current++;
 
-const comments = [
-    "Fast delivery, legit AirPods",
-    "Best prices in BB2",
-    "Trusted seller",
-    "Very good quality",
-    "Quick replies",
-    "Smooth deal",
-    "100% recommended"
-];
+            if (current >= vouches.length) {
+                current = 0;
+            }
 
-const container = document.getElementById("reviewsContainer");
+            vouchBox.textContent = vouches[current];
+            vouchBox.style.opacity = "1";
 
-for(let i = 0; i < 200; i++){
-    const div = document.createElement("div");
-    div.className = "review";
+        }, 300);
 
-    const name = names[Math.floor(Math.random() * names.length)];
-    const comment = comments[Math.floor(Math.random() * comments.length)];
+    }, 3000);
 
-    div.innerText = `⭐⭐⭐⭐⭐ ${comment} — ${name}`;
-
-    container.appendChild(div);
 }
 
-// scroll animation
-const reviews = document.querySelectorAll(".review");
+// Fade cards in on page load
+window.addEventListener("load", () => {
 
-function showReviews(){
-    const triggerBottom = window.innerHeight * 0.85;
+    const cards = document.querySelectorAll(".card");
 
-    reviews.forEach(r => {
-        const top = r.getBoundingClientRect().top;
+    cards.forEach((card, index) => {
 
-        if(top < triggerBottom){
-            r.classList.add("show");
-        }
+        card.style.opacity = "0";
+        card.style.transform = "translateY(40px)";
+
+        setTimeout(() => {
+
+            card.style.transition = "0.6s";
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+
+        }, index * 150);
+
     });
-}
 
-window.addEventListener("scroll", showReviews);
-showReviews();
+});
+
+// Smooth hover glow on buttons
+const buttons = document.querySelectorAll(".btn");
+
+buttons.forEach(button => {
+
+    button.addEventListener("mouseenter", () => {
+        button.style.transform = "scale(1.05)";
+    });
+
+    button.addEventListener("mouseleave", () => {
+        button.style.transform = "scale(1)";
+    });
+
+});
+
+// Small console message
+console.log("BB2 AirPods website loaded successfully.");
