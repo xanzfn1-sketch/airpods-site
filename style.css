@@ -109,3 +109,21 @@ button{
     min-width:280px;
     transition:0.4s;
 }
+.order-form{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    max-width:300px;
+    margin:30px auto;
+}
+
+input, select{
+    padding:12px;
+    border-radius:10px;
+    border:none;
+    outline:none;
+}
+
+.order-form button{
+    margin-top:10px;
+}
