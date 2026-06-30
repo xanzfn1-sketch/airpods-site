@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Order Page</title>
+<title>Order AirPods</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,27 +14,27 @@
     <h1>Place Your Order</h1>
     <p class="sub">Only available in BB2</p>
 
-    <form class="order-form">
+    <form action="https://formspree.io/f/mzdlagqp" method="POST" class="order-form">
 
-        <input type="email" placeholder="Email Address" required>
+        <input type="email" name="email" placeholder="Your Email" required>
 
-        <input type="text" placeholder="Delivery Address (BB2 only)" required>
+        <input type="text" name="address" placeholder="Delivery Address (BB2 only)" required>
 
-        <input type="text" placeholder="Discount Code (optional)">
+        <input type="text" name="discount_code" placeholder="Discount Code (optional)">
 
-        <select required>
+        <select name="bundle" required>
             <option value="">Select Bundle</option>
-            <option>1 Pair - £15</option>
-            <option>2 Pairs - £25</option>
-            <option>5 Pairs - £60</option>
-            <option>Bulk Deal - £150</option>
+            <option value="1 Pair - £15">1 Pair - £15</option>
+            <option value="2 Pairs - £25">2 Pairs - £25</option>
+            <option value="5 Pairs - £60">5 Pairs - £60</option>
+            <option value="Bulk Deal - £150">Bulk Deal - £150</option>
         </select>
 
         <button type="submit">Submit Order</button>
 
     </form>
 
-    <a href="index.html" style="display:inline-block;margin-top:20px;color:#00ff99;">
+    <a href="index.html" style="color:#00ff99; display:block; margin-top:20px;">
         ← Back to Store
     </a>
 
