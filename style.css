@@ -1,3 +1,5 @@
+
+/* RESET */
 *{
     margin:0;
     padding:0;
@@ -15,6 +17,7 @@ body{
     overflow-x:hidden;
 }
 
+/* BACKGROUND */
 .background{
     position:fixed;
     inset:0;
@@ -26,6 +29,7 @@ body{
     #050505;
 }
 
+/* HEADER */
 header{
     width:90%;
     margin:auto;
@@ -44,13 +48,14 @@ header{
     color:#cfcfcf;
 }
 
+/* HERO */
 .hero{
     text-align:center;
     padding:70px 20px;
 }
 
 .hero h1{
-    font-size:65px;
+    font-size:60px;
     margin:20px 0;
 }
 
@@ -59,6 +64,7 @@ header{
     font-size:20px;
 }
 
+/* BADGE */
 .badge{
     display:inline-block;
     padding:10px 22px;
@@ -68,6 +74,7 @@ header{
     color:#00d9ff;
 }
 
+/* PRICING */
 .pricing{
     width:90%;
     margin:60px auto;
@@ -92,34 +99,11 @@ header{
     box-shadow:0 0 35px rgba(0,217,255,.3);
 }
 
-.featured{
-    border:2px solid #00ffae;
-}
-
-.card h2{
-    margin-bottom:15px;
-}
-
 .card h1{
     font-size:42px;
 }
 
-.old-price{
-    color:#999;
-    text-decoration:line-through;
-    margin-bottom:10px;
-}
-
-.discount{
-    display:inline-block;
-    margin-top:12px;
-    background:#00ffae;
-    color:black;
-    padding:6px 12px;
-    border-radius:20px;
-    font-weight:bold;
-}
-
+/* BUTTONS */
 .buttons{
     display:flex;
     justify-content:center;
@@ -128,16 +112,18 @@ header{
     flex-wrap:wrap;
 }
 
+/* GLOBAL BUTTON */
 .btn{
-    padding:15px 35px;
+    padding:14px 30px;
     border:none;
-    border-radius:15px;
+    border-radius:14px;
     cursor:pointer;
-    font-size:18px;
+    font-size:16px;
     font-weight:bold;
     background:linear-gradient(135deg,#00ffae,#00bfff);
     color:white;
     transition:.3s;
+    display:inline-block;
 }
 
 .btn:hover{
@@ -145,17 +131,15 @@ header{
     box-shadow:0 0 25px rgba(0,255,174,.4);
 }
 
+/* SECONDARY BUTTON */
 .secondary{
     background:linear-gradient(135deg,#444,#666);
 }
 
+/* CONTACT */
 .contact{
     text-align:center;
     margin:80px 0;
-}
-
-.contact h2{
-    margin-bottom:15px;
 }
 
 .contact p{
@@ -163,6 +147,7 @@ header{
     color:#d0d0d0;
 }
 
+/* VOUCHES */
 .vouches{
     text-align:center;
     margin:80px auto;
@@ -180,31 +165,7 @@ header{
     transition:.4s;
 }
 
-@media(max-width:768px){
-
-header{
-    flex-direction:column;
-    gap:20px;
-}
-
-.info{
-    text-align:center;
-}
-
-.hero h1{
-    font-size:45px;
-}
-
-.buttons{
-    flex-direction:column;
-    align-items:center;
-}
-
-.btn{
-    width:250px;
-}
-
-}
+/* ORDER FORM */
 .order-form{
     width:90%;
     max-width:550px;
@@ -217,7 +178,6 @@ header{
 .order-form input,
 .order-form select,
 .order-form textarea{
-
     padding:16px;
     border:none;
     border-radius:12px;
@@ -225,24 +185,45 @@ header{
     color:white;
     font-size:16px;
     outline:none;
-
 }
 
 .order-form input::placeholder,
 .order-form textarea::placeholder{
-
     color:#cfcfcf;
-
 }
 
-.order-form select{
-
-    color:white;
-
+/* CART SPECIFIC FIX (IMPORTANT) */
+#cartItems .card{
+    margin:15px auto;
+    max-width:500px;
 }
 
-.order-form textarea{
+#cartItems button{
+    margin-top:10px;
+}
 
-    resize:vertical;
+/* MOBILE */
+@media(max-width:768px){
 
+header{
+    flex-direction:column;
+    gap:20px;
+}
+
+.info{
+    text-align:center;
+}
+
+.hero h1{
+    font-size:42px;
+}
+
+.buttons{
+    flex-direction:column;
+    align-items:center;
+}
+
+.btn{
+    width:250px;
+}
 }
