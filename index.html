@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BB2 AirPods Official | Shop & Details</title>
-    <meta name="description" content="Welcome to the ultimate hub for BB2 AirPods. Explore features, place your order, and get the best experience today.">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BB2 AirPods Store</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -24,6 +23,7 @@
     <h1>Premium AirPods</h1>
     <p class="sub">Luxury feel • Fast delivery • Limited stock</p>
 
+    <!-- PRICES -->
     <div class="grid">
 
         <div class="card">
@@ -33,13 +33,7 @@
 
         <div class="card">
             <h2>2 Pairs</h2>
-            <p>
-                <span style="text-decoration:line-through; opacity:0.5;">£30</span>
-                £25
-                <span style="margin-left:8px; padding:3px 8px; background:#00ff99; color:black; border-radius:20px; font-size:10px;">
-                    5% OFF
-                </span>
-            </p>
+            <p>£25 (was £30)</p>
         </div>
 
         <div class="card">
@@ -50,25 +44,40 @@
         <div class="card highlight">
             <h2>Bulk Deal</h2>
             <p>£150</p>
-            <p>Get 5 FREE included</p>
+            <p>Get 5 FREE</p>
         </div>
 
     </div>
 
-<a href="order.html">
-    <button>Order Now</button>
-</a>
+    <!-- BUTTONS -->
+    <button onclick="orderNow()">Order Now</button>
 
+    <button onclick="goReviews()" style="margin-left:10px;">
+        See Reviews
+    </button>
+
+    <!-- WHATSAPP -->
     <div style="margin-top:20px;">
-        <a href="https://wa.me/447463399522" target="_blank"
-           style="color:#00ff99;text-decoration:none;">
-           WhatsApp Order →
+        <a href="https://wa.me/447463399522" target="_blank" style="color:#00ff99;">
+            WhatsApp Contact →
         </a>
     </div>
 
-    <div class="vouch-box">
-        <div class="vouch" id="vouch">
-            ⭐ Fast delivery, legit AirPods — L••••
+    <!-- REVIEWS -->
+    <div id="reviews" style="margin-top:80px;">
+
+        <h2>Reviews</h2>
+
+        <div class="card">⭐ Fast delivery — L••••</div>
+        <div class="card">⭐ Best prices — J••••</div>
+        <div class="card">⭐ Trusted seller — M••••</div>
+
+    </div>
+
+    <!-- VOUCH SLIDER -->
+    <div style="margin-top:40px;">
+        <div id="vouch" class="card">
+            ⭐ Fast delivery — L••••
         </div>
     </div>
 
@@ -77,23 +86,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-<div id="reviews" style="margin-top:80px;">
-
-    <h2>Reviews</h2>
-
-    <div class="card">
-        ⭐ “Fast delivery, legit AirPods” — L••••
-    </div>
-
-    <div class="card">
-        ⭐ “Best prices in BB2” — J••••
-    </div>
-
-    <div class="card">
-        ⭐ “Trusted seller, smooth deal” — M••••
-    </div>
-
-</div>
-<a href="#reviews">
-    <button>See Reviews</button>
-</a>
