@@ -205,3 +205,44 @@ header{
 }
 
 }
+.order-form{
+    width:90%;
+    max-width:550px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.order-form input,
+.order-form select,
+.order-form textarea{
+
+    padding:16px;
+    border:none;
+    border-radius:12px;
+    background:rgba(255,255,255,.08);
+    color:white;
+    font-size:16px;
+    outline:none;
+
+}
+
+.order-form input::placeholder,
+.order-form textarea::placeholder{
+
+    color:#cfcfcf;
+
+}
+
+.order-form select{
+
+    color:white;
+
+}
+
+.order-form textarea{
+
+    resize:vertical;
+
+}
