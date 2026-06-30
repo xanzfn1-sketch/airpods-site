@@ -1,0 +1,123 @@
+body{
+    margin:0;
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+    background:black;
+    color:white;
+    overflow-x:hidden;
+
+.glow-bg{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+    radial-gradient(circle at 20% 30%, #00ff99, transparent 40%),
+    radial-gradient(circle at 80% 70%, #00ccff, transparent 40%),
+    radial-gradient(circle at 50% 50%, #ffffff10, transparent 60%);
+    filter:blur(80px);
+    animation: move 8s infinite alternate;
+    z-index:-1;
+}
+
+@keyframes move{
+    from{transform:scale(1);}
+    to{transform:scale(1.2);}
+}
+
+.top-bar{
+    display:flex;
+    justify-content:space-between;
+    padding:20px 40px;
+    font-size:12px;
+    opacity:0.7;
+}
+
+.container{
+    text-align:center;
+    padding:40px;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 16px;
+    border:1px solid #00ff99;
+    border-radius:50px;
+    font-size:12px;
+    margin-bottom:20px;
+}
+
+h1{
+    font-size:60px;
+    margin:10px 0;
+}
+
+.sub{
+    opacity:0.7;
+}
+
+.grid{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-top:40px;
+}
+
+.card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    padding:25px;
+    width:180px;
+    border-radius:15px;
+    backdrop-filter: blur(20px);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-12px) scale(1.05);
+    border-color:#00ff99;
+}
+
+.highlight{
+    border:1px solid #00ff99;
+}
+
+button{
+    margin-top:40px;
+    padding:15px 50px;
+    font-size:18px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(90deg,#00ff99,#00ccff);
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+}
+.vouch-box{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+}
+
+.vouch{
+    padding:15px 25px;
+    border:1px solid rgba(255,255,255,0.2);
+    border-radius:12px;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    font-size:14px;
+    opacity:0.9;
+    transition:0.5s;
+    min-width:280px;
+    text-align:center;
+}
+.discount-box{
+    margin-top:30px;
+    padding:12px 20px;
+    border:1px solid #00ff99;
+    border-radius:12px;
+    display:inline-block;
+    font-size:14px;
+    background:rgba(0,255,153,0.08);
+    backdrop-filter: blur(10px);
+    animation:pulse 2s infinite;
+}
