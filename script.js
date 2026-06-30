@@ -1,23 +1,21 @@
 
-// Order button (ONLY works if you still use onclick somewhere)
-function order(){
+function orderNow(){
     window.location.href = "order.html";
 }
 
-// Reviews button scroll (if you use onclick="goReviews()")
 function goReviews(){
-    const section = document.getElementById("reviews");
-    if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
+    const reviews = document.getElementById("reviews");
+    if (reviews) {
+        reviews.scrollIntoView({ behavior: "smooth" });
     }
 }
 
-// Vouch slider (safe version)
+// vouch slider
 const vouches = [
-    "⭐ Fast delivery, legit AirPods — L••••",
+    "⭐ Fast delivery — L••••",
     "⭐ Best prices in BB2 — J••••",
-    "⭐ Trusted seller, smooth deal — M••••",
-    "⭐ Good quality, quick replies — A••••",
+    "⭐ Trusted seller — M••••",
+    "⭐ Smooth deal — A••••",
     "⭐ Reliable seller — D••••"
 ];
 
@@ -28,6 +26,7 @@ setInterval(() => {
     if (!box) return;
 
     i = (i + 1) % vouches.length;
+
     box.style.opacity = 0;
 
     setTimeout(() => {
