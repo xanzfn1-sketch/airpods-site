@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Basket</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>Your Basket 🧺</h1>
+
+<div id="cartItems"></div>
+
+<a href="index.html">
+<button>Back</button>
+</a>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+const box = document.getElementById("cartItems");
+
+if(cart.length === 0){
+    box.innerHTML = "<p>Basket is empty</p>";
+} else {
+    cart.forEach(item => {
+        const div = document.createElement("div");
+        div.innerHTML = "🛒 " + item;
+        box.appendChild(div);
+    });
+}
+</script>
+
+</body>
+</html>
