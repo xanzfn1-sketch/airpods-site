@@ -121,3 +121,12 @@ button{
     backdrop-filter: blur(10px);
     animation:pulse 2s infinite;
 }
+.back-btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:12px 20px;
+    border:1px solid #00ff99;
+    border-radius:10px;
+    color:white;
+    text-decoration:none;
+}
