@@ -1,23 +1,29 @@
+// Order button
 function order(){
-    alert("Contact Rayyan Adam to order (BB2 only)");
+    alert("Contact Rayyan Adam on WhatsApp to order AirPods");
 }
+
+// Simple vouch slider (if you use it)
 const vouches = [
-    "⭐ “Fast delivery, legit AirPods 🔥” — Liam",
-    "⭐ “Best prices I’ve seen, came next day” — Jayden",
-    "⭐ “100% trust, bought 3 pairs” — Marcus",
-    "⭐ “Good quality and quick replies” — Ayaan",
-    "⭐ “Reliable seller, smooth deal” — Daniel"
+    "⭐ Fast delivery, legit AirPods — L••••",
+    "⭐ Best prices, came next day — J••••",
+    "⭐ Trusted seller, smooth deal — M••••",
+    "⭐ Good quality, fast replies — A••••",
+    "⭐ Reliable and quick — D••••"
 ];
 
 let i = 0;
 
 setInterval(() => {
+    const box = document.getElementById("vouch");
+    if (!box) return;
+
     i = (i + 1) % vouches.length;
-    document.getElementById("vouch").style.opacity = 0;
+    box.style.opacity = 0;
 
     setTimeout(() => {
-        document.getElementById("vouch").innerText = vouches[i];
-        document.getElementById("vouch").style.opacity = 1;
+        box.innerText = vouches[i];
+        box.style.opacity = 1;
     }, 300);
 
 }, 2500);
