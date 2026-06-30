@@ -15,8 +15,8 @@
 <header>
 
     <div class="logo">
-    <h2>BB2 Store</h2>
-</div>
+        <h2>BB2 Store</h2>
+    </div>
 
     <div class="info">
         <p>Seller: <strong>Rayyan Adam</strong></p>
@@ -41,23 +41,27 @@
     <div class="card">
         <h2>1 Pair</h2>
         <h1>£15</h1>
+        <button onclick="addToCart('1 Pair - £15')" class="btn">Add to Basket</button>
     </div>
 
     <div class="card">
         <h2>2 Pairs</h2>
         <p class="old-price">£30</p>
         <h1>£25</h1>
+        <button onclick="addToCart('2 Pairs - £25')" class="btn">Add to Basket</button>
     </div>
 
     <div class="card">
         <h2>5 Pairs</h2>
         <h1>£60</h1>
+        <button onclick="addToCart('5 Pairs - £60')" class="btn">Add to Basket</button>
     </div>
 
     <div class="card">
         <h2>Bulk Deal</h2>
         <h1>£150</h1>
         <p>Get 5 FREE</p>
+        <button onclick="addToCart('Bulk - £150')" class="btn">Add to Basket</button>
     </div>
 
 </section>
@@ -71,6 +75,12 @@
 
     <a href="reviews.html">
         <button class="btn">See Reviews</button>
+    </a>
+
+    <a href="cart.html">
+        <button class="btn">
+            🧺 Basket (<span id="cartCount">0</span>)
+        </button>
     </a>
 
 </div>
@@ -105,16 +115,5 @@
 
 <script src="script.js"></script>
 
-
-</a><a href="cart.html">
-    <button class="btn">
-        🧺 Basket (<span id="cartCount">0</span>)
-    </button>
-</a>
-<button onclick="addToCart('1 Pair - £15')" class="btn">Add to Basket</button>
-
-<button onclick="addToCart('2 Pairs - £25')" class="btn">Add to Basket</button>
-
-<button onclick="addToCart('5 Pairs - £60')" class="btn">Add to Basket</button>
-
-<button onclick="addToCart('Bulk - £150')" class="btn">Add to Basket</button>
+</body>
+</html>
