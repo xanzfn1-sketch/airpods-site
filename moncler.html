@@ -3,20 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moncler Collection — BB2 Store</title>
     <link rel="stylesheet" href="style.css">
-    <title>Moncler | Coming Soon</title>
+    <style>
+        /* Specific content layouts for the information page */
+        .info-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: left;
+        }
+        .info-container h1 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: #fff;
+            text-align: center;
+        }
+        .info-container .subtitle {
+            color: #8e8e93;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+        .qa-block {
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .qa-block h2 {
+            font-size: 18px;
+            color: #ff453a; /* Highlighting the questions */
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .qa-block p {
+            font-size: 15px;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+        .qa-block strong {
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
-    <main class="hero" style="min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-        <h1 style="font-size: 64px; margin-bottom: 20px;">MONCLER</h1>
-        <div class="banner" style="width: auto; padding: 10px 30px; letter-spacing: 2px;">COMING SOON</div>
-        <p style="margin-top: 30px; color: #8e8e93; max-width: 500px;">
-            We are curating a premium collection of Moncler apparel. Join our WhatsApp channel for early access to the drop and exclusive member pricing.
-        </p>
-        
-        <div style="margin-top: 40px;">
-            <a href="https://wa.me/447463399522" class="btn whatsapp-btn">Notify Me on WhatsApp</a>
+
+    <!-- ==========================================================================
+         1. NAVIGATION HEADER (MATCHES INDEX PROFILE EXACTLY)
+         ========================================================================== -->
+    <header class="header">
+        <nav aria-label="Primary Navigation" style="display: flex; gap: 10px; align-items: center;">
+            <!-- Store Button (Takes you back home) -->
+            <button class="cart-trigger" onclick="window.location.href='index.html'" aria-label="Go to Store">
+                <span>Store</span>
+            </button>
+
+            <!-- Moncler Button (Active state on this page) -->
+            <button class="cart-trigger active" onclick="window.location.href='moncler.html'" aria-label="Go to Moncler Page" style="background: #ffffff; color: #000000;">
+                <span>Moncler</span>
+            </button>
+        </nav>
+
+        <div class="header-right">
+            <!-- Basket Trigger -->
+            <button class="cart-trigger" onclick="window.location.href='index.html?openCart=true'" aria-label="Open Basket" style="margin-top: 5px;">
+                <span>Basket</span>
+            </button>
         </div>
+    </header>
+
+    <!-- ==========================================================================
+         2. MAIN INFORMATION CONTENT COLLECTION
+         ========================================================================== -->
+    <main class="info-container">
+        <h1>🏔️ Moncler Collection</h1>
+        <p class="subtitle">Premium Streetwear Expansion Drop</p>
+
+        <div class="qa-block">
+            <h2>What are we bringing?</h2>
+            <p>We are expanding our premium selection past tech gear to bring you premium, high-demand <strong>Moncler Beanies, Hats</strong>, and high-end winter essentials to keep your style sharp.</p>
+        </div>
+
+        <div class="qa-block">
+            <h2>Why buy from us?</h2>
+            <p>Skip the sketchiness, custom delays, and insane markups. We bring premium streetwear directly to your doorstep with our trusted local network. You get verified quality, direct transparency, and zero hassle.</p>
+        </div>
+
+        <div class="qa-block">
+            <h2>When will it come?</h2>
+            <p>The first exclusive drop is dropping <strong>very soon</strong>. Stock will be highly limited to keep the items exclusive. We process early reservations on a first-come, first-served basis.</p>
+        </div>
+
+        <div class="qa-block">
+            <h2>How do I secure an item?</h2>
+            <p>Because opening stock allocations are tight, you can tap the notification action button below to drop us a direct message. We will lock your name down for an early access link right before the public stock collection updates on the storefront.</p>
+        </div>
+
+        <!-- Call to Action -->
+        <button class="btn wa-btn" style="margin-top: 20px; width: 100%; display: flex; align-items: center; justify-content: center; padding: 15px; border-radius: 14px; font-weight: 600;" onclick="window.open('https://wa.me/447463399522?text=Hi,%20I%27m%20interested%20in%20reserving%20an%20item%20from%20the%20upcoming%20Moncler%20drop!', '_blank')">
+            💬 Pre-Register & Get Notified via WhatsApp
+        </button>
     </main>
+
+    <!-- Global Persistent Floating Actions (Will stay below display blocks) -->
+    <div id="toast" role="status" aria-live="polite"></div>
+    <a class="floatWhatsApp" href="https://wa.me/447463399522" target="_blank" rel="noopener" aria-label="Contact Customer Support via WhatsApp">💬</a>
+
+    <!-- ==========================================================================
+         3. FOOTER UTILITY NAVIGATION
+         ========================================================================== -->
+    <footer class="footer" style="margin-top: 60px;">
+        <div class="footer-links" style="margin-bottom: 20px;">
+            <a href="about.html" style="color: #8e8e93; margin: 0 15px; text-decoration: none; font-size: 14px; font-weight: 500;">About</a>
+            <a href="faq.html" style="color: #8e8e93; margin: 0 15px; text-decoration: none; font-size: 14px; font-weight: 500;">FAQs</a>
+        </div>
+        <p class="copyright-text">© BB2 Store — All Rights Reserved</p>
+    </footer>
+
 </body>
 </html>
