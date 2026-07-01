@@ -3,131 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BB2 Store | Official Professional Storefront</title>
+    <title>BB2 Store</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Preconnect for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 <body>
 
-    <!-- Loading Screen Overlay -->
-    <div id="loader">
-        <div class="spinner"></div>
+    <div id="intro-screen">
+        <svg class="intro-logo" viewBox="0 0 170 170">
+            <path fill="#ffffff" d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.34.13-9.13-1.78-14.36-5.75-3.73-3.22-7.81-8.21-12.23-14.99-6.94-10.67-12.42-23.44-16.41-38.31-4-14.87-6.01-28.56-6.01-41.06 0-15.64 3.96-28.45 11.89-38.41 7.93-9.97 17.65-14.99 29.17-15.08 4.7 0 9.8 1.25 15.31 3.75 5.51 2.5 9.24 3.75 11.19 3.75 1.56 0 5.51-1.31 11.84-3.94 6.33-2.63 11.75-3.85 16.26-3.66 16.32.74 28.51 6.89 36.56 18.42-14.28 8.65-21.28 20.25-21.01 34.79.27 11.39 4.31 20.88 12.11 28.47 7.8 7.59 17.15 11.71 28.06 12.35-2.23 6.64-5.35 13.37-9.35 20.21zM119.22 28.74c0-7.79 2.76-14.97 8.29-20.53 5.53-5.56 12.27-8.67 20.23-9.21.13 1.01.2 1.8.2 2.38 0 7.53-2.88 14.73-8.64 20.61-5.76 5.88-12.71 9.07-20.87 8.57-.46-1.12-.76-2.15-.92-3.11-1.56-1.55-2.29-4.46-2.29-8.71z"/>
+        </svg>
     </div>
 
-    <!-- Global Navigation -->
     <header class="header">
         <div class="logo">BB2 STORE</div>
-        <nav>
-            <a href="index.html">Store</a>
-            <a href="moncler.html">Moncler Drop</a>
-            <a href="faq.html">FAQs</a>
-            <a href="#reviews">Reviews</a>
-            <button class="cart-trigger" onclick="toggleCart(true)">Basket</button>
-        </nav>
+        <button class="cart-trigger" onclick="toggleCart(true)">
+            <span>Basket</span>
+            <span id="cart-count" class="cart-count-badge">0</span>
+        </button>
     </header>
 
-    <!-- Main Content -->
-    <main>
-        <section class="hero">
-            <h1>Next Generation Tech & Streetwear</h1>
-            <div class="banner">⚡ SAME DAY DELIVERY ACTIVE IN SELECT AREAS ⚡</div>
-            
-            <div id="viewer-3d">
-                <div id="canvas-container"></div>
-            </div>
-        </section>
+    <section class="hero">
+        <h1>Next Generation AirPods Store</h1>
+        <p>Fast BB1 & BB2 same-day delivery network</p>
+    </section>
 
-        <!-- Product Grid -->
-        <section id="products" class="grid">
-            <div class="card">
-                <h2>1 Pair AirPods</h2>
-                <h1>£15</h1>
-                <button class="btn" onclick="updateCart('1 Pair AirPods', 15)">Add to Basket</button>
-            </div>
-            <div class="card">
-                <h2>2 Pairs AirPods</h2>
-                <h1>£25</h1>
-                <button class="btn" onclick="updateCart('2 Pairs AirPods', 25)">Add to Basket</button>
-            </div>
-            <div class="card">
-                <h2>5 Pairs Bundle</h2>
-                <h1>£60</h1>
-                <button class="btn" onclick="updateCart('5 Pairs Bundle', 60)">Add to Basket</button>
-            </div>
-            <div class="card">
-                <h2>Bulk Deal</h2>
-                <h1>£150</h1>
-                <button class="btn" onclick="updateCart('Bulk Deal', 150)">Add to Basket</button>
-            </div>
-        </section>
+    <section class="banner">
+        ⚡ SAME DAY DELIVERY ACTIVE IN SELECT AREAS ⚡
+    </section>
 
-        <!-- Expanded Information Section -->
-        <section class="details">
-            <h2>Why Choose BB2 Store?</h2>
-            <div class="infoBlock">
-                <h3>Superior Quality</h3>
-                <p>We source only the highest quality components for our tech drops, ensuring seamless connectivity and premium sound performance.</p>
-            </div>
-            <div class="infoBlock">
-                <h3>Fast Local Shipping</h3>
-                <p>Based in the heart of Blackburn, we offer specialized same-day local delivery for our community members. Our logistics network is optimized for speed and reliability.</p>
-            </div>
-            <h3>Bundle Offers</h3>
-            <ul>
-                <li><strong>Entry Level:</strong> Single pair unit for new users.</li>
-                <li><strong>Dual Pack:</strong> Best for couples or shared gift sets.</li>
-                <li><strong>Value Bundle:</strong> 5-pack inventory for high-frequency users.</li>
-                <li><strong>Wholesale:</strong> Bulk pricing available for resellers.</li>
-            </ul>
-        </section>
+    <section class="trustGrid">
+        <div class="trust">Verified Seller</div>
+        <div class="trust">Fast Dispatch</div>
+        <div class="trust">Local Delivery</div>
+        <div class="trust">Secure Handling</div>
+    </section>
 
-        <!-- Customer Testimonials -->
-        <section class="reviews" id="reviews">
-            <h2>Customer Reviews</h2>
-            <div class="grid">
-                <div class="card">
-                    <p>"Absolutely incredible sound quality. Best in BB2 hands down."</p>
-                    <span>— Alex R.</span>
+    <section class="sectionTitle">
+        <h2>Featured Products</h2>
+    </section>
+
+    <section id="products" class="grid"></section>
+
+    <div id="cart-drawer" class="cart-drawer">
+        <div class="cart-drawer-overlay" onclick="toggleCart(false)"></div>
+        <div class="cart-drawer-content">
+            <div class="cart-drawer-header">
+                <h2>Your Basket</h2>
+                <button class="close-drawer" onclick="toggleCart(false)">✕</button>
+            </div>
+            <div id="cart-items-container" class="cart-items-body"></div>
+            <div class="cart-drawer-footer">
+                <div class="total-row">
+                    <span>Total Amount:</span>
+                    <span id="total">£0</span>
                 </div>
-                <div class="card">
-                    <p>"Super fast delivery, arrived same day as promised. Thanks!"</p>
-                    <span>— Jordan M.</span>
-                </div>
-                <div class="card">
-                    <p>"Five star service. Responsive support and great products."</p>
-                    <span>— Sam L.</span>
-                </div>
+                <button class="btn checkout-btn" onclick="checkout()">Place Order via WhatsApp</button>
             </div>
-        </section>
-
-        <!-- Contact & Support -->
-        <section class="contact" id="contact">
-            <h2>Support & Inquiries</h2>
-            <p>Need help with your order or have a technical question? Our support team is online daily.</p>
-            <button class="whatsapp-btn" onclick="window.location.href='https://wa.me/yournumber'">Message us on WhatsApp</button>
-        </section>
-    </main>
-
-    <!-- Footer with Extended Credits -->
-    <footer class="footer">
-        <div class="container">
-            <p>© 2026 BB2 Store — All Rights Reserved</p>
-            <p>Designed for performance and aesthetics. Handcrafted in Blackburn, England.</p>
-            <nav style="margin-top: 20px;">
-                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Track Order</a>
-            </nav>
         </div>
+    </div>
+
+    <section class="infoBlock">
+        <h2>Weekly Deals</h2>
+        <p>Exclusive bundles available for limited time only. Discounts applied automatically at checkout.</p>
+    </section>
+
+    <section class="infoBlock">
+        <h2>Bundle Offers</h2>
+        <ul>
+            <li>1 Pair AirPods — Entry Deal</li>
+            <li>2 Pair Bundle — Save £5</li>
+            <li>5 Pack Bundle — Best Value</li>
+            <li>Bulk Wholesale Pack — Maximum Savings</li>
+        </ul>
+    </section>
+
+    <section class="infoBlock">
+        <h2>Why Choose BB2 Store?</h2>
+        <p>We focus on speed, reliability, and customer satisfaction. Our system is optimized for local UK delivery across BB1 & BB2.</p>
+    </section>
+
+    <section class="reviews">
+        <h2>Customer Reviews</h2>
+        <div id="reviewBox">Loading reviews...</div>
+    </section>
+
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <p class="number">📞 07463 399522</p>
+        <div class="contactButtons">
+            <a href="tel:07463399522" class="btn">Call Now</a>
+            <a href="https://wa.me/447463399522" class="btn whatsapp-btn">WhatsApp</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© BB2 Store — All Rights Reserved</p>
     </footer>
 
-    <!-- Core Scripting -->
+    <a class="floatWhatsApp" href="https://wa.me/447463399522">💬</a>
+    <div id="toast"></div>
+
     <script src="script.js"></script>
-    <script>
-        // Smooth initialization
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('loader');
-            if(loader) loader.style.display = 'none';
-        });
-    </script>
 </body>
 </html>
