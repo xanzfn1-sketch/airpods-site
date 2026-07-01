@@ -1,98 +1,76 @@
-// --- Data ---
-const products = [
-    { id: "p1", name: "1 Pair AirPods", price: 15 },
-    { id: "p2", name: "2 Pairs AirPods", price: 25 },
-    { id: "p3", name: "5 Pairs Bundle", price: 60 },
-    { id: "p4", name: "Bulk Deal", price: 150 }
-];
-const reviews = ["Fast shipping!", "Quality is 10/10", "Best service in BB2"];
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+/** 
+ * BB2 Store | Futuristic Core Engine
+ * Optimized for high-FPS performance and minimalist UI.
+ */
 
-// --- Basket & UI Functions ---
+const BB2_ENGINE = {
+    state: {
+        cart: JSON.parse(localStorage.getItem("bb2_cart")) || [],
+        isDragging: false,
+        initialized: false
+    },
 
-function toggleCart(show) {
-    const drawer = document.getElementById("cart-drawer");
-    if (drawer) drawer.style.display = show ? "flex" : "none";
-    if (show) renderCart();
-}
-
-function showToast(msg) {
-    const toast = document.getElementById("toast");
-    if (!toast) return;
-    toast.innerText = msg;
-    toast.style.opacity = "1";
-    setTimeout(() => { toast.style.opacity = "0"; }, 2000);
-}
-
-function renderCart() {
-    const container = document.getElementById("cart-items-container");
-    const totalEl = document.getElementById("total");
-    const countEl = document.getElementById("cart-count");
-    if (!container) return;
-
-    container.innerHTML = "";
-    let total = 0;
-    let count = 0;
-
-    cart.forEach(item => {
-        total += item.price * item.qty;
-        count += item.qty;
-        container.innerHTML += `<p>${item.name} x${item.qty} - £${item.price * item.qty}</p>`;
-    });
-
-    totalEl.innerText = "£" + total;
-    countEl.innerText = count;
-}
-
-function checkout() {
-    const total = document.getElementById("total").innerText;
-    let message = "Hi, I'd like to order: ";
-    cart.forEach(i => message += `${i.name} (x${i.qty}), `);
-    message += `Total: ${total}`;
-    window.location.href = `https://wa.me/447463399522?text=${encodeURIComponent(message)}`;
-}
-
-// --- Original Store Functions ---
-
-function renderProducts() {
-    const box = document.getElementById("products");
-    if (!box) return;
-    box.innerHTML = "";
-    
-    products.forEach(p => {
-        const card = document.createElement("div");
-        card.className = "card";
-        card.innerHTML = `<h2>${p.name}</h2><h1>£${p.price}</h1>`;
+    // Initialize 3D Viewer with optimized lighting and anti-aliasing
+    init3D: function() {
+        if (this.state.initialized) return;
         
-        const btn = document.createElement("button");
-        btn.className = "btn";
-        btn.innerText = "Add to Basket";
-        btn.onclick = () => {
-            let item = cart.find(i => i.name === p.name);
-            item ? item.qty++ : cart.push({ name: p.name, price: p.price, qty: 1 });
-            localStorage.setItem("cart", JSON.stringify(cart));
-            showToast(p.name + " added!");
-            renderCart(); // Update drawer badge/total
-        };
-        card.appendChild(btn);
-        box.appendChild(card);
-    });
-}
+        const container = document.getElementById('canvas-container');
+        const w = container.clientWidth, h = container.clientHeight;
 
-function rotateReviews() {
-    const box = document.getElementById("reviewBox");
-    if (!box) return;
-    let reviewIdx = 0;
-    box.innerText = reviews[reviewIdx]; 
-    setInterval(() => {
-        reviewIdx = (reviewIdx + 1) % reviews.length;
-        box.innerText = reviews[reviewIdx];
-    }, 3000);
-}
+        this.scene = new THREE.Scene();
+        this.camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 1000);
+        this.camera.position.z = 6.5;
 
-// --- Initialization ---
+        this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        this.renderer.setSize(w, h);
+        this.renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(this.renderer.domElement);
+
+        this.beanieGroup = new THREE.Group();
+        this.scene.add(this.beanieGroup);
+
+        // Advanced Material Definition
+        const mat = new THREE.MeshStandardMaterial({ 
+            color: 0x111112, roughness: 0.9, metalness: 0.05 
+        });
+
+        // Add model components (Dome, Cuff, Stitch)
+        this.addBeanieParts(mat);
+        this.addLighting();
+
+        this.state.initialized = true;
+        this.animate();
+    },
+
+    animate: function() {
+        requestAnimationFrame(() => this.animate());
+        if (!this.state.isDragging) {
+            this.beanieGroup.rotation.y += 0.005;
+        }
+        this.renderer.render(this.scene, this.camera);
+    },
+
+    // Cart Management Logic
+    updateCart: function(product, price) {
+        this.state.cart.push({ product, price, id: Date.now() });
+        localStorage.setItem("bb2_cart", JSON.stringify(this.state.cart));
+        this.renderCartUI();
+    },
+
+    renderCartUI: function() {
+        const container = document.getElementById('cart-items-container');
+        if (!container) return;
+        
+        container.innerHTML = this.state.cart.map(item => `
+            <div class="cart-item">
+                <span>${item.product}</span>
+                <span>£${item.price}</span>
+            </div>
+        `).join('');
+    }
+};
+
+// Event Listeners for UI interaction
 document.addEventListener("DOMContentLoaded", () => {
-    renderProducts();
-    rotateReviews();
-    renderCart(); // Initialize badge count
+    BB2_ENGINE.renderCartUI();
 });
