@@ -198,3 +198,13 @@ body {
 .spacer-lg { height: 100px; }
 .spacer-sm { height: 40px; }
 /* END OF STYLESHEET */
+.header {
+    display: flex;
+    justify-content: space-between; /* Keeps logo left, nav middle, buttons right */
+    align-items: center;
+    padding: 0 5%;
+}
+
+.cart-trigger {
+    order: 1; /* Ensures basket comes before the emoji */
+}
