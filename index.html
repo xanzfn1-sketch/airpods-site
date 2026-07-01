@@ -2,62 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BB2 Store</title>
     <link rel="stylesheet" href="style.css">
+    <title>BB2 Store</title>
 </head>
 <body>
 
-    <!-- Intro Screen -->
-    <div id="intro-screen">
-        <svg class="intro-logo" viewBox="0 0 24 24" width="100" height="100">
-            <path fill="#ffffff" d="M18.71,19.5C17.88,20.74,17,21.95,15.66,21.97C14.32,22,13.89,21.18,12.37,21.18C10.84,21.18,10.37,21.95,9.1,22C7.79,22.05,6.8,20.68,5.96,19.48C4.25,17,2.94,12.45,4.7,9.39C5.57,7.87,7.13,6.91,8.82,6.88C10.1,6.86,11.32,7.75,12.11,7.75C12.89,7.75,14.37,6.68,15.92,6.84C16.57,6.87,18.39,7.1,19.56,8.82C19.47,8.88,17.39,10.1,17.41,12.63C17.44,15.65,20.06,16.66,20.1,16.67C20.08,16.74,19.67,18.11,18.71,19.5M15.97,4.17C16.63,3.37,17.07,2.28,16.95,1C16,1.04,14.9,1.6,14.24,2.38C13.68,3.04,13.19,4.14,13.34,5.39C14.39,5.47,15.4,4.88,15.97,4.17Z"/>
-        </svg>
-    </div>
-
-    <!-- Navigation -->
     <header class="header">
         <div class="logo">BB2 STORE</div>
-        <nav style="display: flex; gap: 15px; align-items: center;">
-            <a href="index.html" style="color: #ff453a;">Store</a>
-            <a href="moncler.html" style="color: #ffffff;">Moncler Drop</a>
-            <a href="faq.html" style="color: #ffffff;">FAQs</a>
-            <button class="cart-trigger" onclick="toggleCart(true)">
-                <span>Basket</span>
-                <span id="cart-count">0</span>
-            </button>
+        <nav>
+            <a href="index.html">Store</a>
+            <a href="moncler.html">Moncler Drop</a>
+            <a href="faq.html">FAQs</a>
+            <button class="cart-trigger" onclick="toggleCart(true)">Basket <span>2</span></button>
         </nav>
     </header>
 
-    <!-- Content Sections -->
     <section class="hero">
         <h1>Next Generation Tech & Streetwear</h1>
+        <div class="banner">⚡ SAME DAY DELIVERY ACTIVE IN SELECT AREAS ⚡</div>
     </section>
 
-    <section class="banner">⚡ SAME DAY DELIVERY ACTIVE IN SELECT AREAS ⚡</section>
-
-    <section id="products" class="grid"></section>
-
-    <!-- Cart Drawer -->
-    <div id="cart-drawer" class="cart-drawer">
-        <div class="cart-drawer-overlay" onclick="toggleCart(false)"></div>
-        <div class="cart-drawer-content">
-            <div class="cart-drawer-header">
-                <h2>Your Basket</h2>
-                <button onclick="toggleCart(false)">✕</button>
-            </div>
-            <div id="cart-items-container"></div>
-            <div class="cart-drawer-footer">
-                <div class="total-row"><span>Total:</span> <span id="total">£0</span></div>
-                <button class="btn" onclick="checkout()">Place Order via WhatsApp</button>
-            </div>
+    <section id="products" class="grid">
+        <!-- Your product cards go here, matching the style in image_fdd5f1.png -->
+        <div class="card">
+            <h2>1 Pair AirPods</h2>
+            <h1>£15</h1>
+            <button class="btn">Add to Basket</button>
         </div>
-    </div>
+        <!-- Repeat for other cards -->
+    </section>
 
-    <section id="reviewBox">Loading reviews...</section>
+    <p style="padding: 20px;">Best service in BB2</p>
 
-    <div id="toast"></div>
-
-    <script src="script.js"></script>
 </body>
 </html>
