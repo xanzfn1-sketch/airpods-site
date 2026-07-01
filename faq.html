@@ -3,89 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ — BB2 Store</title>
+    <title>FAQs | BB2 Store</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .faq-container { max-width: 600px; margin: 20px auto; padding: 0 20px; }
+        .faq-item { margin-bottom: 15px; cursor: pointer; }
+        .faq-item p { margin-top: 10px; display: none; color: #e5e5ea; line-height: 1.6; }
+        .faq-sign { color: #ff453a; font-size: 20px; font-weight: bold; }
+    </style>
 </head>
 <body>
 
-    <!-- ======================= NAVIGATION HEADER ======================= -->
+    <!-- Header -->
     <header class="header">
         <div class="logo">BB2 STORE</div>
-        <nav style="display: flex; gap: 20px; align-items: center;">
-            <a href="index.html" style="color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px;">Store</a>
-            <a href="faq.html" style="color: #ff453a; text-decoration: none; font-weight: 600; font-size: 14px;">FAQs</a>
+        <nav>
+            <a href="index.html" style="color: #fff; text-decoration: none; font-weight: 600;">Back to Store</a>
         </nav>
     </header>
 
-    <!-- ======================= FAQ HERO ======================= -->
-    <section class="hero" style="padding: 60px 20px 20px;">
-        <h1 style="font-size: 36px;">Frequently Asked Questions</h1>
-        <p>Everything you need to know about our items and local delivery</p>
-    </section>
+    <main class="faq-container">
+        <section class="hero">
+            <h1>Frequently Asked Questions</h1>
+            <p>Everything you need to know about our local delivery.</p>
+        </section>
 
-    <!-- ======================= FAQ ACCORDION GRID ======================= -->
-    <div style="max-width: 600px; margin: 20px auto; padding: 0 20px;">
-        
-        <div class="infoBlock" style="margin-bottom: 15px; cursor: pointer;" onclick="toggleFAQ(this)">
-            <h3 style="color: #ffffff; display: flex; justify-content: space-between; align-items: center;">
+        <!-- FAQ Items -->
+        <div class="infoBlock faq-item" onclick="toggleFAQ(this)">
+            <h3>
                 <span>How fast is the local delivery?</span>
-                <span style="color: #ff453a; font-size: 18px;">+</span>
+                <span class="faq-sign">+</span>
             </h3>
-            <p style="margin-top: 10px; display: none; color: #e5e5ea;">We operate a dedicated same-day delivery network across the BB1 and BB2 areas. Most orders arrive right to your door within 45-60 minutes of placing your order on WhatsApp.</p>
+            <p>We operate a dedicated same-day delivery network across the BB1 and BB2 areas. Most orders arrive right to your door within 45-60 minutes of placing your order on WhatsApp.</p>
         </div>
 
-        <div class="infoBlock" style="margin-bottom: 15px; cursor: pointer;" onclick="toggleFAQ(this)">
-            <h3 style="color: #ffffff; display: flex; justify-content: space-between; align-items: center;">
+        <div class="infoBlock faq-item" onclick="toggleFAQ(this)">
+            <h3>
                 <span>How do I pay for my order?</span>
-                <span style="color: #ff453a; font-size: 18px;">+</span>
+                <span class="faq-sign">+</span>
             </h3>
-            <p style="margin-top: 10px; display: none; color: #e5e5ea;">Once you submit your basket, it sends a direct automated message to our WhatsApp line. We will confirm your delivery address there and arrange your preferred payment option (Cash on Delivery or Bank Transfer).</p>
+            <p>Once you submit your basket, it sends a direct automated message to our WhatsApp line. We will confirm your delivery address there and arrange your preferred payment option (Cash on Delivery or Bank Transfer).</p>
         </div>
 
-        <div class="infoBlock" style="margin-bottom: 15px; cursor: pointer;" onclick="toggleFAQ(this)">
-            <h3 style="color: #ffffff; display: flex; justify-content: space-between; align-items: center;">
+        <div class="infoBlock faq-item" onclick="toggleFAQ(this)">
+            <h3>
                 <span>What is the return/exchange policy?</span>
-                <span style="color: #ff453a; font-size: 18px;">+</span>
+                <span class="faq-sign">+</span>
             </h3>
-            <p style="margin-top: 10px; display: none; color: #e5e5ea;">We want to make sure you are 100% satisfied. If there is any manufacturer defect or connection issue with your pairs, just message us within 7 days for a completely free local replacement drop-off.</p>
+            <p>We want to make sure you are 100% satisfied. If there is any manufacturer defect or connection issue with your pairs, just message us within 7 days for a completely free local replacement drop-off.</p>
         </div>
 
-        <div class="infoBlock" style="margin-bottom: 15px; cursor: pointer;" onclick="toggleFAQ(this)">
-            <h3 style="color: #ffffff; display: flex; justify-content: space-between; align-items: center;">
+        <div class="infoBlock faq-item" onclick="toggleFAQ(this)">
+            <h3>
                 <span>Do you offer wholesale bulk discounts?</span>
-                <span style="color: #ff453a; font-size: 18px;">+</span>
+                <span class="faq-sign">+</span>
             </h3>
-            <p style="margin-top: 10px; display: none; color: #e5e5ea;">Yes! Our Bulk Deal package is listed directly in the store basket, but if you want to order larger amounts (20+ pairs) for resale, message us directly via the WhatsApp link to negotiate custom tier rates.</p>
+            <p>Yes! Our Bulk Deal package is listed directly in the store basket, but if you want to order larger amounts (20+ pairs) for resale, message us directly via the WhatsApp link to negotiate custom tier rates.</p>
         </div>
+    </main>
 
-    </div>
-
-    <!-- ======================= CONTACT CTAS ======================= -->
-    <section class="contact" style="margin: 40px 0;">
+    <section class="contact" style="margin: 40px 0; text-align: center;">
         <h2>Still have a question?</h2>
         <p style="color: #8e8e93; margin-bottom: 15px;">Reach out directly and we will clear it up instantly.</p>
-        <a href="https://wa.me/447463399522" class="btn whatsapp-btn">Chat on WhatsApp</a>
+        <a href="https://wa.me/447463399522" class="btn whatsapp-btn" style="width: auto;">Chat on WhatsApp</a>
     </section>
 
-    <!-- ======================= FOOTER ======================= -->
     <footer class="footer">
         <p>© BB2 Store — All Rights Reserved</p>
     </footer>
 
-    <!-- Interactive Expand/Collapse Logic -->
     <script>
         function toggleFAQ(element) {
             const answer = element.querySelector('p');
-            const sign = element.querySelector('h3 span:last-child');
+            const sign = element.querySelector('.faq-sign');
             
-            if (answer.style.display === 'none' || answer.style.display === '') {
-                answer.style.display = 'block';
-                sign.innerText = '−';
-                sign.style.color = '#ffffff';
-            } else {
+            if (answer.style.display === 'block') {
                 answer.style.display = 'none';
                 sign.innerText = '+';
                 sign.style.color = '#ff453a';
+            } else {
+                answer.style.display = 'block';
+                sign.innerText = '−';
+                sign.style.color = '#fff';
             }
         }
     </script>
