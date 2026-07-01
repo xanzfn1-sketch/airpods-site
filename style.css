@@ -248,3 +248,48 @@ header{
     transform:scale(1.05);
     box-shadow:0 0 25px rgba(0,255,174,.4);
 }
+.contact-form{
+    width:90%;
+    max-width:700px;
+    margin:100px auto;
+    text-align:center;
+}
+
+.contact-form h2{
+    margin-bottom:15px;
+    font-size:34px;
+}
+
+.contact-form p{
+    color:#cfcfcf;
+    margin-bottom:30px;
+}
+
+.contact-form form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.contact-form input,
+.contact-form textarea{
+
+    padding:16px;
+    border:none;
+    border-radius:12px;
+    background:rgba(255,255,255,.08);
+    color:white;
+    font-size:16px;
+    outline:none;
+
+}
+
+.contact-form textarea{
+    resize:vertical;
+    min-height:150px;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{
+    color:#bdbdbd;
+}
