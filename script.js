@@ -1,86 +1,68 @@
-
-// =====================
-// CART SYSTEM
-// =====================
+const products = [
+{name:"1 Pair", price:15},
+{name:"2 Pairs", price:25},
+{name:"5 Pairs", price:60},
+{name:"Bulk Deal", price:150}
+];
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-function addToCart(item){
-    cart.push(item);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    updateCart();
+/* SAVE SYSTEM */
+function save(){
+localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-function updateCart(){
-    const cartCount = document.getElementById("cartCount");
-
-    if(cartCount){
-        cartCount.textContent = cart.length;
-    }
+/* ADD */
+function addToCart(name, price){
+cart.push({name, price});
+save();
+alert(name + " added");
+renderProducts();
 }
 
-// run on load
-updateCart();
-
-
-// =====================
-// VOUCH SLIDER
-// =====================
-
-const vouches = [
-    "⭐⭐⭐⭐⭐ Fast delivery — L••••",
-    "⭐⭐⭐⭐⭐ Great quality — J••••",
-    "⭐⭐⭐⭐⭐ Trusted seller — M••••",
-    "⭐⭐⭐⭐⭐ Best prices in BB2 — A••••",
-    "⭐⭐⭐⭐⭐ Quick replies — D••••",
-    "⭐⭐⭐⭐⭐ Very reliable — S••••",
-    "⭐⭐⭐⭐⭐ Would buy again — K••••"
-];
-
-let index = 0;
-
-const vouchBox = document.getElementById("vouch");
-
-if(vouchBox){
-
-    setInterval(() => {
-
-        index++;
-        if(index >= vouches.length){
-            index = 0;
-        }
-
-        vouchBox.style.opacity = "0";
-
-        setTimeout(() => {
-            vouchBox.textContent = vouches[index];
-            vouchBox.style.opacity = "1";
-        }, 300);
-
-    }, 3000);
-
+/* REMOVE */
+function removeItem(i){
+cart.splice(i,1);
+save();
 }
 
+/* CLEAR */
+function clearCart(){
+cart = [];
+save();
+}
 
-// =====================
-// BUTTON ANIMATION
-// =====================
+/* RENDER PRODUCTS */
+function renderProducts(){
+const box = document.getElementById("products");
+if(!box) return;
 
-document.querySelectorAll(".btn").forEach(btn => {
+box.innerHTML = "";
 
-    btn.addEventListener("mouseenter", () => {
-        btn.style.transform = "scale(1.05)";
-    });
+products.forEach(p=>{
+const div = document.createElement("div");
+div.className = "card";
 
-    btn.addEventListener("mouseleave", () => {
-        btn.style.transform = "scale(1)";
-    });
+div.innerHTML = `
+<h2>${p.name}</h2>
+<h1>£${p.price}</h1>
+<button class="btn" onclick="addToCart('${p.name}',${p.price})">
+Add to Basket
+</button>
+`;
 
+box.appendChild(div);
 });
+}
 
+/* CHAT SYSTEM */
+document.getElementById("chatBtn").onclick = ()=>{
+document.getElementById("chatBox").style.display="block";
+};
 
-// =====================
-// DEBUG
-// =====================
+function closeChat(){
+document.getElementById("chatBox").style.display="none";
+}
 
-console.log("BB2 Store script loaded");
+/* INIT */
+renderProducts();
