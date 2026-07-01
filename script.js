@@ -1,4 +1,3 @@
-/* ======================= PRODUCTS CONTROLLER ======================= */
 const products = [
     { id: "p1", name: "1 Pair AirPods", price: 15 },
     { id: "p2", name: "2 Pairs AirPods", price: 25 },
@@ -12,7 +11,6 @@ function saveCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-/* TOAST CONTROLLER */
 function toast(msg) {
     const t = document.getElementById("toast");
     if (!t) return;
@@ -21,7 +19,6 @@ function toast(msg) {
     setTimeout(() => t.style.opacity = 0, 1500);
 }
 
-/* DRAWER TOGGLE AUTOMATION */
 function toggleCart(open) {
     const drawer = document.getElementById("cart-drawer");
     if (!drawer) return;
@@ -32,7 +29,6 @@ function toggleCart(open) {
     }
 }
 
-/* CART ACTIONS */
 function addToCart(name, price) {
     let item = cart.find(i => i.name === name);
     if (item) {
@@ -54,7 +50,6 @@ function updateQuantity(index, delta) {
     renderCart();
 }
 
-/* RENDERING INTERFACES */
 function renderProducts() {
     const box = document.getElementById("products");
     if (!box) return;
@@ -98,8 +93,8 @@ function renderCart() {
         container.innerHTML += `
         <div class="cart-item">
             <div class="item-info">
-                <h3 style="font-size: 16px; color: #ffffff;">${item.name}</h3>
-                <p style="font-size: 14px; color: #ff453a; font-weight: 600;">£${item.price} each</p>
+                <h3 style="font-size: 16px; color: #ffffff; text-align: left;">${item.name}</h3>
+                <p style="font-size: 14px; color: #ff453a; font-weight: 600; text-align: left;">£${item.price} each</p>
             </div>
             <div class="quantity-controls">
                 <button class="qty-btn" onclick="updateQuantity(${index}, -1)">-</button>
@@ -136,7 +131,6 @@ function checkout() {
     }, 1000);
 }
 
-/* REVIEWS AUTOMATION */
 const reviews = [
     "Fast delivery ⭐⭐⭐⭐⭐",
     "Best AirPods seller in BB2 area ⭐⭐⭐⭐⭐",
@@ -152,13 +146,11 @@ function rotateReviews() {
     setTimeout(rotateReviews, 3000);
 }
 
-/* INITIALIZE SYSTEM & INTRO TIMEOUT */
 document.addEventListener("DOMContentLoaded", () => {
     renderProducts();
     renderCart();
     rotateReviews();
 
-    // Pure isolated intro screen fade-out logic
     setTimeout(() => {
         const intro = document.getElementById("intro-screen");
         if (intro) {
