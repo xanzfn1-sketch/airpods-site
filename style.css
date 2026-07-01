@@ -1,240 +1,297 @@
-/* ==========================================================================
-   RESET & SYSTEM TYPOGRAPHY (Apple Core)
-   ========================================================================== */
+/* ==========================================
+   CORE RESET & SYSTEM PALETTE
+   ========================================== */
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
 }
 
 body{
-    background: #000000; /* True Apple pure black */
-    color: #f5f5f7;      /* Apple off-white text to reduce glare */
-    overflow-x: hidden;
-    line-height: 1.45;
+    background:#08080a;
+    color:#f5f5f7;
+    overflow-x:hidden;
+    line-height:1.45;
+    padding-bottom: 60px;
 }
 
-/* ==========================================================================
-   HEADER NAVIGATION (Mac Style)
-   ========================================================================== */
+/* ==========================================
+   HEADER NAVIGATION
+   ========================================== */
 .header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 5%;
-    height: 48px; /* Ultra-slim Apple standard nav height */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    position: sticky;
-    top: 0;
-    background: rgba(22, 22, 23, 0.8); /* Official Apple nav gray */
-    z-index: 100;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 5%;
+    height:54px;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+    backdrop-filter:blur(20px);
+    position:sticky;
+    top:0;
+    background:rgba(8, 8, 10, 0.8);
+    z-index:100;
 }
 
 .logo{
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    color: #f5f5f7;
-    opacity: 0.9;
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:1px;
 }
 
 .headerMeta{
-    font-size: 12px;
-    color: #86868b; /* Apple muted gray */
+    font-size:12px;
+    color:#86868b;
 }
 
-/* ==========================================================================
-   HERO DISPLAY (The "Big Announcement" Look)
-   ========================================================================== */
+/* ==========================================
+   HERO / COMPONENT ACCENTS
+   ========================================== */
 .hero{
-    padding: 120px 20px 60px;
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
+    padding:80px 20px 40px;
+    text-align:center;
 }
 
 .hero h1{
-    font-size: 56px;
-    font-weight: 700;
-    letter-spacing: -0.015em;
-    line-height: 1.07;
-    background: linear-gradient(180deg, #ffffff 0%, #a1a1a6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 16px;
-}
-
-@media(max-width: 768px) {
-    .hero h1 { font-size: 40px; }
+    font-size:48px;
+    font-weight:800;
+    letter-spacing:-0.03em;
+    margin:12px 0;
+    color:#ffffff;
 }
 
 .hero p{
-    color: #86868b;
-    font-size: 21px;
-    font-weight: 400;
-    letter-spacing: 0.011em;
+    color:#86868b;
+    font-size:18px;
 }
 
-/* ==========================================================================
-   BANNER NOTIFICATION
-   ========================================================================== */
-.banner{
-    text-align: center;
-    padding: 12px;
-    font-size: 12px;
-    font-weight: 400;
-    background: #1d1d1f;
-    color: #f5f5f7;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+/* Mini Accent Badges (From your image references) */
+.mini-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    background: rgba(255, 69, 58, 0.1);
+    color: #ff453a;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
-/* ==========================================================================
-   PREMIUM PRODUCT GRID & CARDS
-   ========================================================================== */
-.grid{
+/* ==========================================
+   BENTO STATS GRID SYSTEM
+   ========================================== */
+.stats-bento {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-    padding: 40px 5%;
-    max-width: 1200px;
-    margin: 0 auto;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 0 5%;
+    max-width: 1100px;
+    margin: 0 auto 40px;
 }
 
-.card{
-    background: #1d1d1f; /* Apple secondary canvas module color */
-    border-radius: 22px;  /* Smooth continuous corners */
-    padding: 30px;
-    text-align: center;
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+.bento-stat-card {
+    background: #121216;
+    border: 1px solid rgba(255,255,255,0.03);
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 140px;
 }
 
-.card:hover{
-    transform: scale(1.02); /* Clean, non-aggressive zoom */
+/* Asymmetric Long Box */
+.bento-stat-card.long {
+    grid-column: span 2;
+    background: linear-gradient(135deg, #1a1a22 0%, #121216 100%);
 }
 
-.card h2{
-    font-size: 24px;
-    font-weight: 600;
-    letter-spacing: -0.007em;
-    margin-bottom: 8px;
-    color: #ffffff;
+.bento-stat-card h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 12px;
 }
 
-.card h1{
-    font-size: 17px;
-    font-weight: 400;
+.bento-stat-card p {
     color: #86868b;
+    font-size: 14px;
+}
+
+.icon-circle {
+    width: 36px;
+    height: 36px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.icon-circle.red-tint {
+    background: rgba(255, 69, 58, 0.15);
+}
+
+/* ==========================================
+   ASYMMETRIC PRODUCTS BENTO GRID
+   ========================================== */
+.sectionTitle {
+    text-align: center;
     margin-bottom: 24px;
 }
 
-/* ==========================================================================
-   BUTTON DESIGN (The Interactive pill)
-   ========================================================================== */
-.btn{
-    display: inline-block;
-    padding: 8px 16px;
-    border-radius: 980px; /* Perfect pill shape */
-    border: none;
-    cursor: pointer;
-    font-weight: 400;
-    font-size: 14px;
-    letter-spacing: -0.01em;
-    transition: all 0.2s ease;
-    background: #0071e3; /* Core Apple Interactive Link Blue */
-    color: #ffffff;
-    text-decoration: none;
-}
-
-.btn:hover{
-    background: #147ce5;
-    transform: none;
-}
-
-/* ==========================================================================
-   INFO TEXT BLOCKS
-   ========================================================================== */
 .sectionTitle h2 {
     font-size: 32px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    text-align: center;
-    margin-top: 40px;
+    font-weight: 700;
+    margin-top: 8px;
 }
 
-.infoBlock{
-    max-width: 800px;
-    width: 90%;
-    margin: 48px auto;
-    padding: 32px;
-    background: #1d1d1f;
-    border-radius: 22px;
+.bento-products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 0 5%;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
-.infoBlock h2{
+/* Individual Cards Generated via Javascript */
+.bento-products-grid .card {
+    background: #121216;
+    border-radius: 24px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left;
+    min-height: 200px;
+    transition: transform 0.3s ease;
+}
+
+/* Every 3rd card turns wide to establish asymmetric hierarchy */
+.bento-products-grid .card:nth-child(3n+1) {
+    grid-column: span 2;
+    background: linear-gradient(200deg, #1c1c24 0%, #121216 100%);
+}
+
+.bento-products-grid .card h2 {
     font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+}
+
+.bento-products-grid .card h1 {
+    font-size: 28px;
+    font-weight: 800;
+    margin: 8px 0 16px;
+    color: #ff453a; /* Vibrant Red Pricing Accent */
+}
+
+/* ==========================================
+   BUTTONS & ACTIONS
+   ========================================== */
+.btn {
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
     font-weight: 600;
-    margin-bottom: 12px;
-    letter-spacing: -0.007em;
+    font-size: 13px;
+    background: #ffffff;
+    color: #000000;
+    text-decoration: none;
+    transition: opacity 0.2s;
 }
 
-.infoBlock p,
-.infoBlock li{
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn.red-btn {
+    background: #ff453a;
+    color: #ffffff;
+}
+
+/* ==========================================
+   INFO TEXT CONTAINER Blocks
+   ========================================== */
+.bento-info-container {
+    padding: 40px 5%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.infoBlock {
+    background: #121216;
+    border-radius: 20px;
+    padding: 24px;
+}
+
+.infoBlock h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.infoBlock p {
     color: #86868b;
-    font-size: 15px;
-    margin-bottom: 8px;
+    font-size: 14px;
 }
 
-.infoBlock ul{
-    padding-left: 20px;
+.infoBlock.highlight-card {
+    background: #ffffff;
+    color: #000000;
 }
 
-/* ==========================================================================
-   REVIEWS & UTILITIES
-   ========================================================================== */
+.infoBlock.highlight-card p {
+    color: #3a3a3c;
+}
+
+/* ==========================================
+   REVIEWS & FOOTER UTILITIES
+   ========================================== */
 .reviews {
     text-align: center;
-    margin: 60px auto;
+    padding: 40px 5%;
 }
 
 #reviewBox {
-    font-size: 24px;
-    font-weight: 500;
-    color: #f5f5f7;
-    min-height: 50px;
-    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-top: 12px;
 }
 
 .contact {
     text-align: center;
-    margin: 80px 0;
+    margin: 40px 0;
 }
 
 .contactButtons {
     display: flex;
     justify-content: center;
-    gap: 16px;
+    gap: 12px;
+    margin-top: 16px;
 }
 
-.footer{
-    padding: 40px 5%;
+.footer {
+    padding: 30px 5%;
     font-size: 12px;
     color: #424245;
-    border-top: 1px solid #1d1d1f;
-    max-width: 1200px;
-    margin: 60px auto 0;
-    text-align: left; /* Apple footer notation style */
+    border-top: 1px solid rgba(255,255,255,0.03);
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
-/* Floating Elements */
-.floatWhatsApp{
+.floatWhatsApp {
     position: fixed;
-    bottom: 24px;
-    right: 24px;
+    bottom: 20px;
+    right: 20px;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -242,26 +299,37 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 22px;
     color: white;
     text-decoration: none;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     z-index: 99;
 }
 
-#toast{
+#toast {
     position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%); /* Apple notification style centering */
-    background: rgba(51, 51, 54, 0.9);
-    backdrop-filter: blur(10px);
+    bottom: 85px;
+    right: 20px;
+    background: #ff453a;
     color: white;
-    padding: 12px 24px;
-    border-radius: 12px;
+    padding: 10px 16px;
+    border-radius: 10px;
     opacity: 0;
-    transition: opacity 0.3s ease;
-    font-size: 14px;
+    transition: 0.25s;
+    font-size: 13px;
     z-index: 1000;
-    pointer-events: none;
+}
+
+/* Responsive Scaling for Desktop Layouts */
+@media(min-width: 769px) {
+    .stats-bento, .bento-products-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .bento-stat-card.long { grid-column: span 2; }
+    .bento-products-grid .card:nth-child(3n+1) { grid-column: span 2; }
+    .bento-info-container {
+        flex-direction: row;
+    }
+    .bento-info-container .infoBlock {
+        flex: 1;
+    }
 }
