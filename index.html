@@ -8,112 +8,54 @@
 </head>
 <body>
 
-    <!-- ======================= AUTHENTIC APPLE INTRO SCREEN ======================= -->
+    <!-- Intro Screen -->
     <div id="intro-screen">
-        <svg class="intro-logo" viewBox="0 0 24 24">
+        <svg class="intro-logo" viewBox="0 0 24 24" width="100" height="100">
             <path fill="#ffffff" d="M18.71,19.5C17.88,20.74,17,21.95,15.66,21.97C14.32,22,13.89,21.18,12.37,21.18C10.84,21.18,10.37,21.95,9.1,22C7.79,22.05,6.8,20.68,5.96,19.48C4.25,17,2.94,12.45,4.7,9.39C5.57,7.87,7.13,6.91,8.82,6.88C10.1,6.86,11.32,7.75,12.11,7.75C12.89,7.75,14.37,6.68,15.92,6.84C16.57,6.87,18.39,7.1,19.56,8.82C19.47,8.88,17.39,10.1,17.41,12.63C17.44,15.65,20.06,16.66,20.1,16.67C20.08,16.74,19.67,18.11,18.71,19.5M15.97,4.17C16.63,3.37,17.07,2.28,16.95,1C16,1.04,14.9,1.6,14.24,2.38C13.68,3.04,13.19,4.14,13.34,5.39C14.39,5.47,15.4,4.88,15.97,4.17Z"/>
         </svg>
     </div>
 
-    <!-- ======================= NAVIGATION HEADER ======================= -->
+    <!-- Navigation -->
     <header class="header">
         <div class="logo">BB2 STORE</div>
         <nav style="display: flex; gap: 15px; align-items: center;">
-            <a href="index.html" style="color: #ff453a; text-decoration: none; font-weight: 600; font-size: 14px;">Store</a>
-            <a href="moncler.html" style="color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px;">Moncler Drop</a>
-            <a href="faq.html" style="color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px;">FAQs</a>
-            <a href="about.html" style="color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px;">About</a>
+            <a href="index.html" style="color: #ff453a;">Store</a>
+            <a href="moncler.html" style="color: #ffffff;">Moncler Drop</a>
+            <a href="faq.html" style="color: #ffffff;">FAQs</a>
             <button class="cart-trigger" onclick="toggleCart(true)">
                 <span>Basket</span>
-                <span id="cart-count" class="cart-count-badge">0</span>
+                <span id="cart-count">0</span>
             </button>
         </nav>
     </header>
 
-    <!-- ======================= HERO SECTION ======================= -->
+    <!-- Content Sections -->
     <section class="hero">
         <h1>Next Generation Tech & Streetwear</h1>
-        <p>Fast BB1 & BB2 same-day delivery network</p>
     </section>
 
-    <!-- ======================= DELIVERY STRIP ======================= -->
-    <section class="banner">
-        ⚡ SAME DAY DELIVERY ACTIVE IN SELECT AREAS ⚡
-    </section>
-
-    <!-- ======================= TRUST BADGES ======================= -->
-    <section class="trustGrid">
-        <div class="trust">Verified Seller</div>
-        <div class="trust">Fast Dispatch</div>
-        <div class="trust">Local Delivery</div>
-        <div class="trust">Secure Handling</div>
-    </section>
-
-    <!-- ======================= PRODUCTS ======================= -->
-    <section class="sectionTitle">
-        <h2>Active Store Catalog</h2>
-    </section>
+    <section class="banner">⚡ SAME DAY DELIVERY ACTIVE IN SELECT AREAS ⚡</section>
 
     <section id="products" class="grid"></section>
 
-    <!-- ======================= CART DRAWER OVERLAY ======================= -->
+    <!-- Cart Drawer -->
     <div id="cart-drawer" class="cart-drawer">
         <div class="cart-drawer-overlay" onclick="toggleCart(false)"></div>
         <div class="cart-drawer-content">
             <div class="cart-drawer-header">
                 <h2>Your Basket</h2>
-                <button class="close-drawer" onclick="toggleCart(false)">✕</button>
+                <button onclick="toggleCart(false)">✕</button>
             </div>
-            <div id="cart-items-container" class="cart-items-body"></div>
+            <div id="cart-items-container"></div>
             <div class="cart-drawer-footer">
-                <div class="total-row">
-                    <span>Total Amount:</span>
-                    <span id="total">£0</span>
-                </div>
-                <button class="btn checkout-btn" onclick="checkout()">Place Order via WhatsApp</button>
+                <div class="total-row"><span>Total:</span> <span id="total">£0</span></div>
+                <button class="btn" onclick="checkout()">Place Order via WhatsApp</button>
             </div>
         </div>
     </div>
 
-    <!-- ======================= INFO BLOCKS ======================= -->
-    <section class="infoBlock">
-        <h2>Weekly Deals</h2>
-        <p>Exclusive bundles available for limited time only. Discounts applied automatically at checkout.</p>
-    </section>
+    <section id="reviewBox">Loading reviews...</section>
 
-    <section class="infoBlock">
-        <h2>Bundle Offers</h2>
-        <ul>
-            <li>1 Pair AirPods — Entry Deal</li>
-            <li>2 Pair Bundle — Save £5</li>
-            <li>5 Pack Bundle — Best Value</li>
-            <li>Bulk Wholesale Pack — Maximum Savings</li>
-        </ul>
-    </section>
-
-    <!-- ======================= REVIEWS ======================= -->
-    <section class="reviews">
-        <h2>Customer Reviews</h2>
-        <div id="reviewBox">Loading reviews...</div>
-    </section>
-
-    <!-- ======================= CONTACT ======================= -->
-    <section class="contact">
-        <h2>Contact Us</h2>
-        <p class="number">📞 07463 399522</p>
-        <div class="contactButtons">
-            <a href="tel:07463399522" class="btn">Call Now</a>
-            <a href="https://wa.me/447463399522" class="btn whatsapp-btn">WhatsApp</a>
-        </div>
-    </section>
-
-    <!-- ======================= FOOTER ======================= -->
-    <footer class="footer">
-        <p>© BB2 Store — All Rights Reserved</p>
-    </footer>
-
-    <!-- ======================= UTILITY FLOATS ======================= -->
-    <a class="floatWhatsApp" href="https://wa.me/447463399522">💬</a>
     <div id="toast"></div>
 
     <script src="script.js"></script>
