@@ -3,7 +3,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial;
 }
 
 body{
@@ -25,9 +25,8 @@ body{
 }
 
 #introLogo{
-    width:200px;
-    opacity:0;
-    animation:logo 1.5s forwards;
+    width:180px;
+    animation:logo 1.2s ease;
 }
 
 @keyframes logo{
@@ -49,24 +48,24 @@ header{
 /* HERO */
 .hero{
     text-align:center;
-    padding:50px 20px;
+    padding:40px 20px;
 }
 
 .hero h1{
-    font-size:50px;
+    font-size:45px;
 }
 
 /* BADGE */
 .badge{
-    display:inline-block;
-    padding:8px 16px;
     border:1px solid cyan;
+    padding:6px 12px;
     border-radius:20px;
-    margin-bottom:10px;
 }
 
 /* PRICING */
 .pricing{
+    width:90%;
+    margin:auto;
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
     gap:20px;
@@ -82,13 +81,13 @@ header{
 
 /* BUTTON */
 .btn{
-    padding:12px 20px;
     background:linear-gradient(135deg,#00ffae,#00bfff);
     border:none;
+    padding:12px 18px;
     border-radius:10px;
     color:white;
-    cursor:pointer;
     margin-top:10px;
+    cursor:pointer;
 }
 
 /* BUTTONS */
@@ -110,24 +109,24 @@ header{
     position:fixed;
     bottom:20px;
     right:20px;
-    padding:15px;
+    width:55px;
+    height:55px;
     border-radius:50%;
     border:none;
     background:#00bfff;
-    color:white;
     font-size:20px;
-    cursor:pointer;
+    color:white;
 }
 
 #chatBox{
     display:none;
     position:fixed;
-    bottom:80px;
+    bottom:90px;
     right:20px;
-    width:300px;
+    width:280px;
     background:#111;
-    border-radius:15px;
     padding:15px;
+    border-radius:15px;
 }
 
 .chat-header{
@@ -144,5 +143,4 @@ header{
     background:#222;
     border:none;
     color:white;
-    border-radius:8px;
 }
