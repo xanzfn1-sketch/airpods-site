@@ -1,145 +1,133 @@
-/* ==========================================================================
-   BB2 STORE — FUTURISTIC MINIMALIST STYLESHEET
-   ========================================================================== */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BB2 Store | Official Professional Storefront</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body>
 
-:root {
-    --bg-color: #000000;
-    --card-bg: #0a0a0a;
-    --surface-color: #121212;
-    --text-primary: #ffffff;
-    --text-secondary: #8e8e93;
-    --accent: #ff453a;
-    --border-color: rgba(255, 255, 255, 0.08);
-    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
+    <!-- Loading Screen Overlay -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <!-- Global Navigation -->
+    <header class="header">
+        <div class="logo">BB2 STORE</div>
+        <nav>
+            <a href="index.html">Store</a>
+            <a href="moncler.html">Moncler Drop</a>
+            <a href="faq.html">FAQs</a>
+            <a href="#reviews">Reviews</a>
+            <button class="cart-trigger" onclick="toggleCart(true)">Basket</button>
+        </nav>
+    </header>
 
-body {
-    background-color: var(--bg-color);
-    color: var(--text-primary);
-    font-family: var(--font-family);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
+    <!-- Main Content -->
+    <main>
+        <section class="hero">
+            <h1>Next Generation Tech & Streetwear</h1>
+            <div class="banner">⚡ SAME DAY DELIVERY ACTIVE IN SELECT AREAS ⚡</div>
+            
+            <div id="viewer-3d">
+                <div id="canvas-container"></div>
+            </div>
+        </section>
 
-/* Header & Navigation */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 5%;
-    border-bottom: 1px solid var(--border-color);
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+        <!-- Product Grid -->
+        <section id="products" class="grid">
+            <div class="card">
+                <h2>1 Pair AirPods</h2>
+                <h1>£15</h1>
+                <button class="btn" onclick="updateCart('1 Pair AirPods', 15)">Add to Basket</button>
+            </div>
+            <div class="card">
+                <h2>2 Pairs AirPods</h2>
+                <h1>£25</h1>
+                <button class="btn" onclick="updateCart('2 Pairs AirPods', 25)">Add to Basket</button>
+            </div>
+            <div class="card">
+                <h2>5 Pairs Bundle</h2>
+                <h1>£60</h1>
+                <button class="btn" onclick="updateCart('5 Pairs Bundle', 60)">Add to Basket</button>
+            </div>
+            <div class="card">
+                <h2>Bulk Deal</h2>
+                <h1>£150</h1>
+                <button class="btn" onclick="updateCart('Bulk Deal', 150)">Add to Basket</button>
+            </div>
+        </section>
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -1px;
-}
+        <!-- Expanded Information Section -->
+        <section class="details">
+            <h2>Why Choose BB2 Store?</h2>
+            <div class="infoBlock">
+                <h3>Superior Quality</h3>
+                <p>We source only the highest quality components for our tech drops, ensuring seamless connectivity and premium sound performance.</p>
+            </div>
+            <div class="infoBlock">
+                <h3>Fast Local Shipping</h3>
+                <p>Based in the heart of Blackburn, we offer specialized same-day local delivery for our community members. Our logistics network is optimized for speed and reliability.</p>
+            </div>
+            <h3>Bundle Offers</h3>
+            <ul>
+                <li><strong>Entry Level:</strong> Single pair unit for new users.</li>
+                <li><strong>Dual Pack:</strong> Best for couples or shared gift sets.</li>
+                <li><strong>Value Bundle:</strong> 5-pack inventory for high-frequency users.</li>
+                <li><strong>Wholesale:</strong> Bulk pricing available for resellers.</li>
+            </ul>
+        </section>
 
-header nav {
-    display: flex;
-    gap: 30px;
-}
+        <!-- Customer Testimonials -->
+        <section class="reviews" id="reviews">
+            <h2>Customer Reviews</h2>
+            <div class="grid">
+                <div class="card">
+                    <p>"Absolutely incredible sound quality. Best in BB2 hands down."</p>
+                    <span>— Alex R.</span>
+                </div>
+                <div class="card">
+                    <p>"Super fast delivery, arrived same day as promised. Thanks!"</p>
+                    <span>— Jordan M.</span>
+                </div>
+                <div class="card">
+                    <p>"Five star service. Responsive support and great products."</p>
+                    <span>— Sam L.</span>
+                </div>
+            </div>
+        </section>
 
-header nav a {
-    color: var(--text-primary);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
+        <!-- Contact & Support -->
+        <section class="contact" id="contact">
+            <h2>Support & Inquiries</h2>
+            <p>Need help with your order or have a technical question? Our support team is online daily.</p>
+            <button class="whatsapp-btn" onclick="window.location.href='https://wa.me/yournumber'">Message us on WhatsApp</button>
+        </section>
+    </main>
 
-header nav a:hover {
-    color: var(--accent);
-}
+    <!-- Footer with Extended Credits -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 BB2 Store — All Rights Reserved</p>
+            <p>Designed for performance and aesthetics. Handcrafted in Blackburn, England.</p>
+            <nav style="margin-top: 20px;">
+                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Track Order</a>
+            </nav>
+        </div>
+    </footer>
 
-/* Hero Section */
-.hero {
-    text-align: center;
-    padding: 80px 20px;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    letter-spacing: -2px;
-}
-
-.banner {
-    display: inline-block;
-    background: var(--accent);
-    color: #fff;
-    padding: 8px 16px;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-}
-
-/* Grid & Cards */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    padding: 0 5%;
-    margin-bottom: 60px;
-}
-
-.card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 30px;
-    text-align: center;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    border-color: var(--accent);
-}
-
-/* Buttons */
-.btn {
-    background: #fff;
-    color: #000;
-    padding: 14px 28px;
-    border-radius: 12px;
-    border: none;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: inline-block;
-    text-decoration: none;
-}
-
-.btn:hover {
-    background: var(--accent);
-    color: #fff;
-}
-
-/* Footer */
-.footer {
-    text-align: center;
-    padding: 40px;
-    border-top: 1px solid var(--border-color);
-    color: var(--text-secondary);
-    font-size: 0.8rem;
-}
-
-/* Responsive Tweaks */
-@media (max-width: 768px) {
-    .hero h1 { font-size: 2rem; }
-    header nav { gap: 15px; }
-}
+    <!-- Core Scripting -->
+    <script src="script.js"></script>
+    <script>
+        // Smooth initialization
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            if(loader) loader.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
