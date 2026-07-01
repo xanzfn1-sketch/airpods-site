@@ -26,7 +26,10 @@
         
         <nav aria-label="Primary Navigation">
             <a href="index.html" class="active">Store</a>
-            <a href="moncler.html">Moncler</a>
+            <!-- Moncler Button Trigger (Matches Basket Trigger Layout Style) -->
+            <button class="cart-trigger moncler-trigger" onclick="openMonclerModal(event)" aria-label="View Moncler Collection info" style="margin-left: 10px;">
+                <span>Moncler</span>
+            </button>
         </nav>
 
         <div class="header-right">
@@ -138,7 +141,36 @@
     </div>
 
     <!-- ==========================================================================
-         8. ACCESSIBILITY OVERLAYS & WIDGETS
+         8. MONCLER INFO POPUP MODAL
+         ========================================================================== -->
+    <div id="moncler-modal" class="moncler-modal" aria-hidden="true">
+        <div class="moncler-modal-overlay" onclick="closeMonclerModal()"></div>
+        <div class="moncler-modal-content">
+            <button class="moncler-close" onclick="closeMonclerModal()">✕</button>
+            <h2>🏔️ Moncler Collection Coming Soon</h2>
+            <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin:15px 0;">
+            
+            <div class="faq-item">
+                <h3>What are we bringing?</h3>
+                <p>We are expanding our premium catalog to bring you exclusive, high-end <strong>Moncler Beanies, Hats</strong>, and premium winter accessories.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Why are we bringing it?</h3>
+                <p>Our customers demand top-tier streetwear and high-end matching aesthetics to pair with their next-gen tech. We believe premium accessories should be just as accessible and rapidly delivered as our audio line.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>When does it drop?</h3>
+                <p>The collection drops very soon. Stock will be highly limited upon initial release. Keep an eye on the storefront or send us a message to secure an early reservation link!</p>
+            </div>
+
+            <button class="btn wa-btn" style="margin-top: 25px; width: 100%; display: flex; align-items: center; justify-content: center;" onclick="window.open('https://wa.me/447463399522?text=Hi,%20I%27m%20interested%20in%20the%20upcoming%20Moncler%20drop!', '_blank')">💬 Get Notified via WhatsApp</button>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         9. ACCESSIBILITY OVERLAYS & WIDGETS
          ========================================================================== -->
     <!-- Screen Toast Notification Context Container -->
     <div id="toast" role="status" aria-live="polite"></div>
@@ -147,7 +179,7 @@
     <a class="floatWhatsApp" href="https://wa.me/447463399522" target="_blank" rel="noopener" aria-label="Contact Customer Support via WhatsApp">💬</a>
 
     <!-- ==========================================================================
-         9. FOOTER UTILITY NAVIGATION
+         10. FOOTER UTILITY NAVIGATION
          ========================================================================== -->
     <footer class="footer">
         <div class="footer-links" style="margin-bottom: 20px;">
@@ -157,10 +189,6 @@
         <p class="copyright-text">© BB2 Store — All Rights Reserved</p>
     </footer>
 
-    <!-- ==========================================================================
-         10. EXTENDED DEPLOYMENT COMPATIBILITY STRUT (PADDING SPECIFICATION)
-         ========================================================================== -->
-    <!-- Content Strut Block Lines Removed for Cleanliness -->
     <script src="script.js"></script>
 </body>
 </html>
