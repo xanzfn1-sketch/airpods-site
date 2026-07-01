@@ -4,114 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Place Your Order | BB2 AirPods</title>
-
     <link rel="stylesheet" href="style.css">
+    <style>
+        .order-container { max-width: 500px; margin: 40px auto; padding: 0 20px; }
+        .order-form { display: flex; flex-direction: column; gap: 15px; background: #121212; padding: 25px; border-radius: 18px; border: 1px solid rgba(255,255,255,0.05); }
+        input, select, textarea { 
+            padding: 14px; border-radius: 12px; border: 1px solid #333; 
+            background: #000; color: #fff; font-size: 16px; 
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="background"></div>
+    <header class="header">
+        <div class="logo">BB2 STORE</div>
+        <nav><a href="index.html" style="color: #fff; text-decoration: none;">Back</a></nav>
+    </header>
 
-<header>
+    <main class="order-container">
+        <section class="hero" style="padding: 40px 0;">
+            <span class="banner" style="display:inline-block; margin-bottom:10px;">ORDER FORM</span>
+            <h1>Place Your Order</h1>
+            <p style="color: #8e8e93;">Only available in BB2 Area</p>
+        </section>
 
-    <div class="logo">
-        <h2>BB2 AirPods</h2>
-    </div>
+        <form action="https://formspree.io/f/mzdlagqp" method="POST" class="order-form">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <input type="text" name="address" placeholder="Delivery Address (BB2 Only)" required>
+            
+            <select name="bundle" required>
+                <option value="">Select Bundle</option>
+                <option>1 Pair - £15</option>
+                <option>2 Pairs - £25</option>
+                <option>5 Pairs - £60</option>
+                <option>Bulk Deal - £150 (Get 5 FREE)</option>
+            </select>
 
-    <div class="info">
-        <p>Seller: <strong>Rayyan Adam</strong></p>
-        <p>Website by <strong>Adam</strong></p>
-    </div>
+            <input type="text" name="discount" placeholder="Discount Code (Optional)">
+            <textarea name="notes" rows="4" placeholder="Extra Notes (Optional)"></textarea>
 
-</header>
+            <button class="btn" type="submit" style="background:#ff453a; color:#fff;">Submit Order</button>
+        </form>
+    </main>
 
-<section class="hero">
-
-    <span class="badge">ORDER FORM</span>
-
-    <h1>Place Your Order</h1>
-
-    <p>Only available in BB2</p>
-
-</section>
-
-<section class="contact">
-
-<form
-action="https://formspree.io/f/mzdlagqp"
-method="POST"
-class="order-form">
-
-<input
-type="text"
-name="name"
-placeholder="Full Name"
-required>
-
-<input
-type="email"
-name="email"
-placeholder="Email Address"
-required>
-
-<input
-type="tel"
-name="phone"
-placeholder="Phone Number"
-required>
-
-<input
-type="text"
-name="address"
-placeholder="Delivery Address (BB2 Only)"
-required>
-
-<select name="bundle" required>
-
-<option value="">Select Bundle</option>
-
-<option>1 Pair - £15</option>
-
-<option>2 Pairs - £25</option>
-
-<option>5 Pairs - £60</option>
-
-<option>Bulk Deal - £150 (Get 5 FREE)</option>
-
-</select>
-
-<input
-type="text"
-name="discount"
-placeholder="Discount Code (Optional)">
-
-<textarea
-name="notes"
-rows="5"
-placeholder="Extra Notes (Optional)">
-</textarea>
-
-<button class="btn" type="submit">
-
-Submit Order
-
-</button>
-
-</form>
-
-<br>
-
-<a href="index.html">
-
-<button class="btn secondary">
-
-← Back to Store
-
-</button>
-
-</a>
-
-</section>
+    <footer class="footer">
+        <p>Seller: Rayyan Adam | Website by Adam</p>
+    </footer>
 
 </body>
 </html>
