@@ -44,14 +44,19 @@ function renderCart() {
     if (totalBox) totalBox.innerText = "£" + total;
 }
 
-// --- Init ---
 document.addEventListener("DOMContentLoaded", () => {
-    renderProducts();
-    renderCart();
-    
-    // Auto-remove intro after 2.5s if not already gone
+    // 1. Initial Render
+    if (document.getElementById("products")) renderProducts();
+    if (document.getElementById("cart-items-container")) renderCart();
+    if (document.getElementById("reviewBox")) rotateReviews();
+
+    // 2. Fail-safe: Force intro-screen removal after 2.5 seconds
+    // This ensures your site is never "stuck" even if a script error happens
     setTimeout(() => {
         const intro = document.getElementById("intro-screen");
-        if (intro) intro.style.display = "none";
+        if (intro) {
+            intro.style.opacity = '0';
+            setTimeout(() => intro.remove(), 500);
+        }
     }, 2500);
 });
