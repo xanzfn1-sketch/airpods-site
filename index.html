@@ -165,108 +165,99 @@
         let initThree = false;
 
         function setup3DModel() {
-            if (initThree) return; // Only init once
+            if (initThree) return; 
             initThree = true;
 
             const container = document.getElementById('canvas-container');
             const width = container.clientWidth;
             const height = container.clientHeight;
 
-            // 1. Scene setup
             scene = new THREE.Scene();
 
-            // 2. Camera setup
             camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
             camera.position.z = 6.5;
 
-            // 3. Renderer setup with anti-aliasing for smooth crisp edges
             renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
             renderer.setSize(width, height);
             renderer.setPixelRatio(window.devicePixelRatio);
             container.appendChild(renderer.domElement);
 
-            // 4. Group to hold complete beanie object for multi-axis rotation
             beanieGroup = new THREE.Group();
             scene.add(beanieGroup);
 
-            // 5. Build Beanie Geometry & Fine Ribbed Materials
-            // Main Head Dome
+            // Fabric geometries mimicking ribbed texture
             const domeGeo = new THREE.CylinderGeometry(0.8, 1.3, 1.8, 32, 16, false);
-            // Modify geometry slightly to make the top point look more naturally round/organic like real cloth
             const pos = domeGeo.attributes.position;
             for (let i = 0; i < pos.count; i++) {
                 let y = pos.getY(i);
                 if (y > 0) {
-                    let rFactor = (0.9 - y);
                     pos.setX(i, pos.getX(i) * 0.85);
                     pos.setZ(i, pos.getZ(i) * 0.85);
                 }
             }
             
-            // Premium dark ribbed texture material setup
-            const fabricMat = new THREE.MeshStandardMaterial({
-                color: 0x18181a,
-                roughness: 0.85,
-                metalness: 0.1,
+            // Matte black material to capture the exact vibe of image_fb9015.png
+            const blackFabricMat = new THREE.MeshStandardMaterial({
+                color: 0x111112, 
+                roughness: 0.9,
+                metalness: 0.05,
                 flatShading: false
             });
-            const dome = new THREE.Mesh(domeGeo, fabricMat);
+            
+            const dome = new THREE.Mesh(domeGeo, blackFabricMat);
             dome.position.y = 0.3;
             beanieGroup.add(dome);
 
-            // Thicker folded turn-up cuff structure
+            // Thick folded cuff
             const cuffGeo = new THREE.CylinderGeometry(1.42, 1.45, 0.7, 36);
-            const cuff = new THREE.Mesh(cuffGeo, fabricMat);
+            const cuff = new THREE.Mesh(cuffGeo, blackFabricMat);
             cuff.position.y = -0.4;
             beanieGroup.add(cuff);
 
-            // Top stitched crown joint nodule
-            const stitchGeo = new THREE.SphereGeometry(0.12, 16, 16);
-            const stitchMat = new THREE.MeshStandardMaterial({ color: 0x111112, roughness: 0.9 });
-            const stitch = new THREE.Mesh(stitchGeo, stitchMat);
+            // Matching top stitch crown
+            const stitchGeo = new THREE.SphereGeometry(0.1, 16, 16);
+            const stitch = new THREE.Mesh(stitchGeo, blackFabricMat);
             stitch.position.y = 1.2;
             beanieGroup.add(stitch);
 
-            // 6. Realistic Embroidered Felt Front Badge (Iconic Moncler Badge)
+            // Stealth Black-on-Black Moncler Badge matching image_fb9015.png
             const badgeGroup = new THREE.Group();
             
-            // Felt white shield plate background
-            const shieldGeo = new THREE.BoxGeometry(0.45, 0.45, 0.04);
-            const shieldMat = new THREE.MeshStandardMaterial({ color: 0xf5f5f7, roughness: 0.7 });
-            const shield = new THREE.Mesh(shieldGeo, shieldMat);
+            // Circular subtle round patch plate 
+            const shieldGeo = new THREE.CylinderGeometry(0.24, 0.24, 0.04, 32);
+            const badgeBlackMat = new THREE.MeshStandardMaterial({ 
+                color: 0x161618, 
+                roughness: 0.7,
+                metalness: 0.1 
+            });
+            const shield = new THREE.Mesh(shieldGeo, badgeBlackMat);
+            shield.rotation.x = Math.PI / 2; // Rotate flat onto cuff face
             badgeGroup.add(shield);
 
-            // Red/Blue emblem micro indicators nested directly onto face
-            const crestGeo = new THREE.ConeGeometry(0.12, 0.25, 4);
-            const crestMat = new THREE.MeshBasicMaterial({ color: 0xc9182b }); // Rich luxury crimson
-            const crest = new THREE.Mesh(crestGeo, crestMat);
-            crest.position.set(0, 0.05, 0.03);
+            // Subdued dark gray center embossed detailing layout
+            const crestGeo = new THREE.ConeGeometry(0.08, 0.16, 4);
+            const embossMat = new THREE.MeshStandardMaterial({ color: 0x242426, roughness: 0.8 });
+            const crest = new THREE.Mesh(crestGeo, embossMat);
+            crest.position.set(0, 0.02, 0.03);
             badgeGroup.add(crest);
 
-            const trimGeo = new THREE.BoxGeometry(0.25, 0.06, 0.02);
-            const trimMat = new THREE.MeshBasicMaterial({ color: 0x002366 }); // Classic Dark Royal Blue
-            const trim = new THREE.Mesh(trimGeo, trimMat);
-            trim.position.set(0, -0.08, 0.03);
-            badgeGroup.add(trim);
-
-            // Align and plant badge perfectly onto the front center curve of the folded cuff
-            badgeGroup.position.set(0, -0.35, 1.35); 
-            badgeGroup.rotation.x = 0.08; 
+            // Plant badge cleanly out on front of the folded turn-up cuff
+            badgeGroup.position.set(0, -0.4, 1.43); 
             beanieGroup.add(badgeGroup);
 
-            // 7. Advanced Dual Studio Lighting Engine (Highlights depth & textures)
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            // Dual studio lights to cast shadows across the black contours nicely
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
             scene.add(ambientLight);
 
-            const directLight1 = new THREE.DirectionalLight(0xffffff, 1.2);
-            directLight1.position.set(5, 8, 5);
+            const directLight1 = new THREE.DirectionalLight(0xffffff, 1.5);
+            directLight1.position.set(4, 6, 5);
             scene.add(directLight1);
 
-            const directLight2 = new THREE.DirectionalLight(0xffffff, 0.4);
-            directLight2.position.set(-5, 3, -2);
+            const directLight2 = new THREE.DirectionalLight(0xffffff, 0.3);
+            directLight2.position.set(-4, 2, -2);
             scene.add(directLight2);
 
-            // 8. Dynamic Touch & Drag System Controls
+            // Touch and Drag control system mapping
             const startPan = (e) => {
                 isDragging = true;
                 container.style.cursor = 'grabbing';
@@ -302,20 +293,15 @@
             window.addEventListener('touchmove', movePan, { passive: true });
             window.addEventListener('touchend', stopPan);
 
-            // 9. Frame Render Loop
             function animate() {
                 requestAnimationFrame(animate);
-                
-                // Slow continuous horizontal idle rotation if user is not dragging
                 if (!isDragging) {
-                    beanieGroup.rotation.y += 0.006;
+                    beanieGroup.rotation.y += 0.005; // Smooth ambient spin
                 }
-                
                 renderer.render(scene, camera);
             }
             animate();
             
-            // Adjust to responsiveness changes cleanly
             window.addEventListener('resize', () => {
                 const w = container.clientWidth;
                 const h = container.clientHeight;
@@ -325,7 +311,6 @@
             });
         }
 
-        // Toggle visibility and start engine setup pipeline safely
         function toggle3DViewer(show) {
             const viewer = document.getElementById('viewer-3d');
             if (show) {
