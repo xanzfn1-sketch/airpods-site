@@ -1,24 +1,32 @@
 /* ======================= APPLE BOOT SYSTEM ======================= */
 document.addEventListener("DOMContentLoaded", () => {
     const intro = document.getElementById("intro");
-    const sound = document.getElementById("startupSound");
+    const startupSound = document.getElementById("startupSound");
+    const chargingSound = document.getElementById("chargingSound");
 
-    // Start everything on the first click/tap anywhere
     const startIntro = () => {
-        if (sound) {
-            sound.play().catch(error => console.log("Audio play delayed:", error));
+        // 1. Play charging sound instantly
+        if (chargingSound) {
+            chargingSound.play().catch(error => console.log("Charging sound delayed:", error));
         }
+
+        // 2. Play startup sound right after a minor delay
+        setTimeout(() => {
+            if (startupSound) {
+                startupSound.play().catch(error => console.log("Startup sound delayed:", error));
+            }
+        }, 400);
         
-        // Wait 2.5 seconds for the iconic sound to finish, then fade out the screen
+        // 3. Smoothly fade out the black curtain overlay
         setTimeout(() => {
             if (intro) {
                 intro.style.transition = "opacity 1s ease, visibility 1s ease";
                 intro.style.opacity = 0;
                 intro.style.visibility = "hidden";
             }
-        }, 2500);
+        }, 2800);
 
-        // Turn off listeners so it doesn't trigger again
+        // Turn off listeners immediately to prevent sound overlapping on multi-clicks
         document.removeEventListener("click", startIntro);
         document.removeEventListener("touchstart", startIntro);
     };
