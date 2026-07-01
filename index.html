@@ -1,38 +1,145 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <title>BB2 Store</title>
-</head>
-<body>
+/* ==========================================================================
+   BB2 STORE — FUTURISTIC MINIMALIST STYLESHEET
+   ========================================================================== */
 
-    <header class="header">
-        <div class="logo">BB2 STORE</div>
-        <nav>
-            <a href="index.html">Store</a>
-            <a href="moncler.html">Moncler Drop</a>
-            <a href="faq.html">FAQs</a>
-            <button class="cart-trigger" onclick="toggleCart(true)">Basket <span>2</span></button>
-        </nav>
-    </header>
+:root {
+    --bg-color: #000000;
+    --card-bg: #0a0a0a;
+    --surface-color: #121212;
+    --text-primary: #ffffff;
+    --text-secondary: #8e8e93;
+    --accent: #ff453a;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
 
-    <section class="hero">
-        <h1>Next Generation Tech & Streetwear</h1>
-        <div class="banner">⚡ SAME DAY DELIVERY ACTIVE IN SELECT AREAS ⚡</div>
-    </section>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <section id="products" class="grid">
-        <!-- Your product cards go here, matching the style in image_fdd5f1.png -->
-        <div class="card">
-            <h2>1 Pair AirPods</h2>
-            <h1>£15</h1>
-            <button class="btn">Add to Basket</button>
-        </div>
-        <!-- Repeat for other cards -->
-    </section>
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-family);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
 
-    <p style="padding: 20px;">Best service in BB2</p>
+/* Header & Navigation */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    border-bottom: 1px solid var(--border-color);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
-</body>
-</html>
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+header nav {
+    display: flex;
+    gap: 30px;
+}
+
+header nav a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: var(--accent);
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+}
+
+.banner {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* Grid & Cards */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 0 5%;
+    margin-bottom: 60px;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent);
+}
+
+/* Buttons */
+.btn {
+    background: #fff;
+    color: #000;
+    padding: 14px 28px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 40px;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2rem; }
+    header nav { gap: 15px; }
+}
