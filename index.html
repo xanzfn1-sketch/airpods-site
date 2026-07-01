@@ -19,28 +19,27 @@
     </div>
 
     <!-- ==========================================================================
-         2. NAVIGATION HEADER
+         2. NAVIGATION HEADER (LOGO REMOVED & BUTTONS ALIGNED)
          ========================================================================== -->
     <header class="header">
-        <div class="logo" role="banner">BB2 STORE</div>
         
-        <nav aria-label="Primary Navigation">
-            <a href="index.html" class="active">Store</a>
-            <!-- Moncler Button Trigger (Matches Basket Trigger Layout Style) -->
-            <button class="cart-trigger moncler-trigger" onclick="openMonclerModal(event)" aria-label="View Moncler Collection info" style="margin-left: 10px;">
+        <nav aria-label="Primary Navigation" style="display: flex; gap: 10px; align-items: center;">
+            <!-- Store Link converted to matching Button Style -->
+            <button class="cart-trigger active" onclick="window.location.href='index.html'" aria-label="Go to Store" style="background: #ffffff; color: #000000;">
+                <span>Store</span>
+            </button>
+
+            <!-- Moncler Button Trigger (Sits right next to Store) -->
+            <button class="cart-trigger moncler-trigger" onclick="openMonclerModal(event)" aria-label="View Moncler Collection info">
                 <span>Moncler</span>
             </button>
         </nav>
 
         <div class="header-right">
-            <!-- Call Contact Button -->
-            <a href="tel:+447463399522" class="nav-contact-btn call-btn" aria-label="Call Us">📞 Call</a>
-            
-            <!-- WhatsApp Contact Button -->
-            <a href="https://wa.me/447463399522" class="nav-contact-btn wa-btn" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬 WhatsApp</a>
+            <!-- Call and WhatsApp buttons are styled via your style.css at the bottom -->
 
-            <!-- Basket Trigger -->
-            <button class="cart-trigger" onclick="toggleCart(true)" aria-label="Open Basket">
+            <!-- Basket Trigger (Given inline margin-top to push it slightly down out of block zones) -->
+            <button class="cart-trigger" onclick="toggleCart(true)" aria-label="Open Basket" style="margin-top: 5px;">
                 <span>Basket</span>
                 <span id="cart-count" class="cart-count-badge">0</span>
             </button>
@@ -157,7 +156,7 @@
 
             <div class="faq-item">
                 <h3>Why are we bringing it?</h3>
-                <p>Our customers demand top-tier streetwear and high-end matching aesthetics to pair with their next-gen tech. We believe premium accessories should be just as accessible and rapidly delivered as our audio line.</p>
+                <p>Our customers demand top-tier streetwear and high-end matching aesthetics to pair with their next-gen tech. We believe luxury accessories should be just as accessible and rapidly delivered as our audio line.</p>
             </div>
 
             <div class="faq-item">
