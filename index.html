@@ -11,110 +11,91 @@
 
 <!-- INTRO -->
 <div id="intro">
-    <h1>BB2 STORE</h1>
+    <div class="introBox">
+        <h1>BB2 STORE</h1>
+        <p>Loading premium experience...</p>
+    </div>
 </div>
 
-<!-- HEADER -->
-<header>
-    <div class="logo">BB2 STORE</div>
+<!-- TOP BAR -->
+<header class="topbar">
+    <div class="brand">BB2 STORE</div>
 
-    <div class="info">
-        <p>Seller: Rayyan Adam</p>
-        <p>Support: WhatsApp Available</p>
+    <div class="meta">
+        <span>Seller: Rayyan Adam</span>
+        <span>UK BB2</span>
+        <span>Secure Orders</span>
     </div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-    <h1>Premium AirPods</h1>
-    <p>Fast UK Delivery • Trusted Seller • BB2 Based</p>
+    <h1>Premium AirPods Collection</h1>
+    <p>Fast delivery • Trusted seller • High quality products</p>
 </section>
 
-<!-- PRODUCTS -->
-<section class="pricing">
-
-    <div class="card">
-        <h2>1 Pair</h2>
-        <h1>£15</h1>
-        <button class="btn" onclick="addToCart('1 Pair - £15')">Add to Basket</button>
-    </div>
-
-    <div class="card">
-        <h2>2 Pairs</h2>
-        <h1>£25</h1>
-        <button class="btn" onclick="addToCart('2 Pairs - £25')">Add to Basket</button>
-    </div>
-
-    <div class="card">
-        <h2>5 Pairs</h2>
-        <h1>£60</h1>
-        <button class="btn" onclick="addToCart('5 Pairs - £60')">Add to Basket</button>
-    </div>
-
-    <div class="card">
-        <h2>Bulk Deal</h2>
-        <h1>£150</h1>
-        <p>Best Value Package</p>
-        <button class="btn" onclick="addToCart('Bulk - £150')">Add to Basket</button>
-    </div>
-
+<!-- FEATURES -->
+<section class="features">
+    <div class="feature">Fast Delivery</div>
+    <div class="feature">Cash Accepted</div>
+    <div class="feature">Verified Stock</div>
+    <div class="feature">BB2 Local</div>
 </section>
 
-<!-- NAV BUTTONS -->
-<div class="buttons">
+<!-- PRODUCT GRID -->
+<section id="products" class="grid"></section>
 
-    <a href="cart.html"><button class="btn">🧺 Basket</button></a>
-    <a href="reviews.html"><button class="btn">⭐ Reviews</button></a>
-    <a href="order.html"><button class="btn">🛒 Order</button></a>
+<!-- INFO SECTIONS -->
+<section class="infoBlock">
+    <h2>Why choose us?</h2>
+    <p>We provide fast, reliable delivery and tested products across BB2 and surrounding areas.</p>
+</section>
 
+<section class="infoBlock">
+    <h2>Delivery</h2>
+    <p>Orders processed within 24 hours. Delivery usually 1–3 days.</p>
+</section>
+
+<section class="infoBlock">
+    <h2>Payment</h2>
+    <p>Cash on delivery or direct contact payment available.</p>
+</section>
+
+<!-- NAV -->
+<div class="nav">
+    <a href="cart.html" class="btn">Basket</a>
+    <a href="reviews.html" class="btn">Reviews</a>
+    <a href="order.html" class="btn">Order</a>
 </div>
 
 <!-- CONTACT -->
 <section class="contact">
-
     <h2>Contact</h2>
     <p>📞 07463 399522</p>
 
-    <a href="tel:07463399522"><button class="btn">Call Now</button></a>
-    <a href="https://wa.me/447463399522" target="_blank"><button class="btn">WhatsApp</button></a>
-
+    <a href="tel:07463399522" class="btn">Call</a>
+    <a href="https://wa.me/447463399522" class="btn">WhatsApp</a>
 </section>
 
-<!-- FLOAT CHAT -->
-<button id="chatButton">💬</button>
+<!-- CHAT BUTTON -->
+<button id="chatBtn">💬</button>
 
+<!-- CHAT BOX -->
 <div id="chatBox">
-
-    <div class="chat-header">
+    <div class="chatHeader">
         BB2 Support
         <span onclick="closeChat()">✖</span>
     </div>
 
     <form action="https://formspree.io/f/mzdlagqp" method="POST">
-
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <textarea name="message" placeholder="Ask a question..." required></textarea>
-
+        <input name="name" placeholder="Name" required>
+        <input name="email" placeholder="Email" required>
+        <textarea name="message" placeholder="Message" required></textarea>
         <button class="btn" type="submit">Send</button>
-
     </form>
-
 </div>
 
 <script src="script.js"></script>
-
-<script>
-const chatBox = document.getElementById("chatBox");
-
-document.getElementById("chatButton").onclick = () => {
-    chatBox.style.display = "block";
-};
-
-function closeChat(){
-    chatBox.style.display = "none";
-}
-</script>
 
 </body>
 </html>
