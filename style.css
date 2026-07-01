@@ -1,4 +1,4 @@
-/* ======================= APPLE APP DESIGN SYSTEM ======================= */
+/* ======================= RED, BLACK & WHITE MIX SYSTEM ======================= */
 * {
     margin: 0;
     padding: 0;
@@ -7,8 +7,8 @@
 }
 
 body {
-    background: #000000;
-    color: #f5f5f7;
+    background: #000000; /* Pure Black Background */
+    color: #ffffff; /* Stark White Text */
     overflow-x: hidden;
     line-height: 1.5;
 }
@@ -20,11 +20,11 @@ body {
     align-items: center;
     padding: 0 5%;
     height: 60px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
     position: sticky;
     top: 0;
-    background: rgba(22, 22, 23, 0.8);
+    background: rgba(10, 10, 10, 0.8);
     z-index: 90;
 }
 
@@ -32,23 +32,25 @@ body {
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 1px;
+    color: #ffffff;
 }
 
 .cart-trigger {
-    background: rgba(255, 255, 255, 0.1);
+    background: #ffffff; /* White Button */
     border: none;
     padding: 8px 16px;
     border-radius: 20px;
-    color: #fff;
+    color: #000000; /* Black Text */
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 8px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .cart-count-badge {
-    background: #0071e3;
+    background: #ff453a; /* Vibrant Red Badge */
+    color: #ffffff;
     padding: 2px 8px;
     border-radius: 10px;
     font-size: 12px;
@@ -63,14 +65,12 @@ body {
 .hero h1 {
     font-size: 48px;
     font-weight: 800;
-    background: linear-gradient(180deg, #ffffff 0%, #a1a1a6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #ffffff;
     letter-spacing: -0.02em;
 }
 
 .hero p {
-    color: #86868b;
+    color: #e5e5ea;
     margin-top: 10px;
 }
 
@@ -79,11 +79,11 @@ body {
     margin: 10px auto;
     padding: 12px;
     text-align: center;
-    background: #1d1d1f;
+    background: #ff453a; /* Red Alert Banner */
     border-radius: 12px;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 13px;
-    color: #ff453a;
+    color: #ffffff;
 }
 
 /* LAYOUT GRIDS */
@@ -95,7 +95,8 @@ body {
 }
 
 .card {
-    background: #1d1d1f;
+    background: #121212; /* Deep Matte Gray/Black Cards */
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 18px;
     padding: 30px 20px;
     text-align: center;
@@ -106,8 +107,8 @@ body {
     transform: scale(1.02);
 }
 
-.card h2 { font-size: 20px; margin-bottom: 12px;}
-.card h1 { font-size: 32px; margin-bottom: 20px; color: #fff;}
+.card h2 { font-size: 20px; margin-bottom: 12px; color: #ffffff;}
+.card h1 { font-size: 32px; margin-bottom: 20px; color: #ff453a;} /* Red Accent Prices */
 
 /* SYSTEM PILL BUTTONS */
 .btn {
@@ -116,17 +117,49 @@ body {
     border-radius: 25px;
     border: none;
     cursor: pointer;
-    font-weight: 600;
-    background: #0071e3;
-    color: white;
+    font-weight: 700;
+    background: #ffffff; /* Stark White Buttons */
+    color: #000000; /* Black Text */
     text-decoration: none;
-    transition: background 0.2s;
+    transition: opacity 0.2s;
 }
 
-.btn:hover { background: #147ce5; }
-.whatsapp-btn { background: #25D366; }
+.btn:hover { opacity: 0.9; }
+.whatsapp-btn { background: #25D366; color: #ffffff; }
 
-/* ======================= GOD-TIER SLIDE-OUT DRAWER ======================= */
+/* ======================= INTRO SCREEN OVERLAY ======================= */
+#intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000000; /* Absolute Black covering everything */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999; /* Overrides everything safely */
+    opacity: 1;
+    transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.intro-logo {
+    width: 90px;
+    height: 90px;
+    animation: pulseLogo 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes pulseLogo {
+    0% { transform: scale(0.96); opacity: 0.9; }
+    100% { transform: scale(1.02); opacity: 1; }
+}
+
+#intro-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ======================= SLIDE-OUT DRAWER ======================= */
 .cart-drawer {
     position: fixed;
     top: 0;
@@ -146,7 +179,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.7);
     backdrop-filter: blur(4px);
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -163,7 +196,8 @@ body {
     width: 100%;
     max-width: 400px;
     height: 100%;
-    background: #161617;
+    background: #121212;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: -10px 0 30px rgba(0,0,0,0.5);
     display: flex;
     flex-direction: column;
@@ -186,7 +220,7 @@ body {
 .close-drawer {
     background: none;
     border: none;
-    color: #86868b;
+    color: #ffffff;
     font-size: 20px;
     cursor: pointer;
 }
@@ -201,7 +235,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #1d1d1f;
+    background: #1c1c1e;
     padding: 16px;
     border-radius: 12px;
     margin-bottom: 12px;
@@ -210,7 +244,7 @@ body {
 .quantity-controls {
     display: flex;
     align-items: center;
-    background: rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.1);
     border-radius: 20px;
     padding: 4px;
 }
@@ -218,17 +252,18 @@ body {
 .qty-btn {
     background: none;
     border: none;
-    color: #fff;
+    color: #ff453a; /* Red math operators */
     width: 28px;
     height: 28px;
     cursor: pointer;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .qty-val {
     padding: 0 8px;
     font-size: 14px;
+    color: #ffffff;
 }
 
 .cart-drawer-footer {
@@ -244,10 +279,15 @@ body {
     margin-bottom: 16px;
 }
 
+#total {
+    color: #ff453a; /* Highlighted red total price */
+}
+
 .checkout-btn {
     width: 100%;
     text-align: center;
-    background: #ff453a;
+    background: #ff453a; /* Action Red Order Button */
+    color: #ffffff;
 }
 
 /* BLOCKS & CONTAINERS */
@@ -255,14 +295,45 @@ body {
     width: 90%;
     margin: 30px auto;
     padding: 24px;
-    background: #1d1d1f;
+    background: #121212;
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
 }
 
+.infoBlock h2 {
+    color: #ff453a; /* Red Section Titles */
+    margin-bottom: 10px;
+}
+
+.infoBlock p, .infoBlock li {
+    color: #e5e5ea;
+}
+
+.trustGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 0 5% 20px;
+}
+
+.trust {
+    background: #121212;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.sectionTitle {
+    text-align: center;
+    margin-top: 40px;
+}
+
 .reviews { text-align: center; margin: 40px auto; width: 90%; }
-#reviewBox { margin-top: 12px; font-size: 18px; color: #fff; }
+#reviewBox { margin-top: 12px; font-size: 18px; color: #ffffff; font-weight: 600; }
 .contact { text-align: center; margin: 60px 0; }
-.footer { text-align: center; padding: 30px; color: #424245; border-top: 1px solid rgba(255,255,255,0.05); }
+.footer { text-align: center; padding: 30px; color: #8e8e93; border-top: 1px solid rgba(255,255,255,0.05); }
 
 .floatWhatsApp {
     position: fixed;
@@ -285,7 +356,7 @@ body {
     position: fixed;
     bottom: 85px;
     right: 20px;
-    background: #333336;
+    background: #ff453a; /* Alert Red Toast */
     color: white;
     padding: 12px 18px;
     border-radius: 10px;
@@ -293,4 +364,9 @@ body {
     transition: 0.2s;
     font-size: 14px;
     z-index: 1000;
+}
+
+@media(max-width:768px){
+    .hero h1{font-size:36px;}
+    .header{padding: 0 20px;}
 }
