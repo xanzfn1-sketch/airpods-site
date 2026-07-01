@@ -3,286 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moncler Drop — BB2 Store</title>
+    <title>Moncler Drop | BB2 Store</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Reset & Layout Base */
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #050505;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-
-        /* Fullscreen Video Background Box */
-        .video-background-wrap {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-            pointer-events: none; /* Prevents users from clicking/pausing the youtube player */
-        }
-
-        /* Premium cinematic dark gradient overlay for text readability */
-        .video-background-wrap::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(10,10,10,0.5) 0%, rgba(5,5,5,0.92) 100%),
-                        linear-gradient(180deg, rgba(5,5,5,0.75) 0%, rgba(5,5,5,0.95) 100%);
-            z-index: 1;
-        }
-
-        /* Scale and position the iframe to cut out black bars and borders */
-        .video-background-wrap iframe {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100vw;
-            height: 56.25vw; /* 16:9 Aspect Ratio */
-            min-height: 100vh;
-            min-width: 177.77vh; /* 16:9 Aspect Ratio */
-            transform: translate(-50%, -50%);
-            border: none;
-        }
-
-        /* Content Layering */
-        .moncler-container {
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 140px 20px 80px;
-            box-sizing: border-box;
-            position: relative;
-            z-index: 2;
-        }
-
-        .moncler-hero-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .status-badge {
-            background: #ff453a;
-            color: #ffffff;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: inline-block;
-            margin-bottom: 20px;
-            box-shadow: 0 0 20px rgba(255, 69, 58, 0.4);
-            animation: pulseGlow 2s infinite alternate;
-        }
-
-        .main-title {
-            font-size: 48px;
-            font-weight: 900;
-            letter-spacing: 4px;
-            margin: 0 0 15px;
-            text-transform: uppercase;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.6);
-        }
-
-        .hype-text {
-            color: #a1a1a6;
-            font-size: 16px;
-            max-width: 580px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        .drop-info-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        /* Transparent Frosted Glass Cards */
-        .info-card {
-            background: rgba(20, 20, 22, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border-radius: 20px;
-            padding: 35px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .info-card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(255, 69, 58, 0.3);
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        .card-tag {
-            color: #ff453a;
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .info-card h2 {
-            font-size: 24px;
-            margin: 0 0 14px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .info-card p {
-            color: #d1d1d6;
-            font-size: 15px;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        .footer-note {
-            text-align: center;
-            margin-top: 60px;
-            color: #636366;
-            font-size: 12px;
-            letter-spacing: 0.5px;
-        }
-
-        @keyframes pulseGlow {
-            0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 69, 58, 0.4); }
-            100% { transform: scale(1.03); box-shadow: 0 0 25px rgba(255, 69, 58, 0.7); }
-        }
-    </style>
 </head>
+
 <body>
 
-    <!-- ======================= YOUTUBE BACKGROUND IFRAME TARGET CONTAINER ======================= -->
-    <div class="video-background-wrap">
-        <div id="yt-bg-player"></div>
-    </div>
-
-    <!-- ======================= NAVIGATION HEADER ======================= -->
+    <!-- Header -->
     <header class="header">
         <div class="logo">BB2 STORE</div>
-        <nav style="display: flex; gap: 15px; align-items: center;">
-            <a href="index.html" style="color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px;">Store</a>
-            <a href="moncler.html" style="color: #ff453a; text-decoration: none; font-weight: 600; font-size: 14px;">Moncler Drop</a>
-            <a href="faq.html" style="color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px;">FAQs</a>
-            <a href="about.html" style="color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px;">About</a>
-            <button class="cart-trigger" onclick="toggleCart(true)">
-                <span>Basket</span>
-                <span id="cart-count" class="cart-count-badge">0</span>
-            </button>
+        <nav style="display: flex; gap: 20px; align-items: center;">
+            <a href="index.html" style="color: #ffffff; text-decoration: none;">Store</a>
+            <a href="moncler.html" style="color: #ff453a; text-decoration: none; font-weight: 600;">Moncler Drop</a>
+            <button class="cart-trigger" onclick="toggleCart(true)">Basket</button>
         </nav>
     </header>
 
-    <!-- ======================= MAIN EXCLUSIVES CORE ======================= -->
-    <div class="moncler-container">
-        
-        <header class="moncler-hero-header">
-            <div class="status-badge">LOCK IN FOR THE DROP</div>
-            <h1 class="main-title">MONCLER TRIPLE BLACK</h1>
-            <p class="hype-text">Real-time showcases on the premium heavyweight knit execution. Built for those who know the difference.</p>
-        </header>
-
-        <section class="drop-info-grid">
-
-            <!-- WHY WE WILL BRING IT -->
-            <div class="info-card">
-                <span class="card-tag">01 // THE WHY</span>
-                <h2>Why We Are Bringing It</h2>
-                <p>
-                    The streets are flooded with low-quality, basic items. We are stepping in to change that. We curated this exclusive Moncler capsule to give you authentic luxury insulation mixed with an entirely blacked-out design language. This is high-end tactical streetwear that stands out by staying completely silent.
-                </p>
-            </div>
-
-            <!-- WHEN WILL WE BRING IT -->
-            <div class="info-card">
-                <span class="card-tag">02 // THE TIMELINE</span>
-                <h2>When Will It Arrive?</h2>
-                <p>
-                    <strong>Status: Coming Soon.</strong> The final quality batch clearance process is taking place behind closed doors right now. Once our strict inspection wrap-up ends, ordering panels will open instantly. There will be no warnings—first come, first served.
-                </p>
-            </div>
-
-            <!-- WHERE IS IT RIGHT NOW -->
-            <div class="info-card">
-                <span class="card-tag">03 // THE LOCATION</span>
-                <h2>Where Is It Right Now?</h2>
-                <p>
-                    Stock is 100% secured on-site. Every individual unit is physically sorted, cataloged, and wrapped inside our primary BB1 & BB2 regional shipping centers. The boxes are ready on the distribution floor, prepared to go straight onto our fast same-day dispatch routes.
-                </p>
-            </div>
-
+    <main class="container" style="padding-top: 50px;">
+        <section class="hero">
+            <h1>Moncler Collection</h1>
+            <p>Premium quality, limited availability. Same-day delivery in BB2.</p>
         </section>
 
-        <div class="footer-note">
-            <p>© BB2 Store Vault System • High-Tier Sourcing • All Rights Reserved</p>
+        <!-- Moncler Grid -->
+        <section id="moncler-products" class="grid">
+            <!-- Items injected by JS or hardcoded -->
+            <div class="card">
+                <h2>Moncler Gilet</h2>
+                <h1>£85</h1>
+                <button class="btn" onclick="addToCart('Moncler Gilet', 85)">Add to Basket</button>
+            </div>
+            <div class="card">
+                <h2>Moncler Maya Jacket</h2>
+                <h1>£140</h1>
+                <button class="btn" onclick="addToCart('Moncler Maya', 140)">Add to Basket</button>
+            </div>
+            <div class="card">
+                <h2>Moncler Beanie</h2>
+                <h1>£35</h1>
+                <button class="btn" onclick="addToCart('Moncler Beanie', 35)">Add to Basket</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cart Drawer (Included for consistency) -->
+    <div id="cart-drawer" class="cart-drawer">
+        <div class="cart-drawer-overlay" onclick="toggleCart(false)"></div>
+        <div class="cart-drawer-content">
+            <div class="cart-drawer-header">
+                <h2>Your Basket</h2>
+                <button class="close-drawer" onclick="toggleCart(false)">✕</button>
+            </div>
+            <div id="cart-items-container"></div>
+            <div class="cart-drawer-footer">
+                <div class="total-row"><span>Total:</span> <span id="total">£0</span></div>
+                <button class="btn checkout-btn" onclick="checkout()">Checkout via WhatsApp</button>
+            </div>
         </div>
     </div>
 
-    <!-- ======================= ASYNCHRONOUS YOUTUBE CONTROLLER LOGIC ======================= -->
-    <script>
-        // Load the Iframe Player API script asynchronously from Google
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        var player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('yt-bg-player', {
-                videoId: 'b00A4DVQYrQ', 
-                playerVars: {
-                    'autoplay': 1,
-                    'mute': 1,           // Forces the browser to allow autoplay layout configurations immediately
-                    'controls': 0,       // Removes timeline bar, play, and settings icons
-                    'rel': 0,            // Prevents showing recommendations at the end
-                    'showinfo': 0,       // Hides titles and uploader profile icons
-                    'iv_load_policy': 3,  // Turns off popup video annotations
-                    'modestbranding': 1, // Completely minimizes YouTube branding footprint
-                    'loop': 1,           // Enable looping structural flags
-                    'playlist': 'b00A4DVQYrQ', // Necessary fallback argument to execute loop correctly
-                    'disablekb': 1       // Disables accidental spacebar pauses
-                },
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
-                }
-            });
-        }
-
-        function onPlayerReady(event) {
-            event.target.mute(); // Absolute assurance audio pipeline is severed
-            event.target.playVideo();
-        }
-
-        function onPlayerStateChange(event) {
-            // Re-trigger playback loop instantly if video completes or gets blocked by browser priority
-            if (event.data === YT.PlayerState.ENDED) {
-                player.playVideo();
-            }
-        }
-    </script>
+    <footer class="footer">
+        <p>© BB2 Store — All Rights Reserved</p>
+    </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Optional helper to ensure adding items here works with your global cart
+        function addToCart(name, price) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let item = cart.find(i => i.name === name);
+            item ? item.qty++ : cart.push({ name, price, qty: 1 });
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert(name + " added to basket!");
+        }
+    </script>
 </body>
 </html>
-<!-- Replace your current wrapper with this -->
-<div class="video-background-wrap">
-    <video autoplay loop muted playsinline poster="image_fcec92.png">
-        <source src="moncler-vid.mp4" type="video/mp4">
-    </video>
-</div>
