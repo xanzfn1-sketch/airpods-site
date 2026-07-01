@@ -5,30 +5,163 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moncler Drop — BB2 Store</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Load Three.js from CDN for the 3D Engine -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
-        /* Custom page styling overrides to maximize the luxury matte black theme */
-        .moncler-hero {
-            text-align: center;
-            padding: 60px 20px 20px;
-            background: radial-gradient(circle at center, #1c1c1e 0%, #0a0a0a 100%);
+        /* Reset & Layout */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0a0a0a;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #ffffff;
+            overflow-x: hidden;
         }
-        .status-pill {
+
+        /* Fullscreen Video Background Background Wrap */
+        .video-background-wrap {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        /* Dark overlay to ensure premium text readability over the video footage */
+        .video-background-wrap::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(10, 10, 10, 0.85) 0%, rgba(10, 10, 10, 0.95) 100%);
+        }
+
+        .video-background-wrap video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Content Card Grids */
+        .moncler-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 120px 20px 60px;
+            box-sizing: border-box;
+        }
+
+        .moncler-hero-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .status-badge {
             background: #ff453a;
             color: #ffffff;
             padding: 6px 16px;
             border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(255, 69, 58, 0.4);
+        }
+
+        .main-title {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            margin: 0 0 15px;
+            text-transform: uppercase;
+        }
+
+        .hype-text {
+            color: #8e8e93;
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .drop-info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .drop-info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .full-width-card {
+                grid-column: span 2;
+            }
+        }
+
+        .info-card {
+            background: rgba(28, 28, 30, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 30px;
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .info-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 69, 58, 0.2);
+        }
+
+        .card-tag {
+            color: #ff453a;
             font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            display: inline-block;
-            margin-bottom: 15px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .info-card h2 {
+            font-size: 22px;
+            margin: 0 0 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .info-card p {
+            color: #aeaeb2;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 50px;
+            color: #48484a;
+            font-size: 13px;
         }
     </style>
 </head>
-<body style="background-color: #0a0a0a; color: #ffffff;">
+<body>
+
+    <!-- ======================= BACKGROUND VIDEO LAYER ======================= -->
+    <div class="video-background-wrap">
+        <!-- Pexels/Pixabay dynamic designer streetwear looping video background placeholder -->
+        <video autoplay loop muted playsinline poster="image_fb9015.png">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-man-in-neon-lit-urban-fashion-apparel-40091-large.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+    </div>
 
     <!-- ======================= NAVIGATION HEADER ======================= -->
     <header class="header">
@@ -45,196 +178,51 @@
         </nav>
     </header>
 
-    <!-- ======================= MONCLER THEMED HERO ======================= -->
-    <section class="moncler-hero">
-        <div class="status-pill">COMING SOON</div>
-        <h1 style="font-size: 36px; color: #ffffff; letter-spacing: 2px; margin: 0 0 10px 0;">MONCLER BLACKOUT COLLECTION</h1>
-        <p style="color: #8e8e93; font-size: 16px; max-width: 600px; margin: 0 auto; line-height: 1.6;">
-            Premium winter streetwear engineered for the elements. Secured local delivery batches are currently in transit. 
-        </p>
-    </section>
+    <!-- ======================= MAIN CONTENT MATRIX ======================= -->
+    <div class="moncler-container">
+        
+        <header class="moncler-hero-header">
+            <div class="status-badge">Exclusive Drop Radar</div>
+            <h1 class="main-title">Moncler Blackout</h1>
+            <p class="hype-text">The definitive winter streetwear staple is landing. Premium heavyweight ribbed builds featuring our iconic signature matte-black monochrome emblem.</p>
+        </header>
 
-    <!-- ======================= LIVE 3D THEMED CONTAINER ======================= -->
-    <main style="max-width: 800px; margin: 0 auto; padding: 20px;">
-        <div style="background: #1c1c1e; border: 1px dashed rgba(255, 69, 58, 0.3); border-radius: 24px; padding: 30px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.6);">
-            <h2 style="font-size: 20px; color: #ffffff; margin-bottom: 5px; letter-spacing: 1px;">Interactive Ribbed Beanie Preview</h2>
-            <p style="color: #8e8e93; font-size: 13px; margin-bottom: 25px;">Swipe or click-drag anywhere on the viewport below to inspect the build</p>
-            
-            <!-- Three.js Render Target Window -->
-            <div id="moncler-canvas-viewport" style="width: 100%; height: 400px; background: radial-gradient(circle, #252528 0%, #111112 100%); border-radius: 16px; cursor: grab; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);"></div>
-            
-            <div style="margin-top: 25px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; font-size: 14px;">
-                <div style="background: rgba(255,255,255,0.03); padding: 8px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); color: #e5e5ea;">
-                    <span style="color: #ff453a; font-weight: bold;">Drop Status:</span> Restocking Queue 📦
-                </div>
-                <div style="background: rgba(255,255,255,0.03); padding: 8px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); color: #e5e5ea;">
-                    <span style="color: #ff453a; font-weight: bold;">Edition:</span> Triple-Black Stealth Matte
-                </div>
+        <section class="drop-info-grid">
+
+            <!-- WHY ARE WE BRINGING IT? -->
+            <div class="info-card">
+                <span class="card-tag">The Concept</span>
+                <h2>Why We're Bringing It</h2>
+                <p>
+                    You shouldn't have to compromise on elite luxury insulation to maintain a clean aesthetic. We curated this hyper-stealth capsule specifically to bridge high-end tactical outerwear with sleek, modern monochrome fits. No loud branding—just premium quality.
+                </p>
             </div>
+
+            <!-- WHEN WILL WE DROP IT? -->
+            <div class="info-card">
+                <span class="card-tag">The Timeline</span>
+                <h2>When Will It Drop</h2>
+                <p>
+                    <strong>Status: Coming Soon.</strong> Final quality control inspections are concluding within our secure local transit logs. Text alerts and immediate queue openings will push live the exact second authentication clears. Keep your notifications active.
+                </p>
+            </div>
+
+            <!-- WHERE IS IT RIGHT NOW? -->
+            <div class="info-card full-width-card">
+                <span class="card-tag">Logistics Tracker</span>
+                <h2>Where Is It Right Now?</h2>
+                <p>
+                    Batches are physically sorted and locked inside our primary **BB1 & BB2 delivery hubs**. They are fully prepped for our same-day local dispatch routes. The inventory is secure, on-site, and waiting for the distribution drop phase to open.
+                </p>
+            </div>
+
+        </section>
+
+        <div class="footer-note">
+            <p>© BB2 Store Vault Network — Secure High-End Streetwear Sourcing</p>
         </div>
-    </main>
+    </div>
 
-    <!-- ======================= FOOTER ======================= -->
-    <footer class="footer" style="margin-top: 60px;">
-        <p>© BB2 Store — All Rights Reserved</p>
-    </footer>
-
-    <!-- ======================= HARDWARE ACCELERATED THREE.JS MOTOR ======================= -->
-    <script>
-        let scene, camera, renderer, beanieObject;
-        let dragging = false;
-        let lastPosition = { x: 0, y: 0 };
-
-        function initMonclerEngine() {
-            const container = document.getElementById('moncler-canvas-viewport');
-            const w = container.clientWidth;
-            const h = container.clientHeight;
-
-            // 1. Scene
-            scene = new THREE.Scene();
-
-            // 2. Camera
-            camera = new THREE.PerspectiveCamera(40, w / h, 0.1, 1000);
-            camera.position.z = 6.0;
-
-            // 3. WebGL Renderer
-            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-            renderer.setSize(w, h);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            container.appendChild(renderer.domElement);
-
-            // 4. Main object compilation group
-            beanieObject = new THREE.Group();
-            scene.add(beanieObject);
-
-            // 5. Build geometry representing the beanie from image_fb9015.png
-            const domeGeo = new THREE.CylinderGeometry(0.75, 1.25, 1.7, 32, 16);
-            const pos = domeGeo.attributes.position;
-            for (let i = 0; i < pos.count; i++) {
-                let y = pos.getY(i);
-                if (y > 0) {
-                    pos.setX(i, pos.getX(i) * 0.85);
-                    pos.setZ(i, pos.getZ(i) * 0.85);
-                }
-            }
-
-            // High-grade matte dark materials mimicking image_fb9015.png properties
-            const blackFabricMat = new THREE.MeshStandardMaterial({
-                color: 0x121213, 
-                roughness: 0.95,
-                metalness: 0.03
-            });
-
-            const domeMesh = new THREE.Mesh(domeGeo, blackFabricMat);
-            domeMesh.position.y = 0.25;
-            beanieObject.add(domeMesh);
-
-            // Folded thick rim cuff
-            const cuffGeo = new THREE.CylinderGeometry(1.36, 1.39, 0.75, 36);
-            const cuffMesh = new THREE.Mesh(cuffGeo, blackFabricMat);
-            cuffMesh.position.y = -0.45;
-            beanieObject.add(cuffMesh);
-
-            // Top crown stitch center
-            const topStitchGeo = new THREE.SphereGeometry(0.09, 16, 16);
-            const topStitchMesh = new THREE.Mesh(topStitchGeo, blackFabricMat);
-            topStitchMesh.position.y = 1.1;
-            beanieObject.add(topStitchMesh);
-
-            // 6. Embedded Matte Circular Moncler Logo Badge (All Blackout look)
-            const badgeUnit = new THREE.Group();
-            
-            const badgePlateGeo = new THREE.CylinderGeometry(0.22, 0.22, 0.04, 32);
-            const badgeMat = new THREE.MeshStandardMaterial({ 
-                color: 0x18181a, 
-                roughness: 0.75,
-                metalness: 0.08 
-            });
-            const badgePlate = new THREE.Mesh(badgePlateGeo, badgeMat);
-            badgePlate.rotation.x = Math.PI / 2;
-            badgeUnit.add(badgePlate);
-
-            // Dark subtle embossed inner indicator contrast detailing
-            const embossGeo = new THREE.ConeGeometry(0.07, 0.14, 4);
-            const embossMat = new THREE.MeshStandardMaterial({ color: 0x242427, roughness: 0.8 });
-            const embossMesh = new THREE.Mesh(embossGeo, embossMat);
-            embossMesh.position.set(0, 0.02, 0.03);
-            badgeUnit.add(embossMesh);
-
-            // Position and mount badge onto the front face center of the lower cuff
-            badgeUnit.position.set(0, -0.45, 1.38);
-            beanieObject.add(badgeUnit);
-
-            // 7. Dynamic Studio Array Lighting Setup
-            const ambient = new THREE.AmbientLight(0xffffff, 0.45);
-            scene.add(ambient);
-
-            const KeyLight = new THREE.DirectionalLight(0xffffff, 1.6);
-            KeyLight.position.set(4, 5, 5);
-            scene.add(KeyLight);
-
-            const FillLight = new THREE.DirectionalLight(0xffffff, 0.4);
-            FillLight.position.set(-4, 2, -2);
-            scene.add(FillLight);
-
-            // 8. Pan, Touch & Drag Event Interface Mapping
-            const onPointerStart = (e) => {
-                dragging = true;
-                container.style.cursor = 'grabbing';
-                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-                lastPosition = { x: clientX, y: clientY };
-            };
-
-            const onPointerMove = (e) => {
-                if (!dragging) return;
-                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-
-                const dx = clientX - lastPosition.x;
-                const dy = clientY - lastPosition.y;
-
-                beanieObject.rotation.y += dx * 0.008;
-                beanieObject.rotation.x += dy * 0.008;
-
-                lastPosition = { x: clientX, y: clientY };
-            };
-
-            const onPointerEnd = () => {
-                dragging = false;
-                container.style.cursor = 'grab';
-            };
-
-            container.addEventListener('mousedown', onPointerStart);
-            window.addEventListener('mousemove', onPointerMove);
-            window.addEventListener('mouseup', onPointerEnd);
-
-            container.addEventListener('touchstart', onPointerStart, { passive: true });
-            window.addEventListener('touchmove', onPointerMove, { passive: true });
-            window.addEventListener('touchend', onPointerEnd);
-
-            // 9. Frame Engine Execution Loop
-            function tick() {
-                requestAnimationFrame(tick);
-                if (!dragging) {
-                    beanieObject.rotation.y += 0.004; // Smooth automatic exhibition rotation
-                }
-                renderer.render(scene, camera);
-            }
-            tick();
-
-            // Screen boundary management recalculator
-            window.addEventListener('resize', () => {
-                const updatedW = container.clientWidth;
-                const updatedH = container.clientHeight;
-                camera.aspect = updatedW / updatedH;
-                camera.updateProjectionMatrix();
-                renderer.setSize(updatedW, updatedH);
-            });
-        }
-
-        // Fire rendering sequence immediately on window frame completion
-        window.addEventListener('DOMContentLoaded', initMonclerEngine);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
