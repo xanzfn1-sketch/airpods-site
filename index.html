@@ -19,26 +19,24 @@
     </div>
 
     <!-- ==========================================================================
-         2. NAVIGATION HEADER (LOGO REMOVED & BUTTONS ALIGNED)
+         2. NAVIGATION HEADER
          ========================================================================== -->
     <header class="header">
         
         <nav aria-label="Primary Navigation" style="display: flex; gap: 10px; align-items: center;">
-            <!-- Store Link converted to matching Button Style -->
+            <!-- Store Link Button Style -->
             <button class="cart-trigger active" onclick="window.location.href='index.html'" aria-label="Go to Store" style="background: #ffffff; color: #000000;">
                 <span>Store</span>
             </button>
 
-            <!-- Moncler Button Trigger (Sits right next to Store) -->
-            <button class="cart-trigger moncler-trigger" onclick="openMonclerModal(event)" aria-label="View Moncler Collection info">
+            <!-- Moncler Button (Takes you directly to moncler.html) -->
+            <button class="cart-trigger moncler-trigger" onclick="window.location.href='moncler.html'" aria-label="Go to Moncler Page">
                 <span>Moncler</span>
             </button>
         </nav>
 
         <div class="header-right">
-            <!-- Call and WhatsApp buttons are styled via your style.css at the bottom -->
-
-            <!-- Basket Trigger (Given inline margin-top to push it slightly down out of block zones) -->
+            <!-- Basket Trigger -->
             <button class="cart-trigger" onclick="toggleCart(true)" aria-label="Open Basket" style="margin-top: 5px;">
                 <span>Basket</span>
                 <span id="cart-count" class="cart-count-badge">0</span>
@@ -94,7 +92,6 @@
             
             <!-- Dynamic Injection Anchor for JavaScript Products -->
             <div id="products" class="grid">
-                <!-- Fallback content for server side / direct source view -->
                 <noscript>
                     <p style="text-align: center; color: #8e8e93;">Please enable JavaScript to view our inventory.</p>
                 </noscript>
@@ -124,10 +121,7 @@
                 <button class="close-drawer" onclick="toggleCart(false)" aria-label="Close Basket">✕</button>
             </div>
             
-            <!-- Dynamic Cart Items Wrapper -->
-            <div id="cart-items-container" class="cart-items-body">
-                <!-- Rendered dynamically by script.js -->
-            </div>
+            <div id="cart-items-container" class="cart-items-body"></div>
             
             <div class="cart-drawer-footer">
                 <div class="total-row">
@@ -140,45 +134,14 @@
     </div>
 
     <!-- ==========================================================================
-         8. MONCLER INFO POPUP MODAL
+         8. ACCESSIBILITY OVERLAYS & WIDGETS
          ========================================================================== -->
-    <div id="moncler-modal" class="moncler-modal" aria-hidden="true">
-        <div class="moncler-modal-overlay" onclick="closeMonclerModal()"></div>
-        <div class="moncler-modal-content">
-            <button class="moncler-close" onclick="closeMonclerModal()">✕</button>
-            <h2>🏔️ Moncler Collection Coming Soon</h2>
-            <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin:15px 0;">
-            
-            <div class="faq-item">
-                <h3>What are we bringing?</h3>
-                <p>We are expanding our premium catalog to bring you exclusive, high-end <strong>Moncler Beanies, Hats</strong>, and premium winter accessories.</p>
-            </div>
-
-            <div class="faq-item">
-                <h3>Why are we bringing it?</h3>
-                <p>Our customers demand top-tier streetwear and high-end matching aesthetics to pair with their next-gen tech. We believe luxury accessories should be just as accessible and rapidly delivered as our audio line.</p>
-            </div>
-
-            <div class="faq-item">
-                <h3>When does it drop?</h3>
-                <p>The collection drops very soon. Stock will be highly limited upon initial release. Keep an eye on the storefront or send us a message to secure an early reservation link!</p>
-            </div>
-
-            <button class="btn wa-btn" style="margin-top: 25px; width: 100%; display: flex; align-items: center; justify-content: center;" onclick="window.open('https://wa.me/447463399522?text=Hi,%20I%27m%20interested%20in%20the%20upcoming%20Moncler%20drop!', '_blank')">💬 Get Notified via WhatsApp</button>
-        </div>
-    </div>
-
-    <!-- ==========================================================================
-         9. ACCESSIBILITY OVERLAYS & WIDGETS
-         ========================================================================== -->
-    <!-- Screen Toast Notification Context Container -->
     <div id="toast" role="status" aria-live="polite"></div>
 
-    <!-- Global Persistent Floating Sticky Actions -->
     <a class="floatWhatsApp" href="https://wa.me/447463399522" target="_blank" rel="noopener" aria-label="Contact Customer Support via WhatsApp">💬</a>
 
     <!-- ==========================================================================
-         10. FOOTER UTILITY NAVIGATION
+         9. FOOTER UTILITY NAVIGATION
          ========================================================================== -->
     <footer class="footer">
         <div class="footer-links" style="margin-bottom: 20px;">
