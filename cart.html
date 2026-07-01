@@ -1,25 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Basket</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BB2 Basket</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<h1>Your Basket</h1>
+<header class="header">
+<div class="logo">YOUR BASKET</div>
+</header>
 
-<div id="cart"></div>
+<section class="infoBlock">
+<h2>Items in Basket</h2>
+</section>
+
+<section id="cart" class="grid"></section>
 
 <h2 id="total"></h2>
 
-<button class="btn" onclick="checkout()">
+<div class="actions">
+<button class="btn checkout" onclick="checkout()">
 Checkout (Same Day Delivery)
 </button>
 
-<a href="index.html">
-<button class="btn">Back</button>
-</a>
+<a href="index.html" class="btn">Back to Store</a>
+</div>
 
 <script src="script.js"></script>
 
