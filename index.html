@@ -10,29 +10,28 @@
 
 <body>
 
-<div class="background"></div>
+<!-- INTRO -->
+<div id="intro">
+    <img src="images/logo.png" id="introLogo" alt="BB2 Store Logo">
+</div>
 
+<!-- HEADER -->
 <header>
-
     <div class="logo">
         <h2>BB2 Store</h2>
     </div>
 
     <div class="info">
-        <p>Seller: <strong>Rayyan Adam</strong></p>
-        <p>Website by <strong>Adam</strong></p>
+        <p>Seller: Rayyan Adam</p>
+        <p>Website: Adam</p>
     </div>
-
 </header>
 
+<!-- HERO -->
 <section class="hero">
-
     <span class="badge">ONLY AVAILABLE IN BB2</span>
-
     <h1>Premium AirPods</h1>
-
-    <p>High quality AirPods • Fast delivery</p>
-
+    <p>Fast delivery • High quality</p>
 </section>
 
 <!-- PRICES -->
@@ -41,27 +40,19 @@
     <div class="card">
         <h2>1 Pair</h2>
         <h1>£15</h1>
-        <button onclick="addToCart('1 Pair - £15')" class="btn">Add to Basket</button>
+        <button class="btn" onclick="addToCart('1 Pair - £15')">Add</button>
     </div>
 
     <div class="card">
         <h2>2 Pairs</h2>
-        <p class="old-price">£30</p>
         <h1>£25</h1>
-        <button onclick="addToCart('2 Pairs - £25')" class="btn">Add to Basket</button>
+        <button class="btn" onclick="addToCart('2 Pairs - £25')">Add</button>
     </div>
 
     <div class="card">
         <h2>5 Pairs</h2>
         <h1>£60</h1>
-        <button onclick="addToCart('5 Pairs - £60')" class="btn">Add to Basket</button>
-    </div>
-
-    <div class="card">
-        <h2>Bulk Deal</h2>
-        <h1>£150</h1>
-        <p>Get 5 FREE</p>
-        <button onclick="addToCart('Bulk - £150')" class="btn">Add to Basket</button>
+        <button class="btn" onclick="addToCart('5 Pairs - £60')">Add</button>
     </div>
 
 </section>
@@ -69,19 +60,9 @@
 <!-- BUTTONS -->
 <div class="buttons">
 
-    <a href="order.html">
-        <button class="btn">Order Now</button>
-    </a>
-
-    <a href="reviews.html">
-        <button class="btn">See Reviews</button>
-    </a>
-
-    <a href="cart.html">
-        <button class="btn">
-            🧺 Basket (<span id="cartCount">0</span>)
-        </button>
-    </a>
+    <a href="cart.html"><button class="btn">Basket</button></a>
+    <a href="reviews.html"><button class="btn">Reviews</button></a>
+    <a href="order.html"><button class="btn">Order Now</button></a>
 
 </div>
 
@@ -89,51 +70,28 @@
 <section class="contact">
 
     <h2>Contact</h2>
-
     <p>📞 07463 399522</p>
 
-    <a href="tel:07463399522">
-        <button class="btn">Call Now</button>
-    </a>
-
-    <a href="https://wa.me/447463399522" target="_blank">
-        <button class="btn">WhatsApp</button>
-    </a>
+    <a href="tel:07463399522"><button class="btn">Call</button></a>
+    <a href="https://wa.me/447463399522" target="_blank"><button class="btn">WhatsApp</button></a>
 
 </section>
 
-<!-- VOUCHES -->
-<section class="vouches">
-
-    <h2>Customer Vouches</h2>
-
-    <div id="vouch" class="vouch">
-        ⭐⭐⭐⭐⭐ Fast delivery — L••••
-    </div>
-
-</section>
-
-<script src="script.js"></script>
-
-</body>
-<!-- Live Chat Button -->
+<!-- CHAT -->
 <button id="chatButton">💬 Chat</button>
 
-<!-- Chat Box -->
 <div id="chatBox">
 
     <div class="chat-header">
         BB2 Store Support
-        <span onclick="closeChat()" style="cursor:pointer;">✖</span>
+        <span onclick="closeChat()">✖</span>
     </div>
 
     <form action="https://formspree.io/f/mzdlagqp" method="POST">
 
         <input type="text" name="name" placeholder="Your Name" required>
-
         <input type="email" name="email" placeholder="Your Email" required>
-
-        <textarea name="message" placeholder="Type your question..." required></textarea>
+        <textarea name="message" placeholder="Ask something..." required></textarea>
 
         <button class="btn" type="submit">Send</button>
 
@@ -141,14 +99,19 @@
 
 </div>
 
+<script src="script.js"></script>
+
 <script>
 const chatBox = document.getElementById("chatBox");
 
-document.getElementById("chatButton").onclick = function () {
+document.getElementById("chatButton").onclick = () => {
     chatBox.style.display = "block";
 };
 
-function closeChat() {
+function closeChat(){
     chatBox.style.display = "none";
 }
 </script>
+
+</body>
+</html>
