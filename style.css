@@ -362,3 +362,13 @@ body {
     .hero h1{font-size:36px;}
     .header{padding: 0 20px;}
 }
+/* Navigation Spacing */
+.header nav a:hover {
+    color: #ff453a;
+}
+
+@media (max-width: 768px) {
+    .header nav {
+        display: none !important; /* Keeps it clean on mobile */
+    }
+}
