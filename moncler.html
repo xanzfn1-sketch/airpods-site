@@ -222,7 +222,7 @@
                 <span class="card-tag">03 // THE LOCATION</span>
                 <h2>Where Is It Right Now?</h2>
                 <p>
-                    Stock is 100% secured on-site. Every individual unit is physically sorted, cataloged, and wrapped inside our primary **BB1 & BB2 regional shipping centers**. The boxes are ready on the distribution floor, prepared to go straight onto our fast same-day dispatch routes.
+                    Stock is 100% secured on-site. Every individual unit is physically sorted, cataloged, and wrapped inside our primary BB1 & BB2 regional shipping centers. The boxes are ready on the distribution floor, prepared to go straight onto our fast same-day dispatch routes.
                 </p>
             </div>
 
@@ -244,17 +244,18 @@
         var player;
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('yt-bg-player', {
-                videoId: 'b00A4DVQYrQ', // Custom target YouTube URL source link parameters verbatim
+                videoId: 'b00A4DVQYrQ', 
                 playerVars: {
                     'autoplay': 1,
-                    'controls': 0,      // Removes timeline bar, play, and settings icons
-                    'rel': 0,           // Prevents showing recommendations at the end
-                    'showinfo': 0,      // Hides titles and uploader profile icons
-                    'iv_load_policy': 3, // Turns off popup video annotations
+                    'mute': 1,           // Forces the browser to allow autoplay layout configurations immediately
+                    'controls': 0,       // Removes timeline bar, play, and settings icons
+                    'rel': 0,            // Prevents showing recommendations at the end
+                    'showinfo': 0,       // Hides titles and uploader profile icons
+                    'iv_load_policy': 3,  // Turns off popup video annotations
                     'modestbranding': 1, // Completely minimizes YouTube branding footprint
-                    'loop': 1,          // Enable looping structural flags
+                    'loop': 1,           // Enable looping structural flags
                     'playlist': 'b00A4DVQYrQ', // Necessary fallback argument to execute loop correctly
-                    'disablekb': 1      // Disables accidental spacebar pauses
+                    'disablekb': 1       // Disables accidental spacebar pauses
                 },
                 events: {
                     'onReady': onPlayerReady,
@@ -264,7 +265,7 @@
         }
 
         function onPlayerReady(event) {
-            event.target.mute(); // Strip audio immediately before playback engine triggers
+            event.target.mute(); // Absolute assurance audio pipeline is severed
             event.target.playVideo();
         }
 
