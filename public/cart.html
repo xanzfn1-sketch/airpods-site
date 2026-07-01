@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cart</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>Basket</h1>
+
+<div id="cart"></div>
+
+<button onclick="checkout()" class="btn">Checkout</button>
+
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function render(){
+document.getElementById("cart").innerHTML =
+cart.map(i => `<div class="card">${i.name} - £${i.price}</div>`).join("");
+}
+
+async function checkout(){
+
+const res = await fetch("/api/order",{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body: JSON.stringify({items:cart})
+});
+
+const data = await res.json();
+
+localStorage.removeItem("cart");
+
+window.location.href = "track.html?id=" + data.id;
+}
+
+render();
+
+</script>
+
+</body>
+</html>
