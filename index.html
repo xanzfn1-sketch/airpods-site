@@ -9,92 +9,110 @@
 
 <body>
 
-<!-- INTRO -->
+<!-- ===================== INTRO ===================== -->
 <div id="intro">
-    <div class="introBox">
+    <div class="introContainer">
         <h1>BB2 STORE</h1>
         <p>Loading premium experience...</p>
     </div>
 </div>
 
-<!-- TOP BAR -->
-<header class="topbar">
-    <div class="brand">BB2 STORE</div>
+<!-- ===================== HEADER ===================== -->
+<header class="header">
+    <div class="logo">BB2 STORE</div>
 
-    <div class="meta">
-        <span>Seller: Rayyan Adam</span>
-        <span>UK BB2</span>
-        <span>Secure Orders</span>
+    <div class="headerInfo">
+        <span>Trusted Seller</span>
+        <span>BB1 & BB2 Delivery</span>
+        <span>Same Day Service</span>
     </div>
 </header>
 
-<!-- HERO -->
+<!-- ===================== HERO ===================== -->
 <section class="hero">
-    <h1>Premium AirPods Collection</h1>
-    <p>Fast delivery • Trusted seller • High quality products</p>
+    <h1>Premium AirPods Marketplace</h1>
+    <p>High quality products • Fast UK delivery • Trusted local seller</p>
 </section>
 
-<!-- FEATURES -->
-<section class="features">
-    <div class="feature">Fast Delivery</div>
-    <div class="feature">Cash Accepted</div>
-    <div class="feature">Verified Stock</div>
-    <div class="feature">BB2 Local</div>
+<!-- ===================== DELIVERY BANNER ===================== -->
+<section class="banner">
+    ⚡ SAME DAY DELIVERY AVAILABLE IN BB1 & BB2 ⚡
 </section>
 
-<!-- PRODUCT GRID -->
+<!-- ===================== TRUST BLOCK ===================== -->
+<section class="trust">
+    <div class="trustBox">✔ Verified Seller</div>
+    <div class="trustBox">✔ Fast Response</div>
+    <div class="trustBox">✔ Local BB1/BB2 Delivery</div>
+    <div class="trustBox">✔ High Quality Items</div>
+</section>
+
+<!-- ===================== PRODUCTS ===================== -->
 <section id="products" class="grid"></section>
 
-<!-- INFO SECTIONS -->
-<section class="infoBlock">
-    <h2>Why choose us?</h2>
-    <p>We provide fast, reliable delivery and tested products across BB2 and surrounding areas.</p>
+<!-- ===================== QUICK ACTIONS ===================== -->
+<section class="actions">
+    <a href="cart.html" class="btn">🧺 Basket</a>
 </section>
 
-<section class="infoBlock">
-    <h2>Delivery</h2>
-    <p>Orders processed within 24 hours. Delivery usually 1–3 days.</p>
+<!-- ===================== WHY US ===================== -->
+<section class="infoSection">
+    <h2>Why Choose Us?</h2>
+
+    <p>
+        We are a trusted BB1 & BB2 based seller providing fast, reliable same-day delivery.
+        Our focus is customer satisfaction, speed, and quality.
+    </p>
+
+    <p>
+        Thousands of customers prefer our service due to our quick response times and verified product quality.
+    </p>
 </section>
 
-<section class="infoBlock">
-    <h2>Payment</h2>
-    <p>Cash on delivery or direct contact payment available.</p>
+<!-- ===================== DELIVERY INFO ===================== -->
+<section class="infoSection">
+    <h2>Delivery Areas</h2>
+
+    <ul>
+        <li>BB1 Area — Same day or next day delivery</li>
+        <li>BB2 Area — Fastest same day delivery available</li>
+        <li>Nearby Areas — Selective delivery available</li>
+    </ul>
 </section>
 
-<!-- NAV -->
-<div class="nav">
-    <a href="cart.html" class="btn">Basket</a>
-    <a href="reviews.html" class="btn">Reviews</a>
-    <a href="order.html" class="btn">Order</a>
-</div>
+<!-- ===================== REVIEWS ===================== -->
+<section class="reviews">
+    <h2>Customer Reviews</h2>
 
-<!-- CONTACT -->
-<section class="contact">
-    <h2>Contact</h2>
-    <p>📞 07463 399522</p>
-
-    <a href="tel:07463399522" class="btn">Call</a>
-    <a href="https://wa.me/447463399522" class="btn">WhatsApp</a>
-</section>
-
-<!-- CHAT BUTTON -->
-<button id="chatBtn">💬</button>
-
-<!-- CHAT BOX -->
-<div id="chatBox">
-    <div class="chatHeader">
-        BB2 Support
-        <span onclick="closeChat()">✖</span>
+    <div id="reviewBox" class="reviewBox">
+        Loading reviews...
     </div>
+</section>
 
-    <form action="https://formspree.io/f/mzdlagqp" method="POST">
-        <input name="name" placeholder="Name" required>
-        <input name="email" placeholder="Email" required>
-        <textarea name="message" placeholder="Message" required></textarea>
-        <button class="btn" type="submit">Send</button>
-    </form>
-</div>
+<!-- ===================== CONTACT ===================== -->
+<section class="contact">
+    <h2>Contact Us</h2>
 
+    <p class="number">📞 07463 399522</p>
+
+    <div class="contactButtons">
+        <a href="tel:07463399522" class="btn">Call Now</a>
+        <a href="https://wa.me/447463399522" class="btn">WhatsApp</a>
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+    <p>© BB2 Store — All rights reserved</p>
+</footer>
+
+<!-- ===================== FLOAT WHATSAPP ===================== -->
+<a class="floatWhatsApp" href="https://wa.me/447463399522">💬</a>
+
+<!-- ===================== TOAST SYSTEM ===================== -->
+<div id="toast"></div>
+
+<!-- ===================== SCRIPT ===================== -->
 <script src="script.js"></script>
 
 </body>
