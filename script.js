@@ -1,16 +1,30 @@
+
 const products = [
-{name:"Quantum AirPods", price:15},
-{name:"Neural AirPods", price:25},
-{name:"Hyper Pods X", price:60},
-{name:"BB2 Ultra Pack", price:150}
+{name:"1 Pair AirPods", price:15},
+{name:"2 Pairs AirPods", price:25},
+{name:"5 Pairs Bundle", price:60},
+{name:"Bulk Deal", price:150}
 ];
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+/* SAVE CART */
 function save(){
 localStorage.setItem("cart", JSON.stringify(cart));
 }
 
+/* TOAST SYSTEM */
+function toast(msg){
+const t = document.getElementById("toast");
+if(!t) return;
+
+t.innerText = msg;
+t.style.opacity = 1;
+
+setTimeout(()=>t.style.opacity = 0, 1200);
+}
+
+/* ADD TO CART */
 function addToCart(name,price){
 
 let item = cart.find(i => i.name === name);
@@ -22,11 +36,21 @@ cart.push({name,price,qty:1});
 }
 
 save();
-alert("Added: " + name);
+toast("Added: " + name);
 }
 
-function render(){
+/* REMOVE ITEM */
+function removeItem(index){
+cart.splice(index,1);
+save();
+renderCart();
+}
+
+/* PRODUCTS RENDER */
+function renderProducts(){
+
 const box = document.getElementById("products");
+if(!box) return;
 
 products.forEach(p=>{
 box.innerHTML += `
@@ -34,11 +58,80 @@ box.innerHTML += `
 <h2>${p.name}</h2>
 <h1>£${p.price}</h1>
 <button class="btn" onclick="addToCart('${p.name}',${p.price})">
-Add
+Add to Basket
 </button>
 </div>
 `;
 });
 }
 
-render();
+/* CART RENDER */
+function renderCart(){
+
+const box = document.getElementById("cart");
+const totalBox = document.getElementById("total");
+
+if(!box) return;
+
+box.innerHTML = "";
+
+let total = 0;
+
+cart.forEach((c,i)=>{
+total += c.price * c.qty;
+
+box.innerHTML += `
+<div class="card">
+<h3>${c.name}</h3>
+<p>Quantity: ${c.qty}</p>
+<p>Price: £${c.price * c.qty}</p>
+<button class="btn" onclick="removeItem(${i})">Remove</button>
+</div>
+`;
+});
+
+totalBox.innerText = "Total: £" + total;
+}
+
+/* CHECKOUT */
+function checkout(){
+
+if(cart.length === 0){
+toast("Basket is empty");
+return;
+}
+
+toast("Order placed - Same day delivery active");
+
+cart = [];
+save();
+renderCart();
+}
+
+/* REVIEWS ROTATOR */
+const reviews = [
+"Fast delivery ⭐⭐⭐⭐⭐",
+"Best seller in BB2 ⭐⭐⭐⭐⭐",
+"Very trusted ⭐⭐⭐⭐⭐",
+"Great quality ⭐⭐⭐⭐⭐",
+"Would buy again ⭐⭐⭐⭐⭐"
+];
+
+let i = 0;
+
+function rotateReviews(){
+const box = document.getElementById("reviewBox");
+if(!box) return;
+
+box.innerText = reviews[i];
+
+i++;
+if(i >= reviews.length) i = 0;
+
+setTimeout(rotateReviews, 2000);
+}
+
+/* INIT */
+renderProducts();
+renderCart();
+rotateReviews();
