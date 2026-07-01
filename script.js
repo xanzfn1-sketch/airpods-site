@@ -1,21 +1,14 @@
-// Ensure 'reviews' array is defined in your script
-const reviews = ["Fast shipping!", "Quality is 10/10", "Best service in BB2"]; 
-let reviewIdx = 0;
+// --- Data ---
+const products = [
+    { id: "p1", name: "1 Pair AirPods", price: 15 },
+    { id: "p2", name: "2 Pairs AirPods", price: 25 },
+    { id: "p3", name: "5 Pairs Bundle", price: 60 },
+    { id: "p4", name: "Bulk Deal", price: 150 }
+];
+const reviews = ["Fast shipping!", "Quality is 10/10", "Best service in BB2"];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-function rotateReviews() {
-    const box = document.getElementById("reviewBox");
-    if (!box) return;
-
-    // Fix: Force immediate update so "Loading..." disappears
-    box.innerText = reviews[0];
-    reviewIdx = 1;
-
-    setInterval(() => {
-        box.innerText = reviews[reviewIdx];
-        reviewIdx = (reviewIdx + 1) % reviews.length;
-    }, 3000);
-}
-
+// --- Functions ---
 function renderProducts() {
     const box = document.getElementById("products");
     if (!box) return;
@@ -26,18 +19,38 @@ function renderProducts() {
         card.className = "card";
         card.innerHTML = `<h2>${p.name}</h2><h1>£${p.price}</h1>`;
         
-        // Fix: Safer button attachment
         const btn = document.createElement("button");
         btn.className = "btn";
         btn.innerText = "Add to Basket";
-        btn.onclick = () => addToCart(p.name, p.price);
+        // Directly attaching the click event
+        btn.onclick = () => {
+            let item = cart.find(i => i.name === p.name);
+            item ? item.qty++ : cart.push({ name: p.name, price: p.price, qty: 1 });
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert(p.name + " added to basket!");
+        };
         
         card.appendChild(btn);
         box.appendChild(card);
     });
 }
 
+function rotateReviews() {
+    const box = document.getElementById("reviewBox");
+    if (!box) return;
+
+    let reviewIdx = 0;
+    // Set immediately so it doesn't show "Loading..."
+    box.innerText = reviews[reviewIdx]; 
+    
+    setInterval(() => {
+        reviewIdx = (reviewIdx + 1) % reviews.length;
+        box.innerText = reviews[reviewIdx];
+    }, 3000);
+}
+
+// --- Initialization ---
 document.addEventListener("DOMContentLoaded", () => {
     renderProducts();
-    rotateReviews(); // Triggers the review fix
+    rotateReviews();
 });
