@@ -399,3 +399,60 @@ body {
     letter-spacing: 0.5px;
     margin-bottom: 2px;
 }
+/* Header Layout Adjustment */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background: #000000;
+    position: relative;
+    z-index: 100;
+    gap: 15px;
+}
+
+/* Navigation layout containing Store and Moncler buttons */
+.header nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap; /* Prevents navigation items from breaking into weird rows */
+}
+
+/* Right-side alignment container holding the Basket trigger */
+.header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+/* Generic button template overrides to avoid crunching */
+.cart-trigger {
+    white-space: nowrap; /* Prevents text inside the button from wrapping vertically */
+    padding: 8px 16px;
+    font-size: 14px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+/* Mobile Specific Fixes */
+@media (max-width: 480px) {
+    .header {
+        padding: 12px 15px; /* Tighter spacing on smaller viewports */
+        gap: 8px;
+    }
+    
+    .header nav {
+        gap: 6px;
+    }
+    
+    .cart-trigger {
+        padding: 6px 12px; /* Scales down the button sizes slightly so they fit across the width */
+        font-size: 13px;
+        height: 34px;
+    }
+}
