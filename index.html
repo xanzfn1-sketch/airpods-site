@@ -116,36 +116,39 @@
 <script src="script.js"></script>
 
 </body>
-</html>
-<section class="contact-form">
+<!-- Live Chat Button -->
+<button id="chatButton">💬 Chat</button>
 
-    <h2>Have a Question?</h2>
-    <p>Send us a message and we'll reply as soon as possible.</p>
+<!-- Chat Box -->
+<div id="chatBox">
 
-    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <div class="chat-header">
+        BB2 Store Support
+        <span onclick="closeChat()" style="cursor:pointer;">✖</span>
+    </div>
 
-        <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            required>
+    <form action="https://formspree.io/f/mzdlagqp" method="POST">
 
-        <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            required>
+        <input type="text" name="name" placeholder="Your Name" required>
 
-        <textarea
-            name="question"
-            rows="5"
-            placeholder="Ask us anything..."
-            required></textarea>
+        <input type="email" name="email" placeholder="Your Email" required>
 
-        <button class="btn" type="submit">
-            Send Question
-        </button>
+        <textarea name="message" placeholder="Type your question..." required></textarea>
+
+        <button class="btn" type="submit">Send</button>
 
     </form>
 
-</section>
+</div>
+
+<script>
+const chatBox = document.getElementById("chatBox");
+
+document.getElementById("chatButton").onclick = function () {
+    chatBox.style.display = "block";
+};
+
+function closeChat() {
+    chatBox.style.display = "none";
+}
+</script>
