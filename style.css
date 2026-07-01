@@ -1,4 +1,3 @@
-
 /* RESET */
 *{
     margin:0;
@@ -7,350 +6,143 @@
     font-family:Arial, Helvetica, sans-serif;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
     background:#050505;
     color:white;
-    overflow-x:hidden;
 }
 
-/* BACKGROUND */
-.background{
+/* INTRO */
+#intro{
     position:fixed;
     inset:0;
-    z-index:-1;
-    background:
-    radial-gradient(circle at 20% 20%,rgba(0,255,255,.15),transparent 30%),
-    radial-gradient(circle at 80% 30%,rgba(0,128,255,.18),transparent 30%),
-    radial-gradient(circle at 50% 80%,rgba(255,255,255,.05),transparent 40%),
-    #050505;
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+    animation:fadeOut 1s forwards;
+    animation-delay:2.5s;
+}
+
+#introLogo{
+    width:200px;
+    opacity:0;
+    animation:logo 1.5s forwards;
+}
+
+@keyframes logo{
+    from{opacity:0; transform:scale(.7);}
+    to{opacity:1; transform:scale(1);}
+}
+
+@keyframes fadeOut{
+    to{opacity:0; visibility:hidden;}
 }
 
 /* HEADER */
 header{
-    width:90%;
-    margin:auto;
-    padding:30px 0;
     display:flex;
     justify-content:space-between;
-    align-items:center;
-}
-
-.logo h2{
-    font-size:30px;
-}
-
-.info{
-    text-align:right;
-    color:#cfcfcf;
+    padding:20px;
 }
 
 /* HERO */
 .hero{
     text-align:center;
-    padding:70px 20px;
+    padding:50px 20px;
 }
 
 .hero h1{
-    font-size:60px;
-    margin:20px 0;
-}
-
-.hero p{
-    color:#bdbdbd;
-    font-size:20px;
+    font-size:50px;
 }
 
 /* BADGE */
 .badge{
     display:inline-block;
-    padding:10px 22px;
-    border-radius:50px;
-    background:#0d0d0d;
-    border:1px solid #00d9ff;
-    color:#00d9ff;
+    padding:8px 16px;
+    border:1px solid cyan;
+    border-radius:20px;
+    margin-bottom:10px;
 }
 
 /* PRICING */
 .pricing{
-    width:90%;
-    margin:60px auto;
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:25px;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+    padding:20px;
 }
 
 .card{
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.1);
-    backdrop-filter:blur(15px);
-    border-radius:20px;
-    padding:35px;
+    background:#111;
+    padding:20px;
+    border-radius:15px;
     text-align:center;
-    transition:.35s;
 }
 
-.card:hover{
-    transform:translateY(-10px);
-    border-color:#00d9ff;
-    box-shadow:0 0 35px rgba(0,217,255,.3);
-}
-
-.card h1{
-    font-size:42px;
+/* BUTTON */
+.btn{
+    padding:12px 20px;
+    background:linear-gradient(135deg,#00ffae,#00bfff);
+    border:none;
+    border-radius:10px;
+    color:white;
+    cursor:pointer;
+    margin-top:10px;
 }
 
 /* BUTTONS */
 .buttons{
     display:flex;
     justify-content:center;
-    gap:20px;
-    margin:60px 0;
-    flex-wrap:wrap;
-}
-
-/* GLOBAL BUTTON */
-.btn{
-    padding:14px 30px;
-    border:none;
-    border-radius:14px;
-    cursor:pointer;
-    font-size:16px;
-    font-weight:bold;
-    background:linear-gradient(135deg,#00ffae,#00bfff);
-    color:white;
-    transition:.3s;
-    display:inline-block;
-}
-
-.btn:hover{
-    transform:scale(1.06);
-    box-shadow:0 0 25px rgba(0,255,174,.4);
-}
-
-/* SECONDARY BUTTON */
-.secondary{
-    background:linear-gradient(135deg,#444,#666);
+    gap:15px;
+    margin:30px;
 }
 
 /* CONTACT */
 .contact{
     text-align:center;
-    margin:80px 0;
+    margin:40px 0;
 }
 
-.contact p{
-    margin:8px 0;
-    color:#d0d0d0;
-}
-
-/* VOUCHES */
-.vouches{
-    text-align:center;
-    margin:80px auto;
-    width:90%;
-}
-
-.vouch{
-    margin:auto;
-    margin-top:25px;
-    max-width:700px;
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.1);
-    border-radius:15px;
-    padding:20px;
-    transition:.4s;
-}
-
-/* ORDER FORM */
-.order-form{
-    width:90%;
-    max-width:550px;
-    margin:auto;
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-}
-
-.order-form input,
-.order-form select,
-.order-form textarea{
-    padding:16px;
-    border:none;
-    border-radius:12px;
-    background:rgba(255,255,255,.08);
-    color:white;
-    font-size:16px;
-    outline:none;
-}
-
-.order-form input::placeholder,
-.order-form textarea::placeholder{
-    color:#cfcfcf;
-}
-
-/* CART SPECIFIC FIX (IMPORTANT) */
-#cartItems .card{
-    margin:15px auto;
-    max-width:500px;
-}
-
-#cartItems button{
-    margin-top:10px;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-
-header{
-    flex-direction:column;
-    gap:20px;
-}
-
-.info{
-    text-align:center;
-}
-
-.hero h1{
-    font-size:42px;
-}
-
-.buttons{
-    flex-direction:column;
-    align-items:center;
-}
-
-.btn{
-    width:250px;
-}
-}
-/* Floating Back Button */
-
-.back-button{
-    position:fixed;
-    top:20px;
-    left:20px;
-    background:linear-gradient(135deg,#00ffae,#00bfff);
-    color:white;
-    text-decoration:none;
-    padding:14px 22px;
-    border-radius:12px;
-    font-weight:bold;
-    z-index:9999;
-    transition:0.3s ease;
-    box-shadow:0 10px 25px rgba(0,0,0,.35);
-}
-
-.back-button:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 25px rgba(0,255,174,.4);
-}
-.contact-form{
-    width:90%;
-    max-width:700px;
-    margin:100px auto;
-    text-align:center;
-}
-
-.contact-form h2{
-    margin-bottom:15px;
-    font-size:34px;
-}
-
-.contact-form p{
-    color:#cfcfcf;
-    margin-bottom:30px;
-}
-
-.contact-form form{
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-}
-
-.contact-form input,
-.contact-form textarea{
-
-    padding:16px;
-    border:none;
-    border-radius:12px;
-    background:rgba(255,255,255,.08);
-    color:white;
-    font-size:16px;
-    outline:none;
-
-}
-
-.contact-form textarea{
-    resize:vertical;
-    min-height:150px;
-}
-
-.contact-form input::placeholder,
-.contact-form textarea::placeholder{
-    color:#bdbdbd;
-}
-/* Live Chat */
-
+/* CHAT */
 #chatButton{
     position:fixed;
     bottom:20px;
     right:20px;
-    width:65px;
-    height:65px;
-    border:none;
+    padding:15px;
     border-radius:50%;
+    border:none;
     background:#00bfff;
     color:white;
-    font-size:28px;
+    font-size:20px;
     cursor:pointer;
-    z-index:9999;
-    box-shadow:0 0 20px rgba(0,191,255,.5);
 }
 
 #chatBox{
     display:none;
     position:fixed;
-    bottom:95px;
+    bottom:80px;
     right:20px;
-    width:320px;
+    width:300px;
     background:#111;
-    border-radius:18px;
-    overflow:hidden;
-    box-shadow:0 0 30px rgba(0,0,0,.5);
-    z-index:9999;
+    border-radius:15px;
+    padding:15px;
 }
 
 .chat-header{
-    background:#00bfff;
-    color:white;
-    padding:15px;
-    font-weight:bold;
     display:flex;
     justify-content:space-between;
-    align-items:center;
-}
-
-#chatBox form{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-    padding:15px;
+    margin-bottom:10px;
 }
 
 #chatBox input,
 #chatBox textarea{
-    padding:12px;
-    border:none;
-    border-radius:10px;
+    width:100%;
+    margin:5px 0;
+    padding:10px;
     background:#222;
+    border:none;
     color:white;
-}
-
-#chatBox textarea{
-    min-height:120px;
-    resize:none;
+    border-radius:8px;
 }
