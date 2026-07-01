@@ -60,13 +60,56 @@
         <h2>Next Scheduled Drop</h2>
     </section>
 
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative;">
         <div style="background: linear-gradient(135deg, #1c1c1e 0%, #0a0a0a 100%); border: 1px dashed rgba(255, 69, 58, 0.4); border-radius: 12px; padding: 40px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
             <span style="background: #ff453a; color: #ffffff; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Coming Soon</span>
             <h3 style="font-size: 28px; margin: 15px 0 5px; color: #ffffff; letter-spacing: 1px;">MONCLER BEANIES & HATS</h3>
             <p style="color: #8e8e93; font-size: 15px; max-width: 500px; margin: 0 auto 20px; line-height: 1.5;">Premium winter streetwear arriving to the local delivery queue shortly. Secured stock incoming.</p>
-            <div style="display: inline-block; background: rgba(255,255,255,0.05); padding: 10px 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
-                <span style="color: #ff453a; font-weight: bold;">Status:</span> <span style="color: #e5e5ea;">Batch Transit 📦</span>
+            
+            <div style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;">
+                <div style="background: rgba(255,255,255,0.05); padding: 10px 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); font-size: 14px;">
+                    <span style="color: #ff453a; font-weight: bold;">Status:</span> <span style="color: #e5e5ea;">Batch Transit 📦</span>
+                </div>
+                <!-- Interactive 3D Trigger Button -->
+                <button onclick="toggle3DViewer(true)" style="background: #ffffff; color: #000000; font-size: 14px; padding: 10px 20px; font-weight: 600; border: none; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                    🔍 See Item (3D)
+                </button>
+            </div>
+        </div>
+
+        <!-- ======================= INTERACTIVE CSS 3D MODEL VIEWPORT ======================= -->
+        <div id="viewer-3d" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.9); z-index: 99999; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+            <div style="background: #1c1c1e; border: 1px solid rgba(255,255,255,0.15); width: 90%; max-width: 450px; padding: 30px; border-radius: 16px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.7);">
+                <button onclick="toggle3DViewer(false)" style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: #8e8e93; font-size: 20px; cursor: pointer; font-weight: bold;">✕</button>
+                <h4 style="color: #ffffff; margin-bottom: 5px; font-size: 18px; letter-spacing: 1px;">MONCLER BEANIE PREVIEW</h4>
+                <p style="color: #8e8e93; font-size: 12px; margin-bottom: 30px;">Interactive 360° Rendering Layout</p>
+                
+                <!-- The 3D CSS Space Container -->
+                <div style="width: 200px; height: 200px; margin: 0 auto 40px; perspective: 600px; display: flex; align-items: center; justify-content: center;">
+                    <div id="beanie-model" style="width: 140px; height: 140px; position: relative; transform-style: preserve-3d; animation: spinBeanie 8s infinite linear;">
+                        
+                        <!-- Main Beanie Dome Structure -->
+                        <div style="position: absolute; width: 140px; height: 120px; background: linear-gradient(180deg, #151517 0%, #2c2c2e 100%); border-radius: 70px 70px 20px 20px; border: 1px solid rgba(255,255,255,0.1); box-shadow: inset 0 0 20px rgba(0,0,0,0.8); transform: translateZ(10px);"></div>
+                        
+                        <!-- Ribbed Folded Brim (Turn-up Cuff) -->
+                        <div style="position: absolute; bottom: 0; left: -5px; width: 150px; height: 45px; background: repeating-linear-gradient(90deg, #1c1c1e, #1c1c1e 4px, #2c2c2e 4px, #2c2c2e 8px); border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 4px 10px rgba(0,0,0,0.5); transform: translateZ(25px);"></div>
+                        
+                        <!-- Authentic Moncler Embroidered Felt Badge Front Center -->
+                        <div style="position: absolute; bottom: 10px; left: 52px; width: 36px; height: 36px; background: #ffffff; border-radius: 50% 50% 10% 10%; border: 2px solid #002b7f; box-shadow: 0 2px 5px rgba(0,0,0,0.3); transform: translateZ(32px); display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden;">
+                            <div style="width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 12px solid #e31b23; margin-top: 2px;"></div>
+                            <div style="width: 14px; height: 4px; background: #002b7f; margin-top: 2px; border-radius: 2px;"></div>
+                        </div>
+
+                        <!-- Top Stitch Crown Joint -->
+                        <div style="position: absolute; top: -6px; left: 60px; width: 20px; height: 12px; background: #111112; border-radius: 50%; transform: rotateX(90deg) translateZ(0px);"></div>
+
+                    </div>
+                </div>
+
+                <!-- Control Badge Indicator -->
+                <div style="font-size: 12px; color: #ff453a; font-weight: bold; background: rgba(255,69,58,0.1); display: inline-block; padding: 4px 12px; border-radius: 12px;">
+                    🔄 Auto-Rotating Viewport
+                </div>
             </div>
         </div>
     </div>
@@ -130,6 +173,28 @@
     <!-- ======================= UTILITY FLOATS ======================= -->
     <a class="floatWhatsApp" href="https://wa.me/447463399522">💬</a>
     <div id="toast"></div>
+
+    <!-- ======================= INTERACTIVE 3D VIEWER LOGIC & STYLES ======================= -->
+    <style>
+        @keyframes spinBeanie {
+            0% { transform: rotateY(0deg) rotateX(10deg); }
+            50% { transform: rotateY(180deg) rotateX(-5deg); }
+            100% { transform: rotateY(360deg) rotateX(10deg); }
+        }
+    </style>
+
+    <script>
+        function toggle3DViewer(show) {
+            const viewer = document.getElementById('viewer-3d');
+            if (show) {
+                viewer.style.display = 'flex';
+                setTimeout(() => { viewer.style.opacity = '1'; }, 10);
+            } else {
+                viewer.style.opacity = '0';
+                setTimeout(() => { viewer.style.display = 'none'; }, 300);
+            }
+        }
+    </script>
 
     <script src="script.js"></script>
 </body>
