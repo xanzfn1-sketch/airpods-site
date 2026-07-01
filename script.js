@@ -1,68 +1,129 @@
+
 const products = [
-{name:"1 Pair", price:15},
-{name:"2 Pairs", price:25},
-{name:"5 Pairs", price:60},
+{name:"1 Pair AirPods", price:15},
+{name:"2 Pairs AirPods", price:25},
+{name:"5 Pairs Bundle", price:60},
 {name:"Bulk Deal", price:150}
 ];
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-/* SAVE SYSTEM */
+/* SAVE */
 function save(){
 localStorage.setItem("cart", JSON.stringify(cart));
 }
 
+/* TOAST */
+function toast(msg){
+const t = document.getElementById("toast");
+if(!t) return;
+
+t.innerText = msg;
+t.style.opacity = 1;
+
+setTimeout(()=>t.style.opacity=0,1200);
+}
+
 /* ADD */
-function addToCart(name, price){
-cart.push({name, price});
-save();
-alert(name + " added");
-renderProducts();
+function addToCart(name,price){
+
+let item = cart.find(i => i.name === name);
+
+if(item){
+item.qty++;
+}else{
+cart.push({name,price,qty:1});
 }
 
-/* REMOVE */
-function removeItem(i){
-cart.splice(i,1);
 save();
+toast("Added " + name);
 }
 
-/* CLEAR */
-function clearCart(){
-cart = [];
-save();
-}
-
-/* RENDER PRODUCTS */
+/* PRODUCTS */
 function renderProducts(){
+
 const box = document.getElementById("products");
 if(!box) return;
 
-box.innerHTML = "";
-
 products.forEach(p=>{
-const div = document.createElement("div");
-div.className = "card";
-
-div.innerHTML = `
+box.innerHTML += `
+<div class="card">
 <h2>${p.name}</h2>
 <h1>£${p.price}</h1>
 <button class="btn" onclick="addToCart('${p.name}',${p.price})">
 Add to Basket
 </button>
+</div>
 `;
-
-box.appendChild(div);
 });
 }
 
-/* CHAT SYSTEM */
-document.getElementById("chatBtn").onclick = ()=>{
-document.getElementById("chatBox").style.display="block";
-};
+/* CART */
+function renderCart(){
 
-function closeChat(){
-document.getElementById("chatBox").style.display="none";
+const box = document.getElementById("cart");
+const totalBox = document.getElementById("total");
+
+if(!box) return;
+
+box.innerHTML = "";
+
+let total = 0;
+
+cart.forEach((c,i)=>{
+total += c.price * c.qty;
+
+box.innerHTML += `
+<div class="card">
+<h3>${c.name}</h3>
+<p>Qty: ${c.qty}</p>
+<p>£${c.price * c.qty}</p>
+</div>
+`;
+});
+
+totalBox.innerText = "Total: £" + total;
+}
+
+/* CHECKOUT */
+function checkout(){
+
+if(cart.length === 0){
+toast("Basket empty");
+return;
+}
+
+toast("Order placed - Same day delivery");
+
+cart = [];
+save();
+renderCart();
+}
+
+/* REVIEWS SYSTEM */
+const reviews = [
+"Fast delivery ⭐⭐⭐⭐⭐",
+"Best seller in BB2 ⭐⭐⭐⭐⭐",
+"Very reliable ⭐⭐⭐⭐⭐",
+"Top quality products ⭐⭐⭐⭐⭐",
+"Would buy again ⭐⭐⭐⭐⭐"
+];
+
+let i = 0;
+
+function rotateReviews(){
+const box = document.getElementById("reviewBox");
+if(!box) return;
+
+box.innerText = reviews[i];
+
+i++;
+if(i >= reviews.length) i = 0;
+
+setTimeout(rotateReviews, 2000);
 }
 
 /* INIT */
 renderProducts();
+renderCart();
+rotateReviews();
