@@ -1,56 +1,21 @@
-/* ======================= APPLE BOOT SYSTEM ======================= */
-document.addEventListener("DOMContentLoaded", () => {
-    const intro = document.getElementById("intro");
-    const startupSound = document.getElementById("startupSound");
-    const chargingSound = document.getElementById("chargingSound");
-
-    const startIntro = () => {
-        // 1. Play charging sound instantly
-        if (chargingSound) {
-            chargingSound.play().catch(error => console.log("Charging sound delayed:", error));
-        }
-
-        // 2. Play startup sound right after a minor delay
-        setTimeout(() => {
-            if (startupSound) {
-                startupSound.play().catch(error => console.log("Startup sound delayed:", error));
-            }
-        }, 400);
-        
-        // 3. Smoothly fade out the black curtain overlay
-        setTimeout(() => {
-            if (intro) {
-                intro.style.transition = "opacity 1s ease, visibility 1s ease";
-                intro.style.opacity = 0;
-                intro.style.visibility = "hidden";
-            }
-        }, 2800);
-
-        // Turn off listeners immediately to prevent sound overlapping on multi-clicks
-        document.removeEventListener("click", startIntro);
-        document.removeEventListener("touchstart", startIntro);
-    };
-
-    document.addEventListener("click", startIntro);
-    document.addEventListener("touchstart", startIntro);
-});
-
-/* ======================= PRODUCTS DATA ======================= */
+/* ==========================================================================
+   PRODUCTS DATA
+   ========================================================================== */
 const products = [
-    {name:"1 Pair AirPods", price:15},
-    {name:"2 Pairs AirPods", price:25},
-    {name:"5 Pairs Bundle", price:60},
-    {name:"Bulk Deal", price:150}
+    {name: "1 Pair AirPods", price: 15},
+    {name: "2 Pairs AirPods", price: 25},
+    {name: "5 Pairs Bundle", price: 60},
+    {name: "Bulk Deal", price: 150}
 ];
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-/* SAVE CART */
+/* SAVE CART SYSTEM */
 function save(){
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-/* TOAST SYSTEM */
+/* PREMIUM TOAST SYSTEM */
 function toast(msg){
     const t = document.getElementById("toast");
     if(!t) return;
@@ -58,88 +23,51 @@ function toast(msg){
     t.innerText = msg;
     t.style.opacity = 1;
 
-    setTimeout(()=>t.style.opacity = 0, 1200);
+    setTimeout(() => {
+        t.style.opacity = 0;
+    }, 1500);
 }
 
-/* ADD TO CART */
+/* ADD TO BASKET */
 function addToCart(name, price){
     let item = cart.find(i => i.name === name);
 
     if(item){
         item.qty++;
-    }else{
-        cart.push({name, price, qty:1});
+    } else {
+        cart.push({name, price, qty: 1});
     }
 
     save();
-    toast("Added: " + name);
+    toast(`Added ${name} to basket!`);
 }
 
-/* REMOVE ITEM */
-function removeItem(index){
-    cart.splice(index, 1);
-    save();
-    renderCart();
-}
-
-/* PRODUCTS RENDER */
+/* ASYMMETRIC BENTO PRODUCTS RENDER */
 function renderProducts(){
     const box = document.getElementById("products");
     if(!box) return;
 
-    products.forEach(p=>{
+    box.innerHTML = ""; // Clear existing dummy data
+
+    products.forEach(p => {
         box.innerHTML += `
         <div class="card">
-            <h2>${p.name}</h2>
-            <h1>£${p.price}</h1>
-            <button class="btn" onclick="addToCart('${p.name}', ${p.price})">
-                Add to Basket
-            </button>
+            <div>
+                <div class="mini-badge">IN STOCK</div>
+                <h2>${p.name}</h2>
+            </div>
+            <div>
+                <h1>£${p.price}</h1>
+                <button class="btn" onclick="addToCart('${p.name}', ${p.price})">
+                    Add to Basket
+                </button>
+            </div>
         </div>
         `;
     });
 }
 
-/* CART RENDER */
-function renderCart(){
-    const box = document.getElementById("cart");
-    const totalBox = document.getElementById("total");
-
-    if(!box) return;
-
-    box.innerHTML = "";
-    let total = 0;
-
-    cart.forEach((c, i)=>{
-        total += c.price * c.qty;
-
-        box.innerHTML += `
-        <div class="card">
-            <h3>${c.name}</h3>
-            <p>Quantity: ${c.qty}</p>
-            <p>Price: £${c.price * c.qty}</p>
-            <button class="btn" onclick="removeItem(${i})">Remove</button>
-        </div>
-        `;
-    });
-
-    if(totalBox) totalBox.innerText = "Total: £" + total;
-}
-
-/* CHECKOUT */
-function checkout(){
-    if(cart.length === 0){
-        toast("Basket is empty");
-        return;
-    }
-
-    toast("Order placed - Same day delivery active");
-    cart = [];
-    save();
-    renderCart();
-}
-
-/* REVIEWS ROTATOR */
+/* ROTATING CUSTOMER REVIEWS (2-Second Loop) */
 const reviews = [
     "Fast delivery ⭐⭐⭐⭐⭐",
     "Best seller in BB2 ⭐⭐⭐⭐⭐",
@@ -148,21 +76,24 @@ const reviews = [
     "Would buy again ⭐⭐⭐⭐⭐"
 ];
 
-let i = 0;
+let reviewIndex = 0;
 
 function rotateReviews(){
     const box = document.getElementById("reviewBox");
     if(!box) return;
 
-    box.innerText = reviews[i];
+    box.innerText = reviews[reviewIndex];
 
-    i++;
-    if(i >= reviews.length) i = 0;
+    reviewIndex++;
+    if(reviewIndex >= reviews.length) {
+        reviewIndex = 0;
+    }
 
     setTimeout(rotateReviews, 2000);
 }
 
-/* INITIALIZE SYSTEM */
-renderProducts();
-renderCart();
-rotateReviews();
+/* INITIALIZE APPLICATION ENGINE */
+document.addEventListener("DOMContentLoaded", () => {
+    renderProducts();
+    rotateReviews();
+});
