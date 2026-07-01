@@ -1,103 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BB2 Store</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BB2 Store</title>
+
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <!-- INTRO PRELOADER -->
-    <div id="intro">
-        <img src="./images/logo.png" id="introLogo" alt="BB2 Store Logo">
+<!-- INTRO -->
+<div id="intro">
+    <img src="images/logo.png" id="introLogo" alt="BB2 Store Logo">
+</div>
+
+<header>
+    <div class="logo">
+        <h2>BB2 Store</h2>
     </div>
 
-    <!-- HEADER -->
-    <header>
-        <div class="logo">
-            <h2>BB2 Store</h2>
-        </div>
-        <div class="info">
-            <p>Seller: Rayyan Adam</p>
-            <p>Website Made By: Adam</p>
-        </div>
-    </header>
+    <div class="info">
+        <p>Seller: Rayyan Adam</p>
+        <p>Website by Adam</p>
+    </div>
+</header>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <span class="badge">ONLY AVAILABLE IN BB2</span>
-        <h1>Premium AirPods</h1>
-        <p>Luxury feel • Fast delivery • Limited stock</p>
-    </section>
+<section class="hero">
+    <span class="badge">ONLY AVAILABLE IN BB2</span>
+    <h1>Premium AirPods</h1>
+    <p>Fast delivery • High quality</p>
+</section>
 
-    <!-- PRICING CARDS -->
-    <section class="pricing">
-        <div class="card">
-            <h2>1 Pair</h2>
-            <h1>£15</h1>
-            <button class="btn" onclick="addToCart('1 Pair - £15')">Add to Basket</button>
-        </div>
+<!-- PRICING -->
+<section class="pricing">
 
-        <div class="card">
-            <h2>2 Pairs</h2>
-            <h1>£25</h1>
-            <button class="btn" onclick="addToCart('2 Pairs - £25')">Add to Basket</button>
-        </div>
-
-        <div class="card">
-            <h2>5 Pairs</h2>
-            <h1>£60</h1>
-            <button class="btn" onclick="addToCart('5 Pairs - £60')">Add to Basket</button>
-        </div>
-    </section>
-
-    <!-- NAVIGATION ACTIONS -->
-    <div class="buttons">
-        <a href="cart.html"><button class="btn">Basket</button></a>
-        <a href="reviews.html"><button class="btn">See Reviews</button></a>
-        <a href="order.html"><button class="btn">Order Now</button></a>
+    <div class="card">
+        <h2>1 Pair</h2>
+        <h1>£15</h1>
+        <button class="btn" onclick="addToCart('1 Pair - £15')">Add to Basket</button>
     </div>
 
-    <!-- CONTACT INFO -->
-    <section class="contact">
-        <h2>Contact</h2>
-        <p>📞 07463 399522</p>
-        <div class="buttons" style="margin: 15px 0 0 0;">
-            <a href="tel:07463399522"><button class="btn">Call</button></a>
-            <a href="https://wa.me/447463399522" target="_blank"><button class="btn">WhatsApp</button></a>
-        </div>
-    </section>
-
-    <!-- FLOATING LIVE CHAT -->
-    <button id="chatButton">💬 Chat</button>
-
-    <div id="chatBox">
-        <div class="chat-header">
-            <span>BB2 Store Support</span>
-            <span style="cursor: pointer;" onclick="closeChat()">✖</span>
-        </div>
-        <form action="https://formspree.io/f/mzdlagqp" method="POST">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Ask something..." required></textarea>
-            <button class="btn" type="submit" style="width: 100%;">Send Message</button>
-        </form>
+    <div class="card">
+        <h2>2 Pairs</h2>
+        <h1>£25</h1>
+        <button class="btn" onclick="addToCart('2 Pairs - £25')">Add to Basket</button>
     </div>
 
-    <!-- EXTERNAL SCRIPTS -->
-    <script src="script.js"></script>
+    <div class="card">
+        <h2>5 Pairs</h2>
+        <h1>£60</h1>
+        <button class="btn" onclick="addToCart('5 Pairs - £60')">Add to Basket</button>
+    </div>
 
-    <!-- INLINE CHAT TOGGLE LOGIC -->
-    <script>
-        const chatBox = document.getElementById("chatBox");
-        document.getElementById("chatButton").onclick = () => {
-            chatBox.style.display = "block";
-        };
-        function closeChat(){
-            chatBox.style.display = "none";
-        }
-    </script>
+    <div class="card">
+        <h2>Bulk Deal</h2>
+        <h1>£150</h1>
+        <p>Get 5 FREE</p>
+        <button class="btn" onclick="addToCart('Bulk - £150')">Add to Basket</button>
+    </div>
+
+</section>
+
+<!-- BUTTONS -->
+<div class="buttons">
+
+    <a href="cart.html"><button class="btn">Basket</button></a>
+    <a href="reviews.html"><button class="btn">Reviews</button></a>
+    <a href="order.html"><button class="btn">Order</button></a>
+
+</div>
+
+<!-- CONTACT -->
+<section class="contact">
+    <h2>Contact</h2>
+    <p>📞 07463 399522</p>
+
+    <a href="tel:07463399522"><button class="btn">Call</button></a>
+    <a href="https://wa.me/447463399522" target="_blank"><button class="btn">WhatsApp</button></a>
+</section>
+
+<!-- CHAT -->
+<button id="chatButton">💬</button>
+
+<div id="chatBox">
+
+    <div class="chat-header">
+        BB2 Support
+        <span onclick="closeChat()">✖</span>
+    </div>
+
+    <form action="https://formspree.io/f/mzdlagqp" method="POST">
+
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <textarea name="message" placeholder="Message" required></textarea>
+
+        <button class="btn" type="submit">Send</button>
+
+    </form>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+const chatBox = document.getElementById("chatBox");
+
+document.getElementById("chatButton").onclick = () => {
+    chatBox.style.display = "block";
+};
+
+function closeChat(){
+    chatBox.style.display = "none";
+}
+</script>
 
 </body>
 </html>
