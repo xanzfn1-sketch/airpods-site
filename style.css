@@ -293,3 +293,64 @@ header{
 .contact-form textarea::placeholder{
     color:#bdbdbd;
 }
+/* Live Chat */
+
+#chatButton{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:65px;
+    height:65px;
+    border:none;
+    border-radius:50%;
+    background:#00bfff;
+    color:white;
+    font-size:28px;
+    cursor:pointer;
+    z-index:9999;
+    box-shadow:0 0 20px rgba(0,191,255,.5);
+}
+
+#chatBox{
+    display:none;
+    position:fixed;
+    bottom:95px;
+    right:20px;
+    width:320px;
+    background:#111;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 0 30px rgba(0,0,0,.5);
+    z-index:9999;
+}
+
+.chat-header{
+    background:#00bfff;
+    color:white;
+    padding:15px;
+    font-weight:bold;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+#chatBox form{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    padding:15px;
+}
+
+#chatBox input,
+#chatBox textarea{
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#222;
+    color:white;
+}
+
+#chatBox textarea{
+    min-height:120px;
+    resize:none;
+}
