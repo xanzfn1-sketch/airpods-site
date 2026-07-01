@@ -382,3 +382,16 @@ body {
     99% { opacity: 0; visibility: hidden; }
     100% { opacity: 0; visibility: hidden; pointer-events: none; display: none; }
 }
+/* Fix mobile layout squishing */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Fix product grid to stack perfectly on mobile */
+#products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
