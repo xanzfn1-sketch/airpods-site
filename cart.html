@@ -1,35 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BB2 Basket</title>
-<link rel="stylesheet" href="style.css">
-</head>
+// ======================= CORE STORE ENGINE =======================
 
-<body>
+// Toggle Cart Drawer
+function toggleCart(show) {
+    const drawer = document.getElementById('cart-drawer');
+    if (drawer) {
+        if (show) {
+            drawer.style.display = 'flex';
+            setTimeout(() => drawer.classList.add('active'), 10);
+        } else {
+            drawer.classList.remove('active');
+            setTimeout(() => drawer.style.display = 'none', 300);
+        }
+    }
+}
 
-<header class="header">
-<div class="logo">YOUR BASKET</div>
-</header>
+// Simple Checkout Simulation
+function checkout() {
+    alert("Redirecting to WhatsApp for secure checkout...");
+    window.location.href = "https://wa.me/447463399522";
+}
 
-<section class="infoBlock">
-<h2>Items in Basket</h2>
-</section>
+// ======================= PAGE-SPECIFIC INITIALIZATION =======================
 
-<section id="cart" class="grid"></section>
+// This handles the "Intro Screen" logic if it exists on the page
+document.addEventListener('DOMContentLoaded', () => {
+    const intro = document.getElementById('intro-screen');
+    if (intro) {
+        setTimeout(() => {
+            intro.style.opacity = '0';
+            setTimeout(() => intro.style.display = 'none', 500);
+        }, 1500);
+    }
+    updateCartCount();
+});
 
-<h2 id="total"></h2>
-
-<div class="actions">
-<button class="btn checkout" onclick="checkout()">
-Checkout (Same Day Delivery)
-</button>
-
-<a href="index.html" class="btn">Back to Store</a>
-</div>
-
-<script src="script.js"></script>
-
-</body>
-</html>
+// ======================= DATA HANDLERS =======================
+const cart = [];
+function updateCartCount() {
+    const badge = document.getElementById('cart-count');
+    if (badge) badge.innerText = cart.length;
+}
