@@ -1,7 +1,3 @@
-/**
- * BB2 Store | Production Script
- */
-
 const products = [
     { id: "p1", name: "1 Pair AirPods", price: 15 },
     { id: "p2", name: "2 Pairs AirPods", price: 25 },
@@ -20,13 +16,17 @@ function toast(msg) {
     if (!t) return;
     t.innerText = msg;
     t.style.opacity = 1;
-    setTimeout(() => { t.style.opacity = 0; }, 1500);
+    setTimeout(() => t.style.opacity = 0, 1500);
 }
 
 function toggleCart(open) {
     const drawer = document.getElementById("cart-drawer");
     if (!drawer) return;
-    open ? drawer.classList.add("active") : drawer.classList.remove("active");
+    if (open) {
+        drawer.classList.add("active");
+    } else {
+        drawer.classList.remove("active");
+    }
 }
 
 function addToCart(name, price) {
@@ -42,7 +42,6 @@ function addToCart(name, price) {
 }
 
 function updateQuantity(index, delta) {
-    if (!cart[index]) return;
     cart[index].qty += delta;
     if (cart[index].qty <= 0) {
         cart.splice(index, 1);
@@ -61,8 +60,11 @@ function renderProducts() {
         <div class="card">
             <h2>${p.name}</h2>
             <h1>£${p.price}</h1>
-            <button class="btn" onclick="addToCart('${p.name}', ${p.price})">Add to Basket</button>
-        </div>`;
+            <button class="btn" onclick="addToCart('${p.name}', ${p.price})">
+                Add to Basket
+            </button>
+        </div>
+        `;
     });
 }
 
@@ -87,6 +89,7 @@ function renderCart() {
     cart.forEach((item, index) => {
         total += item.price * item.qty;
         totalItems += item.qty;
+
         container.innerHTML += `
         <div class="cart-item">
             <div class="item-info">
@@ -98,7 +101,8 @@ function renderCart() {
                 <span class="qty-val">${item.qty}</span>
                 <button class="qty-btn" onclick="updateQuantity(${index}, 1)">+</button>
             </div>
-        </div>`;
+        </div>
+        `;
     });
 
     if (totalBox) totalBox.innerText = "£" + total;
@@ -115,7 +119,7 @@ function checkout() {
     cart.forEach(item => {
         orderText += `- ${item.qty}x ${item.name} (£${item.price * item.qty})%0A`;
     });
-    orderText += `%0ATotal: ${document.getElementById("total") ? document.getElementById("total").innerText : "£" + total}`;
+    orderText += `%0ATotal: ${document.getElementById("total").innerText}`;
     
     toast("Redirecting to WhatsApp...");
     setTimeout(() => {
@@ -133,7 +137,6 @@ const reviews = [
     "Extremely reliable service ⭐⭐⭐⭐⭐",
     "Excellent quality item received"
 ];
-
 let reviewIdx = 0;
 function rotateReviews() {
     const box = document.getElementById("reviewBox");
