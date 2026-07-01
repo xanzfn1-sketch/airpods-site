@@ -1,59 +1,236 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BB2 Store | Reviews</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        body { margin: 0; font-family: sans-serif; background: #000; color: #fff; }
-        .container { width: 90%; max-width: 600px; margin: 40px auto; text-align: center; }
-        .review { 
-            opacity: 0; transform: translateY(20px); transition: 0.5s ease-out; 
-            background: #111; border: 1px solid #333; border-radius: 12px; 
-            padding: 20px; margin: 15px 0; text-align: left;
-        }
-        .review.show { opacity: 1; transform: translateY(0); }
-        .back-button { 
-            display: inline-block; margin-top: 30px; color: #ff453a; 
-            text-decoration: none; font-weight: bold; 
-        }
-    </style>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BB2 Store | Reviews</title>
+
+
+
+<link rel="stylesheet" href="style.css">
+
+
+
+<style>
+
+body{
+
+    margin:0;
+
+    font-family:Arial,Helvetica,sans-serif;
+
+    background:#0b0b0b;
+
+    color:white;
+
+}
+
+
+
+.container{
+
+    width:90%;
+
+    max-width:900px;
+
+    margin:40px auto;
+
+    text-align:center;
+
+}
+
+
+
+.review{
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+    transition:.5s;
+
+    background:#161616;
+
+    border:1px solid #2b2b2b;
+
+    border-radius:15px;
+
+    padding:18px;
+
+    margin:15px 0;
+
+}
+
+
+
+.review.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+
+
+.btn{
+
+    margin-top:30px;
+
+    padding:14px 30px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+</style>
+
+
+
 </head>
+
 <body>
 
+
+
 <div class="container">
-    <h1>⭐⭐⭐⭐⭐ Reviews</h1>
-    <p>150+ Happy Customers</p>
-    <div id="reviews"></div>
-    <a href="index.html" class="back-button">← Back to Store</a>
+
+
+
+<h1>⭐⭐⭐⭐⭐ Customer Reviews</h1>
+
+<p>150+ Happy Customers</p>
+
+
+
+<div id="reviews"></div>
+
+
+
+<a href="index.html" class="back-button">
+
+    ← Back to Store
+
+</a>
+
+
+
 </div>
 
+
+
 <script>
-    const names = ["L••••", "J••••", "A••••", "M••••", "D••••", "K••••", "S••••", "T••••", "R••••", "C••••"];
-    const messages = ["Fast delivery!", "Amazing quality!", "Best AirPods!", "Seller is helpful.", "Would buy again.", "Works perfectly.", "Excellent price.", "100% recommend.", "Top quality.", "Same day delivery!"];
 
-    const reviewsContainer = document.getElementById("reviews");
 
-    // Create fragments for better performance
-    for (let i = 0; i < 50; i++) { // Kept at 50 for mobile smoothness
-        const card = document.createElement("div");
-        card.className = "review";
-        const name = names[Math.floor(Math.random() * names.length)];
-        const msg = messages[Math.floor(Math.random() * messages.length)];
-        
-        card.innerHTML = `⭐⭐⭐⭐⭐<br><strong style="color:#ff453a">${name}</strong><br>${msg}`;
-        reviewsContainer.appendChild(card);
-    }
 
-    // Trigger animations
-    const cards = document.querySelectorAll(".review");
-    cards.forEach((card, index) => {
-        setTimeout(() => {
-            card.classList.add("show");
-        }, index * 50); // Faster stagger
-    });
+const names=[
+
+"L••••","J••••","A••••","M••••","D••••",
+
+"K••••","S••••","T••••","R••••","C••••",
+
+"H••••","E••••","P••••","N••••"
+
+];
+
+
+
+const messages=[
+
+"Fast delivery!",
+
+"Amazing quality!",
+
+"Best AirPods I've bought.",
+
+"Seller was really helpful.",
+
+"Would definitely buy again.",
+
+"Works perfectly.",
+
+"Very quick replies.",
+
+"Excellent price.",
+
+"100% recommend.",
+
+"Exactly as described.",
+
+"Top quality.",
+
+"Came the same day.",
+
+"Really impressed.",
+
+"Great customer service."
+
+];
+
+
+
+const reviews=document.getElementById("reviews");
+
+
+
+for(let i=0;i<150;i++){
+
+
+
+    const card=document.createElement("div");
+
+    card.className="review";
+
+
+
+    const name=names[Math.floor(Math.random()*names.length)];
+
+    const msg=messages[Math.floor(Math.random()*messages.length)];
+
+
+
+    card.innerHTML=`⭐⭐⭐⭐⭐<br><strong>${name}</strong><br>${msg}`;
+
+
+
+    reviews.appendChild(card);
+
+}
+
+
+
+const cards=document.querySelectorAll(".review");
+
+
+
+cards.forEach((card,index)=>{
+
+    setTimeout(()=>{
+
+        card.classList.add("show");
+
+    },index*80);
+
+});
+
+
+
 </script>
 
+
+
 </body>
-</html>
+
+</html> 
+
