@@ -194,3 +194,31 @@ body{
     border:1px solid #333;
     color:white;
 }
+body{
+background:#0a0a0a;
+color:white;
+font-family:Arial;
+text-align:center;
+}
+
+.card{
+background:#111;
+padding:15px;
+margin:10px auto;
+width:300px;
+border-radius:10px;
+}
+
+.btn{
+padding:10px 15px;
+background:white;
+color:black;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+input{
+padding:10px;
+margin:10px;
+}
