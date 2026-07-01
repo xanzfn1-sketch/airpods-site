@@ -8,104 +8,106 @@
 </head>
 <body>
 
-    <!-- ======================= HEADER ======================= -->
+    <!-- ======================= NAVIGATION HEADER ======================= -->
     <header class="header">
         <div class="logo">BB2 STORE</div>
-        <div class="headerMeta">Trusted UK Local Seller</div>
+        <button class="cart-trigger" onclick="toggleCart(true)">
+            <span>Basket</span>
+            <span id="cart-count" class="cart-count-badge">0</span>
+        </button>
     </header>
 
     <!-- ======================= HERO SECTION ======================= -->
     <section class="hero">
-        <div class="mini-badge">OUR NETWORK</div>
-        <h1>Next Generation AirPods</h1>
+        <h1>Next Generation AirPods Store</h1>
         <p>Fast BB1 & BB2 same-day delivery network</p>
     </section>
 
-    <!-- ======================= BENTO STATS GRID ======================= -->
-    <section class="stats-bento">
-        <div class="bento-stat-card long">
-            <div class="icon-circle red-tint">⚡</div>
-            <h2>Same-Day</h2>
-            <p>Delivery active in select areas</p>
-        </div>
-        <div class="bento-stat-card">
-            <div class="icon-circle">📍</div>
-            <h2>Local</h2>
-            <p>BB1 & BB2 dedicated</p>
-        </div>
-        <div class="bento-stat-card">
-            <div class="icon-circle red-tint">🔒</div>
-            <h2>Secure</h2>
-            <p>Verified handling</p>
-        </div>
+    <!-- ======================= DELIVERY STRIP ======================= -->
+    <section class="banner">
+        ⚡ SAME DAY DELIVERY ACTIVE IN SELECT AREAS ⚡
+    </section>
+
+    <!-- ======================= TRUST BADGES ======================= -->
+    <section class="trustGrid">
+        <div class="trust">Verified Seller</div>
+        <div class="trust">Fast Dispatch</div>
+        <div class="trust">Local Delivery</div>
+        <div class="trust">Secure Handling</div>
     </section>
 
     <!-- ======================= FEATURED PRODUCTS ======================= -->
     <section class="sectionTitle">
-        <div class="mini-badge">CURATED DEALS</div>
-        <h2>What We Do</h2>
+        <h2>Featured Products</h2>
     </section>
 
-    <!-- Asymmetric Product Grid -->
-    <section id="products" class="bento-products-grid"></section>
+    <section id="products" class="grid"></section>
 
-    <!-- ======================= YOUR BASKET BENTO ======================= -->
-    <section class="sectionTitle">
-        <div class="mini-badge">YOUR ORDER</div>
-        <h2>Your Basket</h2>
+    <!-- ======================= SIDE CART DRAWER ======================= -->
+    <div id="cart-drawer" class="cart-drawer">
+        <div class="cart-drawer-overlay" onclick="toggleCart(false)"></div>
+        <div class="cart-drawer-content">
+            <div class="cart-drawer-header">
+                <h2>Your Basket</h2>
+                <button class="close-drawer" onclick="toggleCart(false)">✕</button>
+            </div>
+            
+            <div id="cart-items-container" class="cart-items-body">
+                <!-- Injected dynamically by JS -->
+            </div>
+
+            <div class="cart-drawer-footer">
+                <div class="total-row">
+                    <span>Total Amount:</span>
+                    <span id="total">£0</span>
+                </div>
+                <button class="btn checkout-btn" onclick="checkout()">Place Order via WhatsApp</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================= INFO SECTIONS ======================= -->
+    <section class="infoBlock">
+        <h2>Weekly Deals</h2>
+        <p>Exclusive bundles available for limited time only. Discounts applied automatically at checkout.</p>
     </section>
 
-    <section class="bento-info-container">
-        <div class="infoBlock">
-            <div id="cart"></div>
-            <h3 id="total" style="margin-top: 15px; font-size: 20px; color: #ff453a;">Total: £0</h3>
-            <button class="btn red-btn" onclick="checkout()" style="margin-top: 15px; width: 100%; text-align: center;">Place Order</button>
-        </div>
+    <section class="infoBlock">
+        <h2>Bundle Offers</h2>
+        <ul>
+            <li>1 Pair AirPods — Entry Deal</li>
+            <li>2 Pair Bundle — Save £5</li>
+            <li>5 Pack Bundle — Best Value</li>
+            <li>Bulk Wholesale Pack — Maximum Savings</li>
+        </ul>
     </section>
 
-    <!-- ======================= INFO BLOCKS & POLICIES ======================= -->
-    <section class="bento-info-container">
-        <div class="infoBlock">
-            <h2>Weekly Deals</h2>
-            <p>Exclusive bundles available for limited time only. Discounts applied automatically at checkout.</p>
-        </div>
-
-        <div class="infoBlock highlight-card">
-            <h2>Why Choose BB2 Store?</h2>
-            <p>We focus on speed, reliability, and customer satisfaction. Our system is optimized for local UK delivery across BB1 & BB2.</p>
-        </div>
-
-        <div class="infoBlock">
-            <h2>How It Works</h2>
-            <p><b>Step 1</b> — Browse products</p>
-            <p><b>Step 2</b> — Add to basket</p>
-            <p><b>Step 3</b> — Checkout securely</p>
-            <p><b>Step 4</b> — Receive delivery</p>
-        </div>
+    <section class="infoBlock">
+        <h2>Why Choose BB2 Store?</h2>
+        <p>We focus on speed, reliability, and customer satisfaction. Our system is optimized for local UK delivery across BB1 & BB2.</p>
     </section>
 
-    <!-- ======================= REVIEWS ROTATOR ======================= -->
     <section class="reviews">
-        <div class="mini-badge">TESTIMONIALS</div>
+        <h2>Customer Reviews</h2>
         <div id="reviewBox">Loading reviews...</div>
     </section>
 
-    <!-- ======================= CONTACT & SUPPORT ======================= -->
+    <!-- ======================= CONTACT ======================= -->
     <section class="contact">
-        <h2>Get In Touch</h2>
+        <h2>Contact Us</h2>
         <p class="number">📞 07463 399522</p>
         <div class="contactButtons">
             <a href="tel:07463399522" class="btn">Call Now</a>
-            <a href="https://wa.me/447463399522" class="btn red-btn">WhatsApp</a>
+            <a href="https://wa.me/447463399522" class="btn whatsapp-btn">WhatsApp</a>
         </div>
     </section>
 
     <!-- ======================= FOOTER ======================= -->
     <footer class="footer">
-        <p>© BB2 Store — All Rights Reserved. All product information is provided for customer clarity.</p>
+        <p>© BB2 Store — All Rights Reserved</p>
     </footer>
 
-    <!-- FLOAT WHATSAPP -->
+    <!-- ======================= UTILITY TOAST & FLOAT ======================= -->
     <a class="floatWhatsApp" href="https://wa.me/447463399522">💬</a>
     <div id="toast"></div>
 
