@@ -1,137 +1,160 @@
+/* ======================= APPLE BOOT SYSTEM ======================= */
+document.addEventListener("DOMContentLoaded", () => {
+    const intro = document.getElementById("intro");
+    const sound = document.getElementById("startupSound");
 
+    // Start everything on the first click/tap anywhere
+    const startIntro = () => {
+        if (sound) {
+            sound.play().catch(error => console.log("Audio play delayed:", error));
+        }
+        
+        // Wait 2.5 seconds for the iconic sound to finish, then fade out the screen
+        setTimeout(() => {
+            if (intro) {
+                intro.style.transition = "opacity 1s ease, visibility 1s ease";
+                intro.style.opacity = 0;
+                intro.style.visibility = "hidden";
+            }
+        }, 2500);
+
+        // Turn off listeners so it doesn't trigger again
+        document.removeEventListener("click", startIntro);
+        document.removeEventListener("touchstart", startIntro);
+    };
+
+    document.addEventListener("click", startIntro);
+    document.addEventListener("touchstart", startIntro);
+});
+
+/* ======================= PRODUCTS DATA ======================= */
 const products = [
-{name:"1 Pair AirPods", price:15},
-{name:"2 Pairs AirPods", price:25},
-{name:"5 Pairs Bundle", price:60},
-{name:"Bulk Deal", price:150}
+    {name:"1 Pair AirPods", price:15},
+    {name:"2 Pairs AirPods", price:25},
+    {name:"5 Pairs Bundle", price:60},
+    {name:"Bulk Deal", price:150}
 ];
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 /* SAVE CART */
 function save(){
-localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 /* TOAST SYSTEM */
 function toast(msg){
-const t = document.getElementById("toast");
-if(!t) return;
+    const t = document.getElementById("toast");
+    if(!t) return;
 
-t.innerText = msg;
-t.style.opacity = 1;
+    t.innerText = msg;
+    t.style.opacity = 1;
 
-setTimeout(()=>t.style.opacity = 0, 1200);
+    setTimeout(()=>t.style.opacity = 0, 1200);
 }
 
 /* ADD TO CART */
-function addToCart(name,price){
+function addToCart(name, price){
+    let item = cart.find(i => i.name === name);
 
-let item = cart.find(i => i.name === name);
+    if(item){
+        item.qty++;
+    }else{
+        cart.push({name, price, qty:1});
+    }
 
-if(item){
-item.qty++;
-}else{
-cart.push({name,price,qty:1});
-}
-
-save();
-toast("Added: " + name);
+    save();
+    toast("Added: " + name);
 }
 
 /* REMOVE ITEM */
 function removeItem(index){
-cart.splice(index,1);
-save();
-renderCart();
+    cart.splice(index, 1);
+    save();
+    renderCart();
 }
 
 /* PRODUCTS RENDER */
 function renderProducts(){
+    const box = document.getElementById("products");
+    if(!box) return;
 
-const box = document.getElementById("products");
-if(!box) return;
-
-products.forEach(p=>{
-box.innerHTML += `
-<div class="card">
-<h2>${p.name}</h2>
-<h1>£${p.price}</h1>
-<button class="btn" onclick="addToCart('${p.name}',${p.price})">
-Add to Basket
-</button>
-</div>
-`;
-});
+    products.forEach(p=>{
+        box.innerHTML += `
+        <div class="card">
+            <h2>${p.name}</h2>
+            <h1>£${p.price}</h1>
+            <button class="btn" onclick="addToCart('${p.name}', ${p.price})">
+                Add to Basket
+            </button>
+        </div>
+        `;
+    });
 }
 
 /* CART RENDER */
 function renderCart(){
+    const box = document.getElementById("cart");
+    const totalBox = document.getElementById("total");
 
-const box = document.getElementById("cart");
-const totalBox = document.getElementById("total");
+    if(!box) return;
 
-if(!box) return;
+    box.innerHTML = "";
+    let total = 0;
 
-box.innerHTML = "";
+    cart.forEach((c, i)=>{
+        total += c.price * c.qty;
 
-let total = 0;
+        box.innerHTML += `
+        <div class="card">
+            <h3>${c.name}</h3>
+            <p>Quantity: ${c.qty}</p>
+            <p>Price: £${c.price * c.qty}</p>
+            <button class="btn" onclick="removeItem(${i})">Remove</button>
+        </div>
+        `;
+    });
 
-cart.forEach((c,i)=>{
-total += c.price * c.qty;
-
-box.innerHTML += `
-<div class="card">
-<h3>${c.name}</h3>
-<p>Quantity: ${c.qty}</p>
-<p>Price: £${c.price * c.qty}</p>
-<button class="btn" onclick="removeItem(${i})">Remove</button>
-</div>
-`;
-});
-
-totalBox.innerText = "Total: £" + total;
+    if(totalBox) totalBox.innerText = "Total: £" + total;
 }
 
 /* CHECKOUT */
 function checkout(){
+    if(cart.length === 0){
+        toast("Basket is empty");
+        return;
+    }
 
-if(cart.length === 0){
-toast("Basket is empty");
-return;
-}
-
-toast("Order placed - Same day delivery active");
-
-cart = [];
-save();
-renderCart();
+    toast("Order placed - Same day delivery active");
+    cart = [];
+    save();
+    renderCart();
 }
 
 /* REVIEWS ROTATOR */
 const reviews = [
-"Fast delivery ⭐⭐⭐⭐⭐",
-"Best seller in BB2 ⭐⭐⭐⭐⭐",
-"Very trusted ⭐⭐⭐⭐⭐",
-"Great quality ⭐⭐⭐⭐⭐",
-"Would buy again ⭐⭐⭐⭐⭐"
+    "Fast delivery ⭐⭐⭐⭐⭐",
+    "Best seller in BB2 ⭐⭐⭐⭐⭐",
+    "Very trusted ⭐⭐⭐⭐⭐",
+    "Great quality ⭐⭐⭐⭐⭐",
+    "Would buy again ⭐⭐⭐⭐⭐"
 ];
 
 let i = 0;
 
 function rotateReviews(){
-const box = document.getElementById("reviewBox");
-if(!box) return;
+    const box = document.getElementById("reviewBox");
+    if(!box) return;
 
-box.innerText = reviews[i];
+    box.innerText = reviews[i];
 
-i++;
-if(i >= reviews.length) i = 0;
+    i++;
+    if(i >= reviews.length) i = 0;
 
-setTimeout(rotateReviews, 2000);
+    setTimeout(rotateReviews, 2000);
 }
 
-/* INIT */
+/* INITIALIZE SYSTEM */
 renderProducts();
 renderCart();
 rotateReviews();
