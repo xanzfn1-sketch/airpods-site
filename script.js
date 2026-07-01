@@ -85,7 +85,7 @@ function renderCart() {
     let totalItems = 0;
 
     if (cart.length === 0) {
-        container.innerHTML = `<div class="empty-cart-state">Your basket is empty.</div>`;
+        container.innerHTML = `<div class="empty-cart-state" style="color: #e5e5ea; text-align: center; margin-top: 40px;">Your basket is empty.</div>`;
         if (totalBox) totalBox.innerText = "£0";
         if (countBadge) countBadge.innerText = "0";
         return;
@@ -98,8 +98,8 @@ function renderCart() {
         container.innerHTML += `
         <div class="cart-item">
             <div class="item-info">
-                <h3>${item.name}</h3>
-                <p>£${item.price} each</p>
+                <h3 style="font-size: 16px; color: #ffffff;">${item.name}</h3>
+                <p style="font-size: 14px; color: #ff453a; font-weight: 600;">£${item.price} each</p>
             </div>
             <div class="quantity-controls">
                 <button class="qty-btn" onclick="updateQuantity(${index}, -1)">-</button>
@@ -120,7 +120,6 @@ function checkout() {
         return;
     }
     
-    // Auto-formatting order string for easy local processing
     let orderText = "Hello! I want to place an order:%0A";
     cart.forEach(item => {
         orderText += `- ${item.qty}x ${item.name} (£${item.price * item.qty})%0A`;
@@ -153,9 +152,18 @@ function rotateReviews() {
     setTimeout(rotateReviews, 3000);
 }
 
-/* ENGINE BOOT */
+/* INITIALIZE SYSTEM & INTRO TIMEOUT */
 document.addEventListener("DOMContentLoaded", () => {
     renderProducts();
     renderCart();
     rotateReviews();
+
+    // Pure isolated intro screen fade-out logic
+    setTimeout(() => {
+        const intro = document.getElementById("intro-screen");
+        if (intro) {
+            intro.classList.add("fade-out");
+            setTimeout(() => intro.remove(), 600);
+        }
+    }, 1800);
 });
