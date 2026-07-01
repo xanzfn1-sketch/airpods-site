@@ -7,62 +7,21 @@
 
 <body>
 
-<h1 style="text-align:center;margin:20px;">Basket</h1>
+<h1>Your Basket</h1>
 
 <div id="cart"></div>
 
-<h2 id="total" style="text-align:center;"></h2>
+<h2 id="total"></h2>
 
-<div style="text-align:center;margin:20px;">
-<button class="btn" onclick="clearCart()">Clear</button>
-<a href="index.html"><button class="btn">Back</button></a>
-</div>
+<button class="btn" onclick="checkout()">
+Checkout (Same Day Delivery)
+</button>
 
-<script>
+<a href="index.html">
+<button class="btn">Back</button>
+</a>
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-function save(){
-localStorage.setItem("cart", JSON.stringify(cart));
-}
-
-function render(){
-
-let box = document.getElementById("cart");
-box.innerHTML = "";
-
-let total = 0;
-
-cart.forEach((c,i)=>{
-total += c.price;
-
-box.innerHTML += `
-<div class="card">
-<h3>${c.name}</h3>
-<p>£${c.price}</p>
-<button class="btn" onclick="removeItem(${i})">Remove</button>
-</div>
-`;
-});
-
-document.getElementById("total").innerText = "Total: £" + total;
-}
-
-function removeItem(i){
-cart.splice(i,1);
-save();
-render();
-}
-
-function clearCart(){
-cart = [];
-save();
-render();
-}
-
-render();
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
